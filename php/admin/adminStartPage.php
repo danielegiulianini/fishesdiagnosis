@@ -2,8 +2,6 @@
 <html lang="it">
 <head>
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/commonHeadContent.php"); ?>
-
-
     <!--<script src="/progettoweb/js/administrator/clients.js"></script>-->
 
 <style>
@@ -19,11 +17,9 @@ html, body {
   font-size:120%;
 }
 </style>
-
-
 </head>
 <body>
-<?php include("../commons/layout/headers.php"); ?><!-- shared navbar-->
+<?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/headers.php"); ?><!-- shared navbar-->
 
   <main role="main" class="mt-3">
     <section class="jumbotron text-center">
@@ -64,5 +60,5 @@ html, body {
       </div>
   </div>
   </main>
-  <?php include("../commons/layout/footer.php");?>
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>

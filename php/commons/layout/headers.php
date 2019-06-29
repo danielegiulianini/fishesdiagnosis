@@ -1,6 +1,4 @@
-<!--prima era pià pulita, non c'erano i div che contengono le icone , ma quelli sono serviti per mettercii drop-down -->
-
-<script src="/progettoweb/js/supplier/headers.js"></script>
+<!--<script src="/progettoweb/js/supplier/headers.js"></script>
 <script src="/progettoweb/js/supplier/notificationsHandling.js"></script> <!-- file che recupera le notifiche dal server-->
 
 <link href="../../css/headerStyle.css" rel="stylesheet"/>
@@ -25,7 +23,7 @@
 
 <div>
   <button type="button" class="btn btn-light" data-toggle="dropdown">
-    <span class="fa fa-user-circle-o mediumIcon"></span> <!--oppure fa-lg oppure fa-2x-->
+    <span class="fas fa-user mediumIcon"></span> <!--oppure fa-lg oppure fa-2x-->
   </button>
 
   <div id="user" class="dropdown-menu dropdown-menu-right"> <!--Dropdwon for logout-->

@@ -1,5 +1,7 @@
 <footer class="text-muted">
   <div class="container">
-    <p class="text-center">footer</p>
+    <div class="footer-copyright text-center">© 2018 Copyright:
+    <a href="#">FishDiagnosis.it</a>
+  </div>
   </div>
 </footer>

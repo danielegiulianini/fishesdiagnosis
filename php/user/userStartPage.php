@@ -50,5 +50,5 @@ html, body {
       </div>
   </div>
   </main>
-  <?php include("../commons/layout/footer.php");?>
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
