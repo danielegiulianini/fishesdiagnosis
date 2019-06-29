@@ -42,7 +42,8 @@
 
         </div>
       </div>
-  </div>
+    </div>
+    </section>
   </main>
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
