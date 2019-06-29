@@ -1,7 +1,7 @@
 <!--<script src="/progettoweb/js/supplier/headers.js"></script>
 <script src="/progettoweb/js/supplier/notificationsHandling.js"></script> <!-- file che recupera le notifiche dal server-->
 
-<link href="../../css/headerStyle.css" rel="stylesheet"/>
+<link href="http://localhost:8081/fishesdiagnosis/css/headerStyle.css" rel="stylesheet"/>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="navbar1">
 
@@ -27,7 +27,7 @@
   </button>
 
   <div id="user" class="dropdown-menu dropdown-menu-right"> <!--Dropdwon for logout-->
-    <a class="dropdown-item" href="../../commons/logout.php">logout</a>
+    <a class="dropdown-item" href="#">logout</a>
   </div>
 </div>
 

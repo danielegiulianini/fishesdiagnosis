@@ -5,7 +5,7 @@ $(document).ready(function() {
     //"processing": true,
     //"serverSide": true,
     "ajax": { //this is for sending request to server
-           "url": "/progettoweb/php/administrator/administrator.php", /*da sostituire con */
+           "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON IL FILE CHE INVIA I DATI*/
            "data": {request: "clients", type : "select"},
            "type": 'POST',
            "dataSrc": ""
@@ -20,7 +20,10 @@ $(document).ready(function() {
       {  "data" : "email"},
       {  "data" : "tipoUtente"},
       {  "data" : "dataOraRegistrazione"}
-      ]
+    ],
+    "language": {
+        "infoEmpty": "No records available - Got it?",  /*empty table message*/
+    }
     });
     /*potrei impostare un reload con un setTimeout*/
 });
