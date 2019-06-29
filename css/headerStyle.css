@@ -1,0 +1,97 @@
+#navbar2 h4{
+  font-size:16px;
+}
+
+#navbar1{ /*to make navbars thinner*/
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+}
+
+#navbar2{ /*to make navbars thinner*/
+  padding-top:3px !important;
+  padding-bottom:3px !important;
+}
+
+#navbar2.fixed-top-2 {
+  margin-top: 40px; /*with smaller icons in navbar 1->56, now navbar1 is 4opx tall*/
+}
+#navbar2 .nav-item.active{
+  background-color:lightgrey;
+  border-radius:8px;
+}
+#navbar2 .nav-item :hover{
+  background-color:grey;
+  cursor:pointer;
+}
+#navbar2 li{
+  width:50px;
+  height:50px;
+}
+
+#navbar2{
+  z-index: 50 !important;
+}
+
+#notifications{
+  margin-top:0px;
+  border-width:thin;
+  max-height:500%;
+  overflow-y: scroll;
+}
+
+#user{
+  margin-top:0px;
+}
+
+#notifications.dropdown-menu a {
+  white-space: normal;
+  float: left;
+  width: 100%;
+  height: auto;
+  word-wrap: break-word;
+}
+
+.mediumIcon{
+  font-size: 20px;
+}
+
+/*new notification display*/
+.notifications .badge {
+  display: none;
+  font-size: 0.7em;
+  position: absolute;
+  top: 4px;
+  right: 76px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
+
+.notifications{
+  color:black;
+}
+
+
+
+/*old notifications incon display
+.fa-stack[data-count]:after{  //for displaying notifications count over the icon
+  position:absolute;
+  right:-7%;  //11 with 2x or mediumIcon
+  top:-7%;  //11  with 2x or mediumIcon
+  content: attr(data-count);
+  font-size:70%;
+  padding:.3em;
+  border-radius:999px;
+  line-height:.72em;  //78  with 2x or mediumIcon
+  color: white;
+  background:rgba(255,0,0,1);
+  z-index:100;
+  width:20%;
+  min-width:1.45em;
+  font-weight:bold;
+}
+.hidingClass{
+  color: rgba(255,255,255,0);;
+  background:rgba(255,255,255,0);
+}
+*/
