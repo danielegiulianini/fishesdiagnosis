@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/commonHeadContent.php"); ?>
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/commonHeadContent.php"); ?>
+  <!--<script src="/progettoweb/js/administrator/clients.js"></script>-->
+  <style>
+    html, body {
+       height: 100% !important;
+    }
 
+    .album a {
+      color:white !important;
+    }
 
-    <!--<script src="/progettoweb/js/administrator/clients.js"></script>-->
-
-<style>
-
-
-html, body {
-   height: 100% !important;
-}
-
-.album a {
-  color:white !important;
-}
-
-.hint{
-  font-size:120%;
-}
-</style>
-
+    .hint{
+      font-size:120%;
+    }
+  </style>
 
 </head>
 <body>
-<?php include("../commons/layout/headers.php"); ?><!-- shared navbar-->
+<?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/headers.php"); ?><!-- shared navbar-->
 
   <main role="main" class="mt-3">
     <section class="jumbotron text-center">
