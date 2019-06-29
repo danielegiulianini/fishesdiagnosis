@@ -1,5 +1,5 @@
 <?php
-$servername="localhost"; //questo lo potrei rifattorizzare in un file esterno volendo
+$servername="localhost";
 $username="root";
 $password="";
 $db="unifood";
