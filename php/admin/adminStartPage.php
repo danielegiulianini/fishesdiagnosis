@@ -23,7 +23,7 @@ html, body {
 
 </head>
 <body>
-<?php include("./commons/layout/headers.php"); ?><!-- shared navbar-->
+<?php include("../commons/layout/headers.php"); ?><!-- shared navbar-->
 
   <main role="main" class="mt-3">
     <section class="jumbotron text-center">
@@ -64,5 +64,5 @@ html, body {
       </div>
   </div>
   </main>
-  <?php include("./commons/layout/footer.php");?>
+  <?php include("../commons/layout/footer.php");?>
 <body>

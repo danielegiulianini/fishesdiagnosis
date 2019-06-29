@@ -3,7 +3,7 @@
 <script src="/progettoweb/js/supplier/headers.js"></script>
 <script src="/progettoweb/js/supplier/notificationsHandling.js"></script> <!-- file che recupera le notifiche dal server-->
 
-<link href="../css/headerStyle.css" rel="stylesheet"/>
+<link href="../../css/headerStyle.css" rel="stylesheet"/>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="navbar1">
 
