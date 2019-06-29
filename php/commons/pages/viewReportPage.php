@@ -31,7 +31,7 @@
       <div class="col-md-4 mb-4 mb-md-0">
         <div class="card">
           <div class="card-body">
-            <div class="card-title font-weight-bolder text-center lead">Informazioni generali</div>
+            <div class="card-title font-weight-bolder text-center lead">Informazioni generali scheda</div>
               <!--old data format with lists instead of tables
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -137,7 +137,7 @@
                 </tbody>
               </table>
 
-
+              <button class="btn btn-secondary ml-auto">Modifica</button>
           </div><!--end card-body-->
         </div><!--end card-->
       </div> <!--end 1° half of screen-->
@@ -145,7 +145,7 @@
       <div class="col-md-8">
         <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active font-weight-bolder lead" id="present-signs-tab" data-toggle="tab" href="#present-signs-tab" role="tab" aria-controls="present-signs-tab" aria-selected="true">Resoconto segni riscontrati</a>
+            <a class="nav-link active font-weight-bolder lead" id="present-signs-tab" data-toggle="tab" href="#present-signs" role="tab" aria-controls="present-signs-tab" aria-selected="true">Resoconto segni riscontrati</a>
           </li>
           <li class="nav-item">
             <a class="nav-link font-weight-bolder lead" id="absent-signs-tab" data-toggle="tab" href="#absent-signs" role="tab" aria-controls="absent-signs" aria-selected="true">Resoconto segni assenti</a>
@@ -193,10 +193,10 @@
             </table>
 
           </div>
-          <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">...</div>
-          <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">...</div>
+          <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">..</div>
+          <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">.ooo</div>
           <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">...</div>
-          <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">...</div>
+          <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">....</div>
         </div><!--tab content-->
       </div><!--2° half-->
     </div><!--row-->
