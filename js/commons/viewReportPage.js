@@ -1,6 +1,6 @@
 $(document).ready(function() {
   //interrogo una volta il server con ajax per reperire gli attributi della tabella (questa cosa la potevo fare anche con php nella pagina)
-  table = $('#example').DataTable({
+  table = $('presents-signs-table').DataTable({
     "responsive" : true,
     //"processing": true,
     //"serverSide": true,

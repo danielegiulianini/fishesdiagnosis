@@ -1,3 +1,77 @@
+<?php
+$presentSignsTableSchema =
+'<table id="presents-signs-table" class="display" style="width:100%">
+   <thead>
+     <tr>
+      <th>Segno presente</th>
+      <th>Percentuale di presenza</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+       <th>Segno presente</th>
+       <th>Percentuale di presenza</th>
+    </tr>
+  </tfoot>
+</table>';
+
+$presentSignsTableSchema =
+'<table id="absents-signs-table" class="display" style="width:100%">
+   <thead>
+     <tr>
+      <th>Segno presente</th>
+      <th>Percentuale di presenza</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+       <th>Segno presente</th>
+       <th>Percentuale di presenza</th>
+    </tr>
+  </tfoot>
+</table>';
+
+$measurementsTableSchema =
+'<table id="absents-signs-table" class="display" style="width:100%">
+   <thead>
+     <tr>
+      <th>Nome caratteristica</th>
+      <th>Valore riscontrato</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+     <th>Nome caratteristica</th>
+     <th>Valore riscontrato</th>
+    </tr>
+  </tfoot>
+</table>';
+
+$eventsTableSchema =
+'<table id="events-table" class="display" style="width:100%">
+   <thead>
+     <tr>
+      <th>Tipo evento</th>
+      <th>Data evento</th>
+      <th>Data comparsa segni</th>
+      <th>Stato</th>
+      <th>Sigla provincia</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+     <th>Tipo evento</th>
+     <th>Data evento</th>
+     <th>Data comparsa segni</th>
+     <th>Stato</th>
+     <th>Sigla provincia</th>
+   </tr>
+  </tfoot>
+</table>';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,7 +85,6 @@
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-
 
   <script src="http://localhost:8081/fishesdiagnosis/js/commons/viewReportPage.js"></script>
 
@@ -163,40 +236,29 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="present-signs" role="tabpanel" aria-labelledby="present-signs-tab">
 
-            <table id="reports-info-2" class="display" style="width:100%">
-               <thead>
-                 <tr>
-                  <th>IDUtente</th>
-                  <th>nome</th>
-                  <th>cognome</th>
-                  <th>numeroTelefono</th>
-                  <th>password</th>
-                  <th>chiave</th>
-                  <th>email</th>
-                  <th>tipoUtente</th>
-                  <th>dataOraRegistrazione</th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>IDUtente</th>
-                  <th>nome</th>
-                  <th>cognome</th>
-                  <th>numeroTelefono</th>
-                  <th>password</th>
-                  <th>chiave</th>
-                  <th>email</th>
-                  <th>tipoUtente</th>
-                  <th>dataOraRegistrazione</th>
-                </tr>
-              </tfoot>
-            </table>
+            <?php echo $presentSignsTableSchema?>
 
           </div>
-          <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">..</div>
-          <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">.ooo</div>
-          <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">...</div>
-          <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">....</div>
+          <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">
+
+            <?php echo $absentSignsTableSchema?>
+
+          </div>
+          <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
+
+            <?php echo $measurementsTableSchema?>
+
+          </div>
+          <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+
+            <?php echo $eventsTableSchema?>
+
+          </div>
+          <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
+
+            ...
+
+          </div>
         </div><!--tab content-->
       </div><!--2° half-->
     </div><!--row-->
