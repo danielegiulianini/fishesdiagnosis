@@ -265,13 +265,15 @@ $eventsTableSchema =
       </div><!--2° half-->
     </div><!--row-->
     <!--un margine visibile solo per i mobile realizzato tramite mb-4 mb-md-0-->
+
     <div class="row">
       <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
         <button class="btn btn-secondary my-1 my-md-0">Visualizza probabilità</button>
         <button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>
       </div>
-    </div>
+    </div> <!--2° row-->
   </div><!--container-fluid-->
+
   </main>
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
