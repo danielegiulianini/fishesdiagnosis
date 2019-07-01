@@ -30,21 +30,21 @@ for($i=0; $row=$result->fetch_assoc(); $i++){
 /*Since it is a particular form, that contains many items of the same type, I must use array notation in name
 of input fields, so that the server can recognize every single item.*/
   if ($row["segnipresenti_idSegno"]){  /*se segnipresenti_idSegno è != null allora la tupla era in segnipresenti */
-    $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1" checked>';
-    $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2">';
-    $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3">';
-    $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.']"></td>';
+    $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes" checked>';
+    $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no">';
+    $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="dontKnow">';
+    $percentageField.='<td headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']"></td>';
   } else {
     if ($row["segniassenti_idSegno"]){  /*se segniassenti_idSegno è != null allora la tupla era in segniassenti */
-      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1">';
-      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2" checked>';
-      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3">';
-      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
+      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes">';
+      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no" checked>';
+      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="dontKnow">';
+      $percentageField.='<td  headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
     } else {                             /*se entrambi sono null allora la tupla non era in nessuno dei 2 */
-      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1">';
-      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2">';
-      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3" checked>';
-      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
+      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes">';
+      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no">';
+      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="dontKnow" checked>';
+      $percentageField.='<td headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
     }
   }
 
