@@ -14,29 +14,58 @@ $precompiledSignsListTable ='<div class="card d-md-block p-2">
                                   </tr>
                                 </thead>
                                 <tbody>';
-$precompiledSignsListTable.='<form>';
+$precompiledSignsListTable.='</form>';
 
-$stmt=$conn->prepare("SELECT segni.idSegno, nome FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno)");
+$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno)");
 $stmt->execute();
 $result=$stmt->get_result();
-while($row=$result->fetch_assoc()){
+for($i=0; $row=$result->fetch_assoc(); $i++){
+  /*devo discriminare se si tratta di segno assente / presente o nessuno dei 2 per disabilitare i radio giusti.
+  anziché un for innestato, forse posso inferirlo giostrando con i null lasciati dagli outer join*/
+  $yesRadio='';
+  $noRadio='';
+  $dontKnowRadio='';
+  $percentageField='';
+
+/*Since it is a particular form, that contains many items of the same type, I must use array notation in name
+of input fields, so that the server can recognize every single item.*/
+  if ($row["segnipresenti_idSegno"]){  /*se segnipresenti_idSegno è != null allora la tupla era in segnipresenti */
+    $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1" checked>';
+    $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2">';
+    $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3">';
+    $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.']"></td>';
+  } else {
+    if ($row["segniassenti_idSegno"]){  /*se segniassenti_idSegno è != null allora la tupla era in segniassenti */
+      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1">';
+      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2" checked>';
+      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3">';
+      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.'] disabled"></td>';
+    } else {                             /*se entrambi sono null allora la tupla non era in nessuno dei 2 */
+      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1">';
+      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2">';
+      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3" checked>';
+      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.'] disabled"></td>';
+    }
+  }
+
+/*I must include a input type hiden field for the server to know which record to ipdate in the db*/
   $precompiledSignsListTable.='<tr>
-                                <td headers="sign">'.$row["nome"].'</td>
+                                <td headers="sign"><input type="hidden" value='.$row["segno_idSegno"].'\>'.$row["nome"].'</td>
                                 <td headers="yes-no-dontknow">
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="presence" id="presence1" value="1">
-                                    <label class="form-check-label" for="presence1">Si</label>
+                                    '.$yesRadio.'
+                                    <label class="form-check-label" for="presences1['.$i.']">Si</label>
                                   </div>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="presence" id="presence2" value="option2">
-                                    <label class="form-check-label" for="presence2">No</label>
+                                    '.$noRadio.'
+                                    <label class="form-check-label" for="presences2['.$i.']">No</label>
                                   </div>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="presence" id="presence3" value="option3">
-                                    <label class="form-check-label" for="presence3">Non so</label>
+                                    '.$dontKnowRadio.
+                                    '<label class="form-check-label" for="presences3['.$i.']">Non so</label>
                                   </div>
                                 </td>
-                                <td headers="percentage"><input type="number" min="1" max="100" name="percentage" ></td>
+                                '.$percentageField.'
                               </tr>';
 }
 $precompiledSignsListTable.='</form>';
@@ -134,7 +163,12 @@ $precompiledSignsListTable.='</tbody>
           </div><!--2° half-->
         </div>
       </div> <!--1° row-->
-
+      <div class="row">
+        <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
+          <button class="btn btn-secondary my-1 my-md-0">Conferma inserimento</button>
+          <button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>
+        </div>
+      </div> <!--2° row-->
     </div><!--container-fluid-->
 
   </main>
