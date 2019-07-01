@@ -1,50 +1,3 @@
-<?php
-include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
-
-/*basic table library, unlike datatable, needs that the data are already inside
-the table tag, so I have to fetch them in php like here below. Datatables fetch
-data by js instead. If i'll want to change technology, I 'll just replace this code.*/
-$precompiledSignsListTable ='<div class="card d-md-block p-2">
-                              <table id="table" class="table table-sm table-striped header-fixed p-2">
-                                <thead>
-                                  <tr>
-                                    <th class="p-3" id="sign">Segno</th>
-                                    <th class="p-3" id="yes-no-dontknow">Presenza</th>
-                                    <th class="p-3" id="percentage">Percentuale</th>
-                                  </tr>
-                                </thead>
-                                <tbody>';
-$precompiledSignsListTable.='<form>';
-
-$stmt=$conn->prepare("SELECT idSegno, nome FROM segni");
-$stmt->execute();
-$result=$stmt->get_result();
-while($row=$result->fetch_assoc()){
-  $precompiledSignsListTable.='<tr>
-                                <td headers="sign">'.$row["nome"].'<td>
-                                <td headers="yes-no-dontknow">
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="presence" id="presence1" value="1">
-                                    <label class="form-check-label" for="presence1">Si</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="presence" id="presence2" value="option2">
-                                    <label class="form-check-label" for="presence2">No</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="presence" id="presence3" value="option3">
-                                    <label class="form-check-label" for="presence3">Non so</label>
-                                  </div>
-                                </td>
-                                <td headers="percentage"><input type="number" min="1" max="100" name="percentage" style="width:20%"></td>
-                              </tr>';
-}
-$precompiledSignsListTable.='</form>';
-$precompiledSignsListTable.='</tbody>
-                             </table>
-                             </div><!--card (single line)-->';
-?>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -59,19 +12,12 @@ $precompiledSignsListTable.='</tbody>
   <script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/basictable.min.css" integrity="sha256-mbGb4F0wO234UQjFyqRSrFFMI8Nk2HgoIUv2Zly7z8I=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/jquery.basictable.min.js" integrity="sha256-bRyGcU6tP9c78IZuj1jld29tzek4+eR+dBkdml3spKI=" crossorigin="anonymous"></script>
-
-
-<script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>
+  <script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>
 
   <style>
     html, body{
        height: 100%;
     }
-
   </style>
 
 </head>
@@ -109,12 +55,55 @@ $precompiledSignsListTable.='</tbody>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="present-signs" role="tabpanel" aria-labelledby="present-signs-tab">
 
-                <?php echo $precompiledSignsListTable;?>
+                <?php/* echo $presentSignsTableSchema*/?>
 
-              </div><!--tab pane-->
+
+                  <div class="card d-none d-md-block">  <!--header for all forms-->
+                    <div class="form-row p-1">
+                      <div class="col-md-9 p-1">
+                        Segno
+                      </div>
+                      <div class="col-md-2 p-1">
+                        Presenza
+                      </div>
+                      <div class="col-md-1 p-1">
+                        Percentuale
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                <form>
+                  <div class="form-row p-1">
+                    <div class="col-md-9 p-1">
+                      <p>branchie sanguinanti</p>
+                    </div>
+                    <div class="col-md-2 p-1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">Si</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <label class="form-check-label" for="inlineRadio2">No</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                        <label class="form-check-label" for="inlineRadio3">Non so</label>
+                      </div>
+                    </div>
+                      <div class="col-md-1 p-1">
+                      <div class="pt-1 pl-1 pb-1 form-check-inline">
+                        <input type="number" min="1" max="100" class="form-control" placeholder="50">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div><!--card (single line)-->
+
+            </div><!--tab pane-->
               <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">
 
-                <?php echo $absentSignsTableSchema;?>
+                <?php echo $absentSignsTableSchema?>
 
               </div>
               <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
