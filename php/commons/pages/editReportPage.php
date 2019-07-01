@@ -170,7 +170,7 @@ $precompiledSignsListTable.='</tbody>
       </div> <!--1° row-->
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <button class="btn btn-secondary my-1 my-md-0">Conferma inserimento</button>
+          <button id="confirm-editing-list" class="btn btn-secondary my-1 my-md-0">Conferma inserimento</button>
           <button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>
         </div>
       </div> <!--2° row-->
