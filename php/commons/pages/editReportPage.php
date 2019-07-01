@@ -21,7 +21,7 @@ $stmt->execute();
 $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
   $precompiledSignsListTable.='<tr>
-                                <td headers="sign">'.$row["nome"].'<td>
+                                <td headers="sign">'.$row["nome"].'</td>
                                 <td headers="yes-no-dontknow">
                                   <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="presence" id="presence1" value="1">
@@ -36,7 +36,7 @@ while($row=$result->fetch_assoc()){
                                     <label class="form-check-label" for="presence3">Non so</label>
                                   </div>
                                 </td>
-                                <td headers="percentage"><input type="number" min="1" max="100" name="percentage" style="width:20%"></td>
+                                <td headers="percentage"><input type="number" min="1" max="100" name="percentage" style="width:30%"></td>
                               </tr>';
 }
 $precompiledSignsListTable.='</form>';
@@ -65,13 +65,13 @@ $precompiledSignsListTable.='</tbody>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/jquery.basictable.min.js" integrity="sha256-bRyGcU6tP9c78IZuj1jld29tzek4+eR+dBkdml3spKI=" crossorigin="anonymous"></script>
 
 
+
 <script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>
 
   <style>
     html, body{
        height: 100%;
     }
-
   </style>
 
 </head>
@@ -119,12 +119,12 @@ $precompiledSignsListTable.='</tbody>
               </div>
               <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
 
-                <?php echo $measurementsTableSchema?>
+                <?php echo $measurementsTableSchema;?>
 
               </div>
               <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
 
-                <?php echo $eventsTableSchema?>
+                <?php echo $eventsTableSchema;?>
 
               </div>
               <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
