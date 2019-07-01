@@ -12,7 +12,14 @@
   <script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
-  <script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/basictable.min.css" integrity="sha256-mbGb4F0wO234UQjFyqRSrFFMI8Nk2HgoIUv2Zly7z8I=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/jquery.basictable.min.js" integrity="sha256-bRyGcU6tP9c78IZuj1jld29tzek4+eR+dBkdml3spKI=" crossorigin="anonymous"></script>
+
+
+<!--<script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>-->
+<script src="http://localhost:8081/fishesdiagnosis/php/commons/pages/responsiveTable.js"></script>
 
   <style>
     html, body{
@@ -58,47 +65,56 @@
                 <?php/* echo $presentSignsTableSchema*/?>
 
 
-                  <div class="card d-none d-md-block">  <!--header for all forms-->
-                    <div class="form-row p-1">
-                      <div class="col-md-9 p-1">
-                        Segno
-                      </div>
-                      <div class="col-md-2 p-1">
-                        Presenza
-                      </div>
-                      <div class="col-md-1 p-1">
-                        Percentuale
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                <form>
-                  <div class="form-row p-1">
-                    <div class="col-md-9 p-1">
-                      <p>branchie sanguinanti</p>
-                    </div>
-                    <div class="col-md-2 p-1">
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                        <label class="form-check-label" for="inlineRadio1">Si</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                        <label class="form-check-label" for="inlineRadio2">No</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                        <label class="form-check-label" for="inlineRadio3">Non so</label>
-                      </div>
-                    </div>
-                      <div class="col-md-1 p-1">
-                      <div class="pt-1 pl-1 pb-1 form-check-inline">
-                        <input type="number" min="1" max="100" class="form-control" placeholder="50">
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div><!--card (single line)-->
+                  <div class="card d-md-block p-2">  <!--header for all forms-->
+                    <table id="table" class="table table-striped header-fixed p-2">
+                      <thead>
+                        <tr>
+                          <th>Segno</th>
+                          <th>Presenza</th>
+                          <th>Frequenza</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>catarrosi ijefijefijiiiiiiiiiiiiiii  ijjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div><!--card (single line)-->
 
             </div><!--tab pane-->
               <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">
