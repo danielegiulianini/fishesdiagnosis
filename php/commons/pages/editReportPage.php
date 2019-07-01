@@ -36,7 +36,7 @@ while($row=$result->fetch_assoc()){
                                     <label class="form-check-label" for="presence3">Non so</label>
                                   </div>
                                 </td>
-                                <td headers="percentage"><input type="number" min="1" max="100" name="percentage" style="width:30%"></td>
+                                <td headers="percentage"><input type="number" min="1" max="100" name="percentage" ></td>
                               </tr>';
 }
 $precompiledSignsListTable.='</form>';
