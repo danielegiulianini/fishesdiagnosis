@@ -2,7 +2,7 @@
 $servername="localhost";
 $username="root";
 $password="";
-$db="unifood";
+$db="patologiepesci";
 
 ini_set('display_errors', 1); //fondamentali per debug, da disattivare con il deploy
 ini_set('display_startup_errors', 1);
