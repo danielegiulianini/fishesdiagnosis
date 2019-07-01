@@ -16,7 +16,7 @@ $precompiledSignsListTable ='<div class="card d-md-block p-2">
                                 <tbody>';
 $precompiledSignsListTable.='<form>';
 
-$stmt=$conn->prepare("SELECT idSegno, nome FROM segni");
+$stmt=$conn->prepare("SELECT segni.idSegno, nome FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno)");
 $stmt->execute();
 $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
@@ -60,11 +60,9 @@ $precompiledSignsListTable.='</tbody>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
 
-
+<!--for responsive basic tables-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/basictable.min.css" integrity="sha256-mbGb4F0wO234UQjFyqRSrFFMI8Nk2HgoIUv2Zly7z8I=" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/jquery.basictable.min.js" integrity="sha256-bRyGcU6tP9c78IZuj1jld29tzek4+eR+dBkdml3spKI=" crossorigin="anonymous"></script>
-
-
 
 <script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>
 
@@ -82,7 +80,7 @@ $precompiledSignsListTable.='</tbody>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <h1>Scheda n. 14</h1>
+          <h1>Scheda n. 14</h1> <!--questa sarà settata dalla sessione-->
         </div>
       </div> <!--1° row-->
 
