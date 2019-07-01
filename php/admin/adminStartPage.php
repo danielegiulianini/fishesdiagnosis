@@ -20,6 +20,10 @@ foreach($specie_assoc as $item){
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/commonHeadContent.php"); ?>
     <!--<script src="/progettoweb/js/administrator/clients.js"></script>-->
 
+
+    <!--<link href="../../dist/css/bootstrap-fs-modal.min.css" rel="stylesheet">-->
+
+
 <style>
 html, body {
    height: 100% !important;
@@ -31,6 +35,13 @@ html, body {
 
 .hint{
   font-size:120%;
+}
+
+
+@media (max-width: 768px) {
+  #add-report-modal{
+    width:50%;
+  }
 }
 </style>
 </head>
@@ -50,7 +61,7 @@ html, body {
           <div class="col-md-3 mx-auto">
             <div class="card box-shadow text-center pb-0">
               <p class="card-title my-2 hint">Inserisci</p>
-              <a class="btn btn-secondary ml-2 mr-2 mb-2" data-toggle="modal" data-target="#addModal">Inserisci scheda chiamata</a>
+              <a class="btn btn-secondary ml-2 mr-2 mb-2" data-toggle="modal" data-target="#add-report-modal">Inserisci scheda chiamata</a>
               <a class="btn btn-secondary m-2">Inserisci stato patologico</a>
               <a class="btn btn-secondary m-2">test</a>
             </div>
@@ -76,11 +87,7 @@ html, body {
       </div>
   </div>
   </section>
-  <!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-
-  </main>
+</main>
 
 
 
@@ -89,11 +96,9 @@ html, body {
   emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note
 
 
-  <!-- must divide modal in 2 columns (too many info)-->
-    <!--Modal for inserting new data-->
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <!--Modal for inserting new data-->
+  <div id="add-report-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Nuova scheda</h5>
@@ -106,128 +111,98 @@ html, body {
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
-                <label for="i-nome">nome richiedente</label>
-                <input type="text" class="form-control nome" name="nome" id="i-nome" required>
-                <label for="i-nome">telefono richiedente</label>
-                <input type="text" class="form-control nome" name="nome" id="i-nome" required>
-                <label for="i-nome">email richiedente</label>
-                <input type="text" class="form-control nome" name="nome" id="i-nome" required>
-                <label for="i-nome">nome veterinario</label>
-                <input type="text" class="form-control nome" name="nome" id="i-nome" required>
+                <label for="nomeRichiedente">nome richiedente</label>
+                <input type="text" class="form-control nome" name="nomeRichiedente" id="nomeRichiedente" required>
+                <label for="telefonoRichiedente">telefono richiedente</label>
+                <input type="text" class="form-control nome" name="telefonoRichiedente" id="telefonoRichiedente">
+                <label for="emailRichiedente">email richiedente</label>
+                <input type="text" class="form-control nome" name="emailRichiedente" id="emailRichiedente">
+                <label for="nomeVeterinario">nome veterinario</label>
+                <input type="text" class="form-control nome" name="nomeVeterinario" id="nomeVeterinario">
               </fieldset>
 
-                </div><!--1° col-md-6-->
-                <div class="col-md-6">
-                  <fieldset class="form-group">
-                    <div class="form-row">
-                      <div class="col-6 col-md-6">
-                        <label for="validationDefault03">numero affetti</label>
-                        <input type="number" class="form-control" id="validationDefault03" placeholder="City" required>
-                      </div>
-                      <div class="col-6 col-md-6">
-                        <label for="validationDefault03">numero affetti</label>
-                        <input type="number" class="form-control" id="validationDefault03" placeholder="City" required>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="col-4 col-md-4">
-                        <label for="validationDefault03">taglia</label>
-                        <input type="number" class="form-control" id="validationDefault03" placeholder="City" required>
-                      </div>
-                      <div class="col-4 col-md-4">
-                        <label for="i-categoria">Specie</label>
-                        <select class="form-control categoria" name="i-categoria" id="i-categoria" style="display: inline-block" required>
-                          <?php
-                            for ($i=0; $i<count($specie); $i++){
-                                echo '<option>'.$specie[$i].'</option>';
-                            }
-                          ?>
-                        </select>
-                        </div>
-                        <div class="col-md-4">
-                          <label for="validationDefault03">sesso</label>
-                          <input type="number" class="form-control" id="validationDefault03" placeholder="City" required>
-                        </div>
-                      </div>
-
-                      <div class="form-row">
-                        <div class="col-4 col-md-4">
-                          <label for="validationDefault03">taglia</label>
-                          <input type="number" class="form-control" id="validationDefault03" placeholder="City" required>
-                        </div>
-                        <div class="col-4 col-md-4">
-                          <label for="i-categoria">Specie</label>
-                          <select class="form-control categoria" name="i-categoria" id="i-categoria" style="display: inline-block" required>
-                            <?php
-                              for ($i=0; $i<count($specie); $i++){
-                                  echo '<option>'.$specie[$i].'</option>';
-                              }
-                            ?>
-                          </select>
-                          </div>
-                          <div class="col-4 col-md-4">
-                            <label for="validationDefault03">sesso</label>
-                            <input type="number" class="form-control" id="validationDefault03" placeholder="City" required>
-                          </div>
-                        </div>
-
-                        <div class="form-row">
-                          <label for="i-ingredienti">note</label>
-                          <textarea class="form-control ingredienti" rows="3" required  name="ingredienti" id="i-ingredienti"></textarea>
-                        </div>
-
-    </fieldset>
+          </div><!--1° col-md-6-->
+          <div class="col-md-6">
+            <fieldset class="form-group">
+              <div class="form-row">
+                <div class="col-4 col-md-4">
+                  <label for="numeroAffetti">num. affetti</label>
+                  <input type="number" min="0" class="form-control" id="numeroAffetti" placeholder="25" name="numeroAffetti">
                 </div>
+                <div class="col-4 col-md-4">
+                  <label for="numeroEsaminati">num. esaminati</label>
+                  <input type="number" class="form-control" id="numeroEsaminati" placeholder="50" name="numeroEsaminati">
+                </div>
+                <div class="col-4 col-md-4">
+                  <label for="numeroAffetti">perc. affetti</label>
+                  <input type="number" min="0" max=100 class="form-control" id="numeroAffetti" placeholder="25" name="numeroAffetti">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-3 col-md-3">
+                  <label for="taglia">taglia(cm)</label>
+                  <input type="number" class="form-control" id="taglia" placeholder="15">
+                </div>
+                <div class="col-3 col-md-3">
+                  <label for="specie">specie</label>
+                  <select class="form-control categoria" name="specie" id="specie" style="display: inline-block" required>
+                    <?php
+                      for ($i=0; $i<count($specie); $i++){
+                          echo '<option>'.$specie[$i].'</option>';
+                      }
+                    ?>
+                  </select>
+                  </div>
+                  <div class="col-3 col-md-3">
+                    <label for="sesso">sesso</label>
+                    <input type="number" class="form-control" name="sesso" id="sesso" placeholder="maschio" required>
+                  </div>
+                  <div class="col-3 col-md-3">
+                    <label for="eta">eta(mesi)</label>
+                    <input type="number" class="form-control" name="eta" id="eta" placeholder="11" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="col-12 col-md-4">
+                    <label for="vasca">vasca</label>
+                    <input type="number" class="form-control" id="vasca" name="vasca" placeholder="vasca1" required>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <label for="origine">origine</label>
+                    <select class="form-control categoria" name="origine" id="origine" style="display: inline-block" required>
+                      <?php
+                        for ($i=0; $i<count($specie); $i++){
+                            echo '<option>'.$specie[$i].'</option>';
+                        }
+                      ?>
+                    </select>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <label for="sospetto">sospetto</label>
+                      <input type="text" class="form-control" id="sospetto" name="sospetto" placeholder="KVD" required>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <label for="i-ingredienti">note</label>
+                    <textarea class="form-control ingredienti" rows="3" required  name="ingredienti" id="i-ingredienti"></textarea>
+                  </div>
+            </fieldset>
+          </div>
             </div><!--row-->
-            <div class="row">
-            </div>
           </div>
         </form>
-
-          <!--<form id="addForm" method="post" action="/progettoweb/php/supplier/menuItemsManager.php" novalidate>
-            <input type="hidden" name="request" value="add">
-            <div class="form-group">
-              <label for="i-nome">nome Veterinario</label>
-              <input type="text" class="form-control nome" name="nome" id="i-nome" required>
-            </div>
-            <div class="form-group">
-              <label for="i-ingredienti">nome Richiedente</label>
-              <textarea class="form-control ingredienti" rows="3" required  name="ingredienti" id="i-ingredienti"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="i-prezzoVendita">telefonoRichiedente</label>
-              <input type="text" class="form-control prezzoVendita" name="prezzoVendita" id="i-prezzoVendita" required>
-            </div>
-            <div class="form-group">
-              <label for="i-prezzoListino">Prezzo listino</label>
-              <input type="text" class="form-control prezzoListino" name="prezzoListino" id="i-prezzoListino" required>
-            </div>
-            <div class="form-group">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input disponibile" name="disponibile" id="disponibile" value="1">
-                <label class="custom-control-label" for="disponibile">Disponibile</label>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input celiaco" name="celiaco" id="celiaco" value="1">
-                <label class="custom-control-label" for="celiaco">Per celiaci</label>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input vegano" name="vegano" id="vegano" value="1">
-                <label class="custom-control-label" for="vegano" >Per vegani</label>
-              </div>
-            </div>
-          </form>-->
-      </div>
-    </div>
-    </div>
+        <div class="modal-footer">
+          <button type="button" id="confirm-add-Button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+        </div>
+      </div><!--modal-content-->
   </div>
-
-
-
-
-
-
+</div>
+    </div><!--modal dialog-->
+  </div><!--modal-->
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
