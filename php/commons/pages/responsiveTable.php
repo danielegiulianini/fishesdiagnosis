@@ -25,6 +25,13 @@
     html, body{
        height: 100%;
     }
+
+    thead{
+      position: -webkit-sticky !important;
+      position: sticky !important;
+       top:50px !important;
+       z-index : 2000000!important;
+    }
   </style>
 
 </head>
@@ -66,12 +73,12 @@
 
 
                   <div class="card d-md-block p-2">  <!--header for all forms-->
-                    <table id="table" class="table table-striped header-fixed p-2">
-                      <thead>
-                        <tr>
-                          <th>Segno</th>
-                          <th>Presenza</th>
-                          <th>Frequenza</th>
+                    <table id="table" class="table table-sm table-striped header-fixed p-2">
+                      <thead >
+                        <tr >
+                          <th class="p-3">Segno</th>
+                          <th class="p-3">Presenza</th>
+                          <th class="p-3">Frequenza</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -112,6 +119,198 @@
                           </td>
                           <td><input type="number" style="width:20%"></td>
                         </tr>
+
+                        <tr>
+                          <td>uefuhefuh efuhefutest testtest testtesttesttesttest testtest test test</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:30%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+                        <tr>
+                          <td>catarrosi jjjjjjjjjjjjjjj</td>
+                          <td>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                              <label class="form-check-label" for="inlineRadio3">Non so</label>
+                            </div>
+                          </td>
+                          <td><input type="number" style="width:20%"></td>
+                        </tr>
+
+
                       </tbody>
                     </table>
                   </div><!--card (single line)-->
