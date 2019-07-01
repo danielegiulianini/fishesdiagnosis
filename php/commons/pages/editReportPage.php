@@ -39,12 +39,12 @@ of input fields, so that the server can recognize every single item.*/
       $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1">';
       $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2" checked>';
       $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3">';
-      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.'] disabled"></td>';
+      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
     } else {                             /*se entrambi sono null allora la tupla non era in nessuno dei 2 */
       $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="option1">';
       $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="option2">';
       $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="option3" checked>';
-      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.'] disabled"></td>';
+      $percentageField.='<td headers="percentage"><input type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
     }
   }
 
