@@ -1,4 +1,7 @@
 <?php
+session_start();
+$_SESSION["reportId"] = 1;
+
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 /*basic table library, unlike datatable, needs that the data are already inside
@@ -109,7 +112,7 @@ $precompiledSignsListTable.='</tbody>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <h1>Scheda n. 14</h1> <!--questa sarà settata dalla sessione-->
+          <h1>Scheda n. <?php echo $_SESSION["reportId"]?></h1> <!--questa sarà settata dalla sessione-->
         </div>
       </div> <!--1° row-->
 
