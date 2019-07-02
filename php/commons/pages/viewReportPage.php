@@ -1,4 +1,17 @@
 <?php
+/*fetching species is needed for editReportModal*/
+$stmt=$conn->prepare("SELECT specie FROM specie");
+$stmt->execute();
+$result=$stmt->get_result();
+while($row=$result->fetch_assoc()){
+  $specie_assoc[]=$row;
+}
+$specie=array(); //devo trasformare l'array associativo in array di valori
+foreach($specie_assoc as $item){
+  $specie[]=$item["specie"];
+}
+
+
 /*table schemas for datatable (datatables - jquery library - needs table schemas
 already inside DOM before fetching data to it through js )*/
 $presentSignsTableSchema =
@@ -275,5 +288,9 @@ $eventsTableSchema =
   </div><!--container-fluid-->
 
   </main>
+
+  <!--Modal for updating existing report general info-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/editReportGeneralInfoModal.php");?>
+
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>

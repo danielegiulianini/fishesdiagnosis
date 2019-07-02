@@ -75,6 +75,9 @@ $precompiledSignsListTable.='</form>';
 $precompiledSignsListTable.='</tbody>
                              </table>
                              </div><!--card (single line)-->';
+
+
+
 ?>
 
 <!DOCTYPE html>
