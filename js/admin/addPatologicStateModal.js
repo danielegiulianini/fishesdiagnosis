@@ -7,10 +7,10 @@ function isValid(form){
 $(document).ready(function(){
 
   $("#confirm-add-pat-st-button").click(function() {
-    form=$("#add-report-form").get(0);
+    form=$("#add-pat-st-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
-      var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/addReport.php`;//$(form).attr("action");
+      var url = `${location.origin}/fishesdiagnosis/php/scripts/addPatologicState.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(){
             //window.alert("data correctly updated.");//for debugging, to replace with a auto closing box
