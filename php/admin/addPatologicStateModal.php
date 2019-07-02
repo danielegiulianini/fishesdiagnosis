@@ -1,5 +1,5 @@
 <!--Modal for inserting new patologic state-->
-<script src="/fishesdiagnosis/js/commons/addPatologicStateModal.js"></script>
+<script src="/fishesdiagnosis/js/admin/addPatologicStateModal.js"></script>
 
 <div id="add-pat-st-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -22,12 +22,12 @@
                   <option value="critico" selected>critico</option>
                   <option value="patologico">patologico</option>
                 </select>
-            
+
             </fieldset>
           </form>
           </div><!--modal body--->
       <div class="modal-footer">
-        <button type="button" id="confirm-add-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
+        <button type="button" id="confirm-add-pat-st-button" class="btn btn-secondary">Conferma inserimento stato patologico</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->

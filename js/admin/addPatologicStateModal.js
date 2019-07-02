@@ -6,7 +6,7 @@ function isValid(form){
 
 $(document).ready(function(){
 
-  $("#confirm-add-button").click(function() {
+  $("#confirm-add-pat-st-button").click(function() {
     form=$("#add-report-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
