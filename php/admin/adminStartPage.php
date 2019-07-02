@@ -38,11 +38,11 @@ html, body {
 }
 
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   #add-report-modal{
     width:50%;
   }
-}
+}*/
 </style>
 </head>
 <body>
@@ -97,7 +97,7 @@ html, body {
 
 
   <!--Modal for inserting new data-->
-  <div id="add-report-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div id="add-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
