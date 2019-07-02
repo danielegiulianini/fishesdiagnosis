@@ -27,6 +27,7 @@ $(document).ready(function(){
   function fetchReportGeneralInfoModal(e){
     //potevo fetcharlo con php all'inizio (ma poi non avrebbe mostrato i cambiamenti effettuati a seguito di modifiche)
     //le recupero dalla tabella e li assegno (anziché chiederli al server)
+    
   };
 
   $('#general-info-report-modal').on('shown.bs.modal', function (e) {
