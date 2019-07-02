@@ -1,5 +1,7 @@
 <?php
 /*fetching species is needed for editReportModal*/
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
+
 $stmt=$conn->prepare("SELECT specie FROM specie");
 $stmt->execute();
 $result=$stmt->get_result();
