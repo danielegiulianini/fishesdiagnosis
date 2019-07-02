@@ -2,7 +2,7 @@
 <script src="/fishesdiagnosis/js/commons/addPatologicStateModal.js"></script>
 
 <div id="add-pat-st-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Nuovo stato patologico</h5>
@@ -16,16 +16,13 @@
               <label for="nomeStato">Nome</label>
               <input type="text" class="form-control nome" name="nomeStato" id="nomeStato" required>
 
-              <div class="col-6 col-md-4">
+
                 <label for="tipoStato">Tipologia</label>
-                <select class="form-control" name="tipoStato" id="tipoStato" style="display: inline-block">
-                  <?php
-                    for ($i=0; $i<count($specie); $i++){
-                        echo '<option>'.$specie[$i].'</option>';
-                    }
-                  ?>
+                <select class="form-control" name="tipoStato" id="tipoStato" style="display: inline-block"><!--i could have used 2 radios-->
+                  <option value="critico" selected>critico</option>
+                  <option value="patologico">patologico</option>
                 </select>
-              </div>
+            
             </fieldset>
           </form>
           </div><!--modal body--->

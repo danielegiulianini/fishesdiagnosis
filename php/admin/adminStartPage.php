@@ -20,9 +20,7 @@ foreach($specie_assoc as $item){
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/commonHeadContent.php"); ?>
     <!--<script src="/progettoweb/js/administrator/clients.js"></script>-->
 
-
     <!--<link href="../../dist/css/bootstrap-fs-modal.min.css" rel="stylesheet">-->
-
 
 <style>
 html, body {
@@ -56,7 +54,7 @@ html, body {
             <div class="card box-shadow text-center pb-0">
               <p class="card-title my-2 hint">Inserisci</p>
               <a class="btn btn-secondary ml-2 mr-2 mb-2" data-toggle="modal" data-target="#add-report-modal">Inserisci scheda chiamata</a>
-              <a class="btn btn-secondary m-2">Inserisci stato patologico</a>
+              <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#add-pat-st-modal">Inserisci stato patologico</a>
               <a class="btn btn-secondary m-2">test</a>
             </div>
           </div>

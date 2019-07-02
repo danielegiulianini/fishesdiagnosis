@@ -1,4 +1,7 @@
-<!--Modal for inserting new data-->
+<!--Modal for inserting new reports
+dependencies: it needs that the importing pages has already pre-fetched species
+in array $specie
+-->
 
 <script src="/fishesdiagnosis/js/commons/addReportModal.js"></script>
 
