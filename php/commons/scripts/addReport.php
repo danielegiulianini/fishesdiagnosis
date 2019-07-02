@@ -6,9 +6,12 @@ session_start();
 
 $output = "";
 
+
+var_dump($_POST);
+
 if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"])) {
   /*$dataOraRegistrazione = $_POST["dataOraRegistrazione"];*/
-  
+
   $nomeVeterinario=$_POST["nomeVeterinario"];
   $nomeRichiedente=$_POST["nomeRichiedente"];
   $telefonoRichiedente=$_POST["telefonoRichiedente"];
@@ -44,8 +47,7 @@ $vasca, /*vasca key is string*/
 $origine, /*origin key is integer*/
 $note
 );
-  $stmt->execute();
-
+  //$stmt->execute();
 }
 
 print json_encode($output);
