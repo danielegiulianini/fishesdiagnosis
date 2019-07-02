@@ -107,7 +107,7 @@ quindi qui lo posso reperire da lì
           </div><!--modal body--->
       </form>
       <div class="modal-footer">
-        <button type="button" id="confirm-edit-general-info-report-modal" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
+        <button type="button" id="confirm-edit-general-info-report-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->
