@@ -4,7 +4,7 @@ dependencies:
   in array $specie
 
 2. l'id scheda come lo passo al modal? O tramite $_SESSION o $_GET,
-quindi qui lo posso reperire da lì
+quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagine
 -->
 
 <script src="/fishesdiagnosis/js/commons/editReportGeneralInfoModal.js"></script>
@@ -23,13 +23,13 @@ quindi qui lo posso reperire da lì
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
-                <label for="nomeRichiedente">nome richiedente</label>
+                <label for="e-nomeRichiedente">nome richiedente</label>
                 <input type="text" class="form-control nome" name="nomeRichiedente" id="e-nomeRichiedente" required>
-                <label for="telefonoRichiedente">telefono richiedente</label>
+                <label for="e-telefonoRichiedente">telefono richiedente</label>
                 <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-telefonoRichiedente">
-                <label for="emailRichiedente">email richiedente</label>
+                <label for="e-emailRichiedente">email richiedente</label>
                 <input type="text" class="form-control nome" name="emailRichiedente" id="e-emailRichiedente">
-                <label for="nomeVeterinario">nome veterinario</label>
+                <label for="e-nomeVeterinario">nome veterinario</label>
                 <input type="text" class="form-control nome" name="nomeVeterinario" id="e-nomeVeterinario">
               </fieldset>
 
@@ -38,26 +38,26 @@ quindi qui lo posso reperire da lì
             <fieldset class="form-group">
               <div class="form-row">
                 <div class="col-4 col-md-4">
-                  <label for="numeroAffetti">num. affetti</label>
+                  <label for="e-numeroAffetti">num. affetti</label>
                   <input type="number" min="0" class="form-control" id="e-numeroAffetti" placeholder="25" name="numeroAffetti">
                 </div>
                 <div class="col-4 col-md-4">
-                  <label for="numeroEsaminati">num. esaminati</label>
+                  <label for="e-numeroEsaminati">num. esaminati</label>
                   <input type="number" class="form-control" id="e-numeroEsaminati" placeholder="50" name="numeroEsaminati">
                 </div>
                 <div class="col-4 col-md-4">
-                  <label for="numeroAffetti">perc. affetti</label>
+                  <label for="e-numeroAffetti">perc. affetti</label>
                   <input type="number" min="0" max=100 class="form-control" id="e-numeroAffetti" placeholder="25" name="numeroAffetti" required>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-3 col-md-3">
-                  <label for="taglia">taglia(cm)</label>
+                  <label for="e-taglia">taglia(cm)</label>
                   <input type="number" class="form-control" id="e-taglia" placeholder="15">
                 </div>
                 <div class="col-3 col-md-3">
-                  <label for="specie">specie</label>
+                  <label for="e-specie">specie</label>
                   <select class="form-control specie" name="specie" id="e-specie" style="display: inline-block" required>
                     <?php
                       for ($i=0; $i<count($specie); $i++){
@@ -67,22 +67,22 @@ quindi qui lo posso reperire da lì
                   </select>
                   </div>
                   <div class="col-3 col-md-3">
-                    <label for="sesso">sesso</label>
+                    <label for="e-sesso">sesso</label>
                     <input type="number" class="form-control" name="sesso" id="e-sesso" placeholder="maschio">
                   </div>
                   <div class="col-3 col-md-3">
-                    <label for="eta">eta(mesi)</label>
+                    <label for="e-eta">eta(mesi)</label>
                     <input type="number" class="form-control" name="eta" id="e-eta" placeholder="11">
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="col-12 col-md-4">
-                    <label for="vasca">vasca</label>
+                    <label for="e-vasca">vasca</label>
                     <input type="number" class="form-control" id="e-vasca" name="vasca" placeholder="vasca1">
                   </div>
                   <div class="col-6 col-md-4">
-                    <label for="origine">origine</label>
+                    <label for="e-origine">origine</label>
                     <select class="form-control" name="origine" id="e-origine" style="display: inline-block">
                       <?php
                         for ($i=0; $i<count($specie); $i++){
@@ -92,7 +92,7 @@ quindi qui lo posso reperire da lì
                     </select>
                     </div>
                     <div class="col-6 col-md-4">
-                      <label for="sospetto">sospetto</label>
+                      <label for="e-sospetto">sospetto</label>
                       <input type="text" class="form-control" id="e-sospetto" name="sospetto" placeholder="KVD">
                     </div>
                   </div>
