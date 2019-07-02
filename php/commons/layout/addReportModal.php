@@ -1,5 +1,5 @@
   <!--Modal for inserting new data-->
-  <script src="/fishesdiagnosis/js/commons/startPage.js"></script> <!-- file che recupera le notifiche dal server-->
+  <script src="/fishesdiagnosis/js/commons/addReportModal.js"></script> <!-- file che recupera le notifiche dal server-->
 
 <div id="add-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-4 col-md-4">
                   <label for="numeroAffetti">perc. affetti</label>
-                  <input type="number" min="0" max=100 class="form-control" id="numeroAffetti" placeholder="25" name="numeroAffetti">
+                  <input type="number" min="0" max=100 class="form-control" id="numeroAffetti" placeholder="25" name="numeroAffetti" required>
                 </div>
               </div>
 
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-3 col-md-3">
                   <label for="specie">specie</label>
-                  <select class="form-control categoria" name="specie" id="specie" style="display: inline-block" required>
+                  <select class="form-control specie" name="specie" id="specie" style="display: inline-block" required>
                     <?php
                       for ($i=0; $i<count($specie); $i++){
                           echo '<option>'.$specie[$i].'</option>';
@@ -60,22 +60,22 @@
                   </div>
                   <div class="col-3 col-md-3">
                     <label for="sesso">sesso</label>
-                    <input type="number" class="form-control" name="sesso" id="sesso" placeholder="maschio" required>
+                    <input type="number" class="form-control" name="sesso" id="sesso" placeholder="maschio">
                   </div>
                   <div class="col-3 col-md-3">
                     <label for="eta">eta(mesi)</label>
-                    <input type="number" class="form-control" name="eta" id="eta" placeholder="11" required>
+                    <input type="number" class="form-control" name="eta" id="eta" placeholder="11">
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="col-12 col-md-4">
                     <label for="vasca">vasca</label>
-                    <input type="number" class="form-control" id="vasca" name="vasca" placeholder="vasca1" required>
+                    <input type="number" class="form-control" id="vasca" name="vasca" placeholder="vasca1">
                   </div>
                   <div class="col-6 col-md-4">
                     <label for="origine">origine</label>
-                    <select class="form-control categoria" name="origine" id="origine" style="display: inline-block" required>
+                    <select class="form-control categoria" name="origine" id="origine" style="display: inline-block">
                       <?php
                         for ($i=0; $i<count($specie); $i++){
                             echo '<option>'.$specie[$i].'</option>';
@@ -85,13 +85,13 @@
                     </div>
                     <div class="col-6 col-md-4">
                       <label for="sospetto">sospetto</label>
-                      <input type="text" class="form-control" id="sospetto" name="sospetto" placeholder="KVD" required>
+                      <input type="text" class="form-control" id="sospetto" name="sospetto" placeholder="KVD">
                     </div>
                   </div>
 
                   <div class="form-row">
                     <label for="i-ingredienti">note</label>
-                    <textarea class="form-control ingredienti" rows="3" required  name="ingredienti" id="i-ingredienti"></textarea>
+                    <textarea class="form-control ingredienti" rows="3"  name="ingredienti" id="i-ingredienti"></textarea>
                   </div>
             </fieldset>
           </div>
