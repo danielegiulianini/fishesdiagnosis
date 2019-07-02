@@ -6,8 +6,8 @@ function isValid(form){
 
 $(document).ready(function(){
 
-  $("#confirm-add-button").click(function() {
-    form=$("#add-report-form").get(0);
+  $("#confirm-edit-general-info-report-modal").click(function() {
+    form=$("#edit-general-info-report-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
       var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/addReport.php`;//$(form).attr("action");

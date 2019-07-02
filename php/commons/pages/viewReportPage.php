@@ -227,7 +227,7 @@ $eventsTableSchema =
                 </tbody>
               </table>
 
-              <button class="btn btn-secondary ml-auto">Modifica</button>
+              <button class="btn btn-secondary ml-auto" data-toggle="modal" data-target="#edit-general-info-report-modal">Modifica</button>
           </div><!--end card-body-->
         </div><!--end card-->
       </div> <!--end 1° half of screen-->

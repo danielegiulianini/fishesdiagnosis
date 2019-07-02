@@ -7,9 +7,9 @@ dependencies:
 quindi qui lo posso reperire da lì
 -->
 
-<script src="/fishesdiagnosis/js/commons/editReportModal.js"></script>
+<script src="/fishesdiagnosis/js/commons/editReportGeneralInfoModal.js"></script>
 
-<div id="edit-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="edit-general-info-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -19,7 +19,7 @@ quindi qui lo posso reperire da lì
           </button>
         </div>
       <div class="modal-body">
-        <form id="edit-report-form">
+        <form id="edit-general-info-report-modal">
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
@@ -107,7 +107,7 @@ quindi qui lo posso reperire da lì
           </div><!--modal body--->
       </form>
       <div class="modal-footer">
-        <button type="button" id="confirm-edit-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
+        <button type="button" id="confirm-edit-general-info-report-modal" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->
