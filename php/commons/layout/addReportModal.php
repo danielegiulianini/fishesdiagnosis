@@ -81,7 +81,7 @@ in array $specie
                     <label for="origine">origine</label>
                     <select class="form-control categoria" name="origine" id="origine" style="display: inline-block">
                       <?php
-                        for ($i=0; $i<count($specie); $i++){
+                        for ($i=0; $i<count($specie); $i++){  /*to update to origine*/
                             echo '<option>'.$specie[$i].'</option>';
                         }
                       ?>

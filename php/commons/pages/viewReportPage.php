@@ -122,107 +122,75 @@ $eventsTableSchema =
         <div class="card">
           <div class="card-body">
             <div class="card-title font-weight-bolder text-center lead">Informazioni generali scheda</div>
-              <!--old data format with lists instead of tables
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span>Scheda n.</span>
-                  <span>14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span>Data</span>
-                  <span>14/02/19</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span>Nome richiedente</span>
-                  <span>14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span>Telefono</span>
-                  <span>14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span>Email</span>
-                  <span>14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span>Nome specie</span>
-                  <span>14</span>
-                </li>
-              </ul>-->
-
               <table id="reports-info-1" class="table table-hover table-sm">
                 <tbody>
                   <tr>
                     <th scope="row">Scheda n.</th>
-                    <td>Mark</td>
+                    <td id="g-idScheda">Mark</td>
                   </tr>
                   <tr>
                     <th scope="row">Data</th>
-                    <td>Jacob</td>
+                    <td id="g-data">Jacob</td>
                   </tr>
                   <tr>
                     <th scope="row">Nome richiedente</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-nome-richiedente">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">Telefono</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-telefono">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">email</th>
-                    <td>Larry the Bird</td>
+                    <tdid="g-email">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">stato</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-stato">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">sigla provincia</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-sigla-provincia">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">nome vasca</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-vasca">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">nome veterinario</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-nome-veterinario">Larry the Bird</td>
                   </tr>
-</table>
-
-                  <table class="table table-hover table-sm">
-                  </tbody>
                   <tr>
                     <th scope="row">Nome specie</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-specie">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">Sesso</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-sesso">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">Taglia</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-taglia">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">eta</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-eta">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">percentuale affetti</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-percentuale-affetti">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">numero esaminati</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-numero-esaminati">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">sospetto</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-sospetto">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">note</th>
-                    <td>Larry the Bird</td>
+                    <td id="g-note">Larry the Bird</td>
                   </tr>
                 </tbody>
               </table>
