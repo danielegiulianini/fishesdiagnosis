@@ -122,7 +122,7 @@ $eventsTableSchema =
         <div class="card">
           <div class="card-body">
             <div class="card-title font-weight-bolder text-center lead">Informazioni generali scheda</div>
-              <table id="reports-info-1" class="table table-hover table-sm">
+              <table id="reports-info-1" class="table table-hover table-striped table-sm">
                 <tbody>
                   <tr>
                     <th scope="row">Scheda n.</th>
@@ -142,7 +142,7 @@ $eventsTableSchema =
                   </tr>
                   <tr>
                     <th scope="row">email</th>
-                    <tdid="g-email">Larry the Bird</td>
+                    <td id="g-email">Larry the Bird</td>
                   </tr>
                   <tr>
                     <th scope="row">stato</th>
