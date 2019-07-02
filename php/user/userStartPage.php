@@ -1,3 +1,20 @@
+<?php
+
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
+
+$stmt=$conn->prepare("SELECT specie FROM specie");
+$stmt->execute();
+$result=$stmt->get_result();
+while($row=$result->fetch_assoc()){
+  $specie_assoc[]=$row;
+}
+$specie=array(); //devo trasformare l'array associativo in array di valori
+foreach($specie_assoc as $item){
+  $specie[]=$item["specie"];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -45,5 +62,9 @@
     </div>
     </section>
   </main>
+
+  <!--Modal for inserting new report-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addReportModal.php");?>
+
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>

@@ -89,5 +89,6 @@ html, body {
     <!--Modal for inserting new patologic state-->
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/addPatologicStateModal.php");?>
 
+
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
