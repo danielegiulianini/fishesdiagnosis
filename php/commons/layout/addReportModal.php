@@ -1,5 +1,6 @@
-  <!--Modal for inserting new data-->
-  <script src="/fishesdiagnosis/js/commons/addReportModal.js"></script> <!-- file che recupera le notifiche dal server-->
+<!--Modal for inserting new data-->
+
+<script src="/fishesdiagnosis/js/commons/addReportModal.js"></script>
 
 <div id="add-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">

@@ -83,8 +83,11 @@ html, body {
   </section>
 </main>
 
-    <!--Modal for inserting new data-->
+    <!--Modal for inserting new report-->
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addReportModal.php");?>
+
+    <!--Modal for inserting new patologic state-->
+    <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/addPatologicStateModal.php");?>
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
