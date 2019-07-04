@@ -25,9 +25,49 @@ $(document).ready(function(){
   });
 
   function fetchReportGeneralInfoModal(e){
-    //potevo fetcharlo con php all'inizio (ma poi non avrebbe mostrato i cambiamenti effettuati a seguito di modifiche)
-    //le recupero dalla tabella e li assegno (anziché chiederli al server)
-    
+    //potevo fetcharlo con php all'inizio anxiché dalla tabella (ma poi non avrebbe mostrato i cambiamenti effettuati
+    //a seguito di modifiche con ajax sul modale stesso)
+    //le recupero dalla tabella nell'html e li assegno (anziché chiederli al server)
+
+    //recupero dalla tabella
+    idScheda = $("g-idScheda").text();  /*nel jquery non posso accedere alla variabile di sessione*/
+    gData = $("g-data").text();
+    gNome=$("g-nome-richiedente").text();
+    gTelefono =$("g-telefono").text();
+    gEmail= $("g-email");
+    gStato=$("g-stato");
+    gSiglaProvincia = $("g-sigla-provincia");
+    gVasca = $("g-vasca");
+    gNomeVeterinario = $("g-nome-veterinario");
+    gSpecie = $("g-specie").text();
+    gSesso = $("g-sesso").text();
+    gTaglia = $("g-taglia").text();
+    gEta = $("g-eta");
+    gPercentualeAffetti = $("g-percentuale-affetti").text();
+    gNumeroEsaminati = $("g-numero-esaminati").text();
+    gSospetto = $("g-sospetto").text();
+    gNote = $("g-note").text();
+
+    //assegno negli input del modale
+    $("e-nomeRichiedente").val(gData);
+    $("e-telefonoRichiedente").val(gNome);
+    $("e-emailRichiedente").val(gNome);
+    $("e-nomeVeterinario").val(gNome);
+    $("e-numeroAffetti").val(gNome);
+    $("e-numeroEsaminati").val(gNome);
+    $("e-numeroAffetti").val(gNome);
+    $("e-numeroEsaminati").val(gNome);
+    $("e-percentualeAffetti").val(gNome);
+    $("e-taglia").val(gNome);
+    $("-specie").val(gNome);
+    $("e-sesso").val(gNome);
+    $("e-eta").val(gNome);
+    $("e-vasca").val(gNome);
+    $("e-origine").val(gNome);
+    $("e-sospetto").val(gNome);
+    $("e-note").val(gNome);
+
+
   };
 
   $('#general-info-report-modal').on('shown.bs.modal', function (e) {

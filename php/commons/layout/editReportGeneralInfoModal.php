@@ -25,12 +25,12 @@ quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagi
               <fieldset class="form-group">
                 <div class="form-row">
                   <div class="col">
-                    <label for="e-nomeRichiedente">Stato</label>
-                    <input type="text" class="form-control nome" name="nomeRichiedente" id="e-nomeRichiedente" required>
+                    <label for="e-stato">Stato</label>
+                    <input type="text" class="form-control nome" name="nomeRichiedente" id="e-stato" required>
                   </div>
                   <div class="col">
-                    <label for="e-telefonoRichiedente">Sigla provincia</label>
-                    <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-telefonoRichiedente">
+                    <label for="e-sigla-provincia">Sigla provincia</label>
+                    <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-sigla-provincia">
                   </div>
                 </div>
                 <label for="e-nomeRichiedente">nome richiedente</label>
