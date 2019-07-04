@@ -70,7 +70,7 @@ html, body {
           <div class="col-md-3 mx-auto">
             <div class="card box-shadow text-center">
               <p class="card-title my-2 hint">Modifica</p>
-              <a class="btn btn-secondary m-2">Modifica pesi</a>
+              <a data-toggle="modal" data-target="#edit-probability-weights-modal" class="btn btn-secondary m-2">Modifica pesi</a>
               <a class="btn btn-secondary m-2">test</a>
               <a class="btn btn-secondary m-2">test</a>
             </div>

@@ -6,6 +6,14 @@ function isValid(form){
 
 $(document).ready(function(){
 
+  /*siccome è già un modale, non posso sovrapporne un altro ->
+  me la gioco con le disabilitazioni / ailitazioni dei bottoni.
+  è come l'esame di tecweb, un giochino del genere*/
+
+
+
+
+
   $("#confirm-edit-general-info-report-button").click(function() {
     form=$("#edit-general-info-report-form").get(0);
     if (isValid(form)){
@@ -13,8 +21,7 @@ $(document).ready(function(){
       var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/addReport.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(){
-            //updateReportGeneralInfoTable();//devo aggiornare la tabella in background DA USARE SOLO QUANDO DATI OK
-            window.alert("data correctly updated.");//for debugging, to replace with a auto closing box
+            window.alert("data correctly updated.");  //for debugging, to replace with a auto closing box
             $(".modal").modal("hide");  //chiudere i modali (non serve perché faccio redirect)
         })
         .fail(function(xhr, ajaxOptions, thrownError){  //error of transmission
@@ -113,6 +120,8 @@ $(document).ready(function(){
   };
 
   $('#edit-general-info-report-modal').on('shown.bs.modal', function (e) {
+    /*problema, quando riapro i modali il valore degli input è qncora quello
+    iniziale(chi l'ha detto??), la cache mi dovrebbe salvare.*/
     fetchReportGeneralInfoModal(e);
   });
 });
