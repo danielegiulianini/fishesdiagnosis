@@ -25,7 +25,7 @@ $(document).ready(function(){
 
   function updateReportGeneralInfoTable(){
     //retrieve info from modal
-    idScheda = $("#e-nomeRichiedente").val();
+    gNome = $("#e-nomeRichiedente").val();
     gMail = $("#e-emailRichiedente").val();
     gTelefono = $("#e-telefonoRichiedente").val();
     gStato = $("#e-stato").val();
@@ -92,6 +92,7 @@ $(document).ready(function(){
     gNote = $("#g-note").text();
 
     //assign modal input tags
+    $("#e-idScheda").val(idScheda);
     $("#e-nomeRichiedente").val(gData);
     $("#e-emailRichiedente").val(gEmail);
     $("#e-telefonoRichiedente").val(gTelefono);

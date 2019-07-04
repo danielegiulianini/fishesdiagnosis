@@ -14,14 +14,14 @@
         <form id="edit-pat-st-form">
             <fieldset class="form-group">
               <label for="idStato">Id</label>
-              <input type="text" class="form-control nome" name="idStato" id="idStato" read-only>
+              <input type="text" class="form-control nome" name="idStato" id="e-idStato" read-only>
 
               <label for="nomeStato">Nome</label>
-              <input type="text" class="form-control nome" name="nomeStato" id="nomeStato" required>
+              <input type="text" class="form-control nome" name="nomeStato" id="e-nomeStato" required>
 
 
                 <label for="tipoStato">Tipologia</label>
-                <select class="form-control" name="tipoStato" id="tipoStato" style="display: inline-block"><!--i could have used 2 radios-->
+                <select class="form-control" name="tipoStato" id="e-tipoStato" style="display: inline-block"><!--i could have used 2 radios-->
                   <option value="critico" selected>critico</option>
                   <option value="patologico">patologico</option>
                 </select>

@@ -26,12 +26,16 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
+                <div class="col-4">
+                  <label for="e-sigla-provincia">Id</label>
+                  <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-idScheda" readonly>
+                </div>
                 <div class="form-row">
-                  <div class="col">
+                  <div class="col-6">
                     <label for="e-stato">Stato</label>
                     <input type="text" class="form-control nome" name="nomeRichiedente" id="e-stato" required>
                   </div>
-                  <div class="col">
+                  <div class="col-2">
                     <label for="e-sigla-provincia">Sigla provincia</label>
                     <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-sigla-provincia">
                   </div>
