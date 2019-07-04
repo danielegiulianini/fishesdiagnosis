@@ -53,7 +53,7 @@ html, body {
           <div class="col-md-3 mx-auto">
             <div class="card box-shadow text-center pb-0">
               <p class="card-title my-2 hint">Inserisci</p>
-              <a class="btn btn-secondary ml-2 mr-2 mb-2" data-toggle="modal" data-target="add-general-info-report-modal">Inserisci scheda chiamata</a>
+              <a class="btn btn-secondary ml-2 mr-2 mb-2" data-toggle="modal" data-target="#add-general-info-report-modal">Inserisci scheda chiamata</a>
               <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#add-pat-st-modal">Inserisci stato patologico</a>
               <a class="btn btn-secondary m-2">test</a>
             </div>
