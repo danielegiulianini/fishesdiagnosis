@@ -52,7 +52,7 @@ foreach($specie_assoc as $item){
               <div class="card box-shadow text-center">
                 <p class="card-title my-2 hint">Visualizza - modifica - inserisci</p>
                 <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#add-general-info-report-modal">Inserisci scheda chiamata</a>
-                <a class="btn btn-secondary m-2">Visualizza scheda chiamata</a>
+                <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#choose-report-modal">Visualizza scheda chiamata</a>
                 <a class="btn btn-secondary m-2">test</a>
               </div>
           </div>
@@ -65,6 +65,9 @@ foreach($specie_assoc as $item){
 
   <!--Modal for inserting new report-->
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/insertReportGeneralInfoModal.php");?>
+
+  <!--Modal for choosing report-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/chooseReportModal.php");?>
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>

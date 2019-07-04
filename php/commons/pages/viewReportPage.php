@@ -1,4 +1,6 @@
 <?php
+/*in get oppure cookie c'è l'idScheda, lo memorizzo in una sessione?*/
+
 /*fetching species is needed for editReportModal*/
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 

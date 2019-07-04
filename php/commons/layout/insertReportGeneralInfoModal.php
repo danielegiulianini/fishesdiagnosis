@@ -103,12 +103,12 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                         }
                       ?>
                     </select>
-                    </div>
-                    <div class="col-6 col-md-4">
+                  </div>
+                  <div class="col-6 col-md-4">
                       <label for="e-sospetto">sospetto</label>
                       <input type="text" class="form-control" id="e-sospetto" name="sospetto" placeholder="KVD">
-                    </div>
                   </div>
+                </div>
 
                   <div class="form-row">
                     <label for="e-note">note</label>

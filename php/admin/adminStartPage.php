@@ -62,7 +62,7 @@ html, body {
             <div class="col-md-3 mx-auto">
               <div class="card box-shadow text-center">
                 <p class="card-title my-2 hint">Visualizza - modifica</p>
-                <a href="../commons/pages/viewReportPage.php" class="btn btn-secondary m-2">Visualizza scheda chiamata</a>
+                <a data-toggle="modal" data-target="#choose-report-modal" class="btn btn-secondary m-2">Visualizza scheda chiamata</a>
                 <a class="btn btn-secondary m-2">Visualizza stato patologico</a>
                 <a class="btn btn-secondary m-2">test</a>
               </div>
