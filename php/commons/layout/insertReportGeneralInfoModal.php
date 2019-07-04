@@ -5,9 +5,12 @@ dependencies:
 
 2. l'id scheda come lo passo al modal? O tramite $_SESSION o $_GET,
 quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagine
+
+this modal is the same of insertReportGeneralInfoModal (only js links change)
+ if sth changes on relation schemas in the db must update both.
 -->
 
-<script src="/fishesdiagnosis/js/commons/editReportGeneralInfoModal.js"></script>
+<script src="/fishesdiagnosis/js/commons/insertReportGeneralInfoModal.js"></script>
 
 <div id="edit-general-info-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
