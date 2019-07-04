@@ -22,7 +22,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           </button>
         </div>
       <div class="modal-body">
-        <form id="edit-general-info-report-modal">
+        <form id="edit-general-info-report-form">
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">

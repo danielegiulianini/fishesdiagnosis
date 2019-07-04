@@ -6,8 +6,8 @@ function isValid(form){
 
 $(document).ready(function(){
 
-  $("#confirm-add-pat-st-button").click(function() {
-    form=$("#add-pat-st-form").get(0);
+  $("#confirm-edit-pat-st-button").click(function() {
+    form=$("#edit-pat-st-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
       var url = `${location.origin}/fishesdiagnosis/php/scripts/addPatologicState.php`;//$(form).attr("action");

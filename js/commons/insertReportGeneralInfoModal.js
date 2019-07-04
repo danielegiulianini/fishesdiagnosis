@@ -6,8 +6,8 @@ function isValid(form){
 
 $(document).ready(function(){
 
-  $("#confirm-edit-general-info-report-button").click(function() {
-    form=$("#edit-general-info-report-form").get(0);
+  $("#confirm-add-button").click(function() {
+    form=$("#add-general-info-report-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
       var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/addReport.php`;//$(form).attr("action");
@@ -70,7 +70,7 @@ $(document).ready(function(){
     $("#e-note").text(gNote);  /*textarea is the only that needs text*/
   };
 
-  $('#edit-general-info-report-modal').on('shown.bs.modal', function (e) {
+  $('#add-general-info-report-modal').on('shown.bs.modal', function (e) {
     fetchReportGeneralInfoModal(e);
   });
 });

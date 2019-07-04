@@ -51,7 +51,7 @@ foreach($specie_assoc as $item){
             <div class="col-md-3 mx-auto">
               <div class="card box-shadow text-center">
                 <p class="card-title my-2 hint">Visualizza - modifica - inserisci</p>
-                <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#add-report-modal">Inserisci scheda chiamata</a>
+                <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#add-general-info-report-modal">Inserisci scheda chiamata</a>
                 <a class="btn btn-secondary m-2">Visualizza scheda chiamata</a>
                 <a class="btn btn-secondary m-2">test</a>
               </div>

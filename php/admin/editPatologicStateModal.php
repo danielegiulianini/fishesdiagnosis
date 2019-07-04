@@ -1,7 +1,7 @@
 <!--Modal for inserting new patologic state-->
-<script src="/fishesdiagnosis/js/admin/addPatologicStateModal.js"></script>
+<script src="/fishesdiagnosis/js/admin/editPatologicStateModal.js"></script>
 
-<div id="add-pat-st-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="edit-pat-st-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -11,7 +11,7 @@
           </button>
         </div>
       <div class="modal-body">
-        <form id="add-pat-st-form">
+        <form id="edit-pat-st-form">
             <fieldset class="form-group">
               <label for="nomeStato">Nome</label>
               <input type="text" class="form-control nome" name="nomeStato" id="nomeStato" required>
@@ -27,7 +27,7 @@
           </form>
           </div><!--modal body--->
       <div class="modal-footer">
-        <button type="button" id="confirm-add-pat-st-button" class="btn btn-secondary">Conferma inserimento stato patologico</button>
+        <button type="button" id="confirm-edit-pat-st-button" class="btn btn-secondary">Conferma inserimento stato patologico</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->

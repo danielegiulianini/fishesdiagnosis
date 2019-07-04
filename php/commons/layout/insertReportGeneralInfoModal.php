@@ -12,7 +12,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
 
 <script src="/fishesdiagnosis/js/commons/insertReportGeneralInfoModal.js"></script>
 
-<div id="add-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="add-general-info-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -22,7 +22,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           </button>
         </div>
       <div class="modal-body">
-        <form id="edit-general-info-report-modal">
+        <form id="add-general-info-report-form">
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
