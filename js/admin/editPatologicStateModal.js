@@ -23,16 +23,21 @@ $(document).ready(function(){
     }
   });
 
+  e-idStato
+  e-nomeStato
+  e-tipoStato
+
+
   function updateReportGeneralInfoTable(){
     //retrieve info from modal
-    gNome = $("#e-nome").val();
-    gMail = $("#e-tipologia").val();
-    gMail = $("#e-tipologia").val();
+    gId = $("#e-idStato").val();
+    gNome = $("#e-nomeStato").val();
+    gTipo = $("#e-tipoStato").val();
 
     //update table
-    $("#g-idScheda").text();  /*nel jquery non posso accedere alla variabile di sessione*/
-    $("#g-data").text(gData);
-    $("#g-data").text(gData);
+    $("#g-idStato").text(gId);  /*nel jquery non posso accedere alla variabile di sessione*/
+    $("#g-nomeStato").text(gNome);
+    $("#g-tipoStato").text(gTipo);
   }
 
   /*function called on show.db.modal event*/

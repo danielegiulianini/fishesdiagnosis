@@ -125,12 +125,16 @@ $eventsTableSchema =
               <table id="reports-info-1" class="table table-hover table-striped table-sm">
                 <tbody>
                   <tr>
-                    <th scope="row">Scheda n.</th>
-                    <td id="g-idScheda">test</td>
+                    <th scope="row">Stato patologico n.</th>
+                    <td id="g-idStato">test</td>
                   </tr>
                   <tr>
-                    <th scope="row">Data</th>
-                    <td id="g-data">test</td>
+                    <th scope="row">nome</th>
+                    <td id="g-nomeStato">test</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">tipologia</th>
+                    <td id="g-tipoStato">test</td>
                   </tr>
                 </tbody>
               </table>
