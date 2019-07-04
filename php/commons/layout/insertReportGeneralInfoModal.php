@@ -12,7 +12,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
 
 <script src="/fishesdiagnosis/js/commons/insertReportGeneralInfoModal.js"></script>
 
-<div id="edit-general-info-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="add-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -120,7 +120,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           </div><!--modal body--->
       </form>
       <div class="modal-footer">
-        <button type="button" id="confirm-edit-general-info-report-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
+        <button type="button" id="confirm-add-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->
