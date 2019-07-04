@@ -23,12 +23,7 @@ $(document).ready(function(){
     }
   });
 
-  e-idStato
-  e-nomeStato
-  e-tipoStato
-
-
-  function updateReportGeneralInfoTable(){
+  function updatePatologicStateGeneralInfoTable(){
     //retrieve info from modal
     gId = $("#e-idStato").val();
     gNome = $("#e-nomeStato").val();
@@ -45,14 +40,14 @@ $(document).ready(function(){
     //le recupero dalla tabella nell'html e li assegno (anziché chiederli al server)
 
     //retrieve from table
-    idStato = $("#g-idScheda").text();
-    nome = $("#g-idScheda").text();  /*nel jquery non posso accedere alla variabile di sessione*/
-    tipoStato = $("#g-data").text();
+    idStato = $("#g-idStato").text();
+    nome = $("#g-nomeStato").text();  /*nel jquery non posso accedere alla variabile di sessione*/
+    tipoStato = $("#g-tipoStato").text();
 
     //assign modal input tags
-    $("#e-nomeRichiedente").val(gData);
-    $("#e-emailRichiedente").val(gEmail);
-    $("#e-emailRichiedente").val(gEmail);
+    $("#e-idStato").val(idStato);
+    $("#e-nomeStato").val(nome);
+    $("#e-tipoStato").val(tipoStato);
   };
 
   $('#edit-pat-st-modal').on('shown.bs.modal', function (e) {

@@ -139,7 +139,7 @@ $eventsTableSchema =
                 </tbody>
               </table>
 
-              <button id="open-general-info-report-modal" class="btn btn-secondary ml-auto" data-toggle="modal" data-target="#edit-general-info-report-modal">Modifica</button>
+              <button class="btn btn-secondary ml-auto" data-toggle="modal" data-target="edit-pat-st-modal">Modifica</button>
           </div><!--end card-body-->
         </div><!--end card-->
       </div> <!--end 1° half of screen-->
@@ -204,7 +204,8 @@ $eventsTableSchema =
   </main>
 
   <!--Modal for updating existing report general info-->
-  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/editReportGeneralInfoModal.php");?>
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/editPatologicStateModal.php");?>
+
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
