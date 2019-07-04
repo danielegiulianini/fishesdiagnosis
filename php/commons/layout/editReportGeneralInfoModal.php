@@ -1,7 +1,7 @@
 <!--Modal for inserting new reports
 dependencies:
 1. it needs that the importing pages has already pre-fetched species
-  in array $specie
+  in array $specie (si potrebbe farlo qua anxihè nelle 2 startOage per eliminare questa dipendenza)
 
 2. l'id scheda come lo passo al modal? O tramite $_SESSION o $_GET,
 quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagine
@@ -27,8 +27,8 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
             <div class="col-md-6">
               <fieldset class="form-group">
                 <div class="col-4">
-                  <label for="e-sigla-provincia">Id</label>
-                  <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-idScheda" readonly>
+                  <label for="e-idScheda">Id</label>
+                  <input type="text" class="form-control nome" name="e-idScheda" id="e-idScheda" readonly>
                 </div>
                 <div class="form-row">
                   <div class="col-6">

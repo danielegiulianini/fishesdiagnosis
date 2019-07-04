@@ -93,5 +93,10 @@ html, body {
     <!--Modal for choosing patologic state to view-->
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/choosePatologicStateModal.php");?>
 
+    <!--Modal for editing probability weights-->
+    <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/editProbabilityWeightsModal.php");?>
+
+
+
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>

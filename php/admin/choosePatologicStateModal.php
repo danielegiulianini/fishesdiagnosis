@@ -1,6 +1,6 @@
 <!--
 dependencies of this file:
-1. a variable $conn in the importing file, containing a mysqli connection object
+1. a variable $conn in the importing file, containing a mysqli connection object (superable by using include_once("....connect.php"))
 -->
 
 <?php

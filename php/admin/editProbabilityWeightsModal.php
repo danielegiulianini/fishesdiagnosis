@@ -1,19 +1,27 @@
-<!--
-Modal for inserting new reports.
-dependencies:
-1. it needs that the importing pages has already pre-fetched species
-  in array $specie
+<!--Modal for editing probability weights
+dependencies of this file:
+1. a variable $conn in the importing file, containing a mysqli connection object
+  (superable by using include_once("....connect.php"))
 
-2. l'id scheda come lo passo al modal? O tramite $_SESSION o $_GET,
-quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagine
-
-this modal is the same of insertReportGeneralInfoModal (only js links change)
- if sth changes on relation schemas in the db must update both.
+potrei fare con ajax vito che dopo non si carica la pagina -> js file
 -->
+<?php
 
-<script src="/fishesdiagnosis/js/commons/insertReportGeneralInfoModal.js"></script>
+$result=$conn->query("SELECT nomeProbabilitaAssociata, valore FROM pesi");
+while($row=$result->fetch_assoc()){
+  $statiPatologici_assoc[]=$row;
+}
+$idStatiPatologici = array(); //devo trasformare l'array associativo in array di valori
+$nomiStatiPatologici = array();
+foreach($statiPatologici_assoc as $item){
+  $idStatiPatologici[]=$item["idStatoPat"];
+  $nomiStatiPatologici[]=$item["nome"];
+}
+?>
 
-<div id="add-general-info-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<script src="/fishesdiagnosis/js/admin/editProbabilityWeightsModal.js"></script>
+
+<div id="edit-general-info-report-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -23,16 +31,20 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           </button>
         </div>
       <div class="modal-body">
-        <form id="add-general-info-report-form">
+        <form id="edit-general-info-report-form">
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
+                <div class="col-4">
+                  <label for="e-idScheda">Id</label>
+                  <input type="text" class="form-control nome" name="e-idScheda" id="e-idScheda" readonly>
+                </div>
                 <div class="form-row">
-                  <div class="col">
+                  <div class="col-6">
                     <label for="e-stato">Stato</label>
                     <input type="text" class="form-control nome" name="nomeRichiedente" id="e-stato" required>
                   </div>
-                  <div class="col">
+                  <div class="col-2">
                     <label for="e-sigla-provincia">Sigla provincia</label>
                     <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-sigla-provincia">
                   </div>
@@ -104,12 +116,12 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                         }
                       ?>
                     </select>
-                  </div>
-                  <div class="col-6 col-md-4">
+                    </div>
+                    <div class="col-6 col-md-4">
                       <label for="e-sospetto">sospetto</label>
                       <input type="text" class="form-control" id="e-sospetto" name="sospetto" placeholder="KVD">
+                    </div>
                   </div>
-                </div>
 
                   <div class="form-row">
                     <label for="e-note">note</label>
@@ -121,7 +133,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           </div><!--modal body--->
       </form>
       <div class="modal-footer">
-        <button type="button" id="confirm-add-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
+        <button type="button" id="confirm-edit-general-info-report-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->
