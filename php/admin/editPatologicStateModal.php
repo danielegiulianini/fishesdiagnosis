@@ -13,6 +13,9 @@
       <div class="modal-body">
         <form id="edit-pat-st-form">
             <fieldset class="form-group">
+              <label for="idStato">Id</label>
+              <input type="text" class="form-control nome" name="idStato" id="idStato" read-only>
+
               <label for="nomeStato">Nome</label>
               <input type="text" class="form-control nome" name="nomeStato" id="nomeStato" required>
 
@@ -27,7 +30,7 @@
           </form>
           </div><!--modal body--->
       <div class="modal-footer">
-        <button type="button" id="confirm-edit-pat-st-button" class="btn btn-secondary">Conferma inserimento stato patologico</button>
+        <button type="button" id="confirm-edit-pat-st-button" class="btn btn-secondary">Conferma modifica stato patologico</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->

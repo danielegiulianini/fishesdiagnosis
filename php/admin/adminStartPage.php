@@ -84,8 +84,13 @@ html, body {
     <!--Modal for inserting new report-->
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/insertReportGeneralInfoModal.php");?>
 
+    <!--Modal for choosing report-->
+    <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/chooseReportModal.php");?>
+
     <!--Modal for inserting new patologic state-->
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/addPatologicStateModal.php");?>
+
+
 
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
