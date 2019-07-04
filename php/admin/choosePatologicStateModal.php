@@ -1,9 +1,9 @@
-<!--dependencies of this file:
-a variable $conn containing a mysqli connection
+<!--
+dependencies of this file:
+1. a variable $conn in the importing file, containing a mysqli connection object
 -->
 
 <?php
-
 /*user is more familiar with statoPatologico nome but php file needs its id.
 I need js file to update id after user selects name.*/
 
@@ -11,7 +11,7 @@ $stmt=$conn->prepare("SELECT idStatoPat, nome FROM statipatologici");
 $stmt->execute();
 $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
-  $idStatiPatologici_assoc[]=$row;
+  $statiPatologici_assoc[]=$row;
 }
 $idStatiPatologici = array(); //devo trasformare l'array associativo in array di valori
 $nomiStatiPatologici = array();
@@ -22,18 +22,22 @@ foreach($statiPatologici_assoc as $item){
 
 $idStatiPatologiciJson = json_encode($idStatiPatologici);
 $nomiStatiPatologiciJson = json_encode($nomiStatiPatologici);
-
 ?>
 
 <script type="text/javascript">
-    var obj = JSON.parse('<?$nomiStatiPatologiciJson; ?>');
-    console.log(obj);
+    var nomiStatiPatologici = JSON.parse('<?php echo $nomiStatiPatologiciJson; ?>');
+    var idStatiPatologici = JSON.parse('<?php echo $idStatiPatologiciJson; ?>');
 </script>
 
+<script type="text/javascript">
+    /*this function sets the id according to the name chosen by the user*/
+    function setPatologicStateIdCorrespondingToName(){
+      nameSelected = $("#nomeStatoPat").val();
+      correspondingId = idStatiPatologici[nomiStatiPatologici.indexOf(nameSelected)];
+      $("#idStatoPat").val(correspondingId);
+    }
+</script>
 
-
-<!--js file that updates id after user selects name.-->
-<script src="/fishesdiagnosis/js/commons/choosePatologicStateModal.js"></script>
 
 <div id="choose-pat-st-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -49,7 +53,7 @@ $nomiStatiPatologiciJson = json_encode($nomiStatiPatologici);
             <fieldset class="form-group">
               <input type="hidden" name="idStatoPat" id="idStatoPat"/>
               <label for="nomeStatoPat">Stato patologico:</label>
-              <select class="form-control" name="nomeStatoPat" id="nomeStatoPat" style="display: inline-block" required>
+              <select class="form-control" name="nomeStatoPat" id="nomeStatoPat" style="display: inline-block" required onchange="setPatologicStateIdCorrespondingToName()">
                 <?php
                   for ($i=0; $i<count($nomiStatiPatologici); $i++){
                       echo '<option>'.$nomiStatiPatologici[$i].'</option>';
