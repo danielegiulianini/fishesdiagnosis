@@ -63,7 +63,7 @@ html, body {
               <div class="card box-shadow text-center">
                 <p class="card-title my-2 hint">Visualizza - modifica</p>
                 <a data-toggle="modal" data-target="#choose-report-modal" class="btn btn-secondary m-2">Visualizza scheda chiamata</a>
-                <a class="btn btn-secondary m-2">Visualizza stato patologico</a>
+                <a data-toggle="modal" data-target="#choose-pat-st-modal" class="btn btn-secondary m-2">Visualizza stato patologico</a>
                 <a class="btn btn-secondary m-2">test</a>
               </div>
           </div>
@@ -90,8 +90,8 @@ html, body {
     <!--Modal for inserting new patologic state-->
     <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/addPatologicStateModal.php");?>
 
-
-
+    <!--Modal for choosing patologic state to view-->
+    <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/choosePatologicStateModal.php");?>
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>

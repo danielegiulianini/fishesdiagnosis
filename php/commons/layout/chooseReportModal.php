@@ -34,7 +34,7 @@ no need of js (bootstrap validation here is not required.)
           </button>
         </div>
       <div class="modal-body">
-        <form id="add-pat-st-form" action="get" method="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
+        <form id="choose-pat-st-form" action="get" method="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
             <fieldset class="form-group">
                   <label for="idScheda">scheda:</label>
                   <select class="form-control" name="idScheda" id="idScheda" style="display: inline-block" required>
