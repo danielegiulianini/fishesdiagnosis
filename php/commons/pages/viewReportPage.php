@@ -177,6 +177,10 @@ $eventsTableSchema =
                     <td id="g-eta">test</td>
                   </tr>
                   <tr>
+                    <th scope="row">origine</th>
+                    <td id="g-origine">test</td>
+                  </tr>
+                  <tr>
                     <th scope="row">percentuale affetti</th>
                     <td id="g-percentuale-affetti">test</td>
                   </tr>

@@ -29,48 +29,51 @@ $(document).ready(function(){
     //a seguito di modifiche con ajax sul modale stesso)
     //le recupero dalla tabella nell'html e li assegno (anziché chiederli al server)
 
+    
     //recupero dalla tabella
-    idScheda = $("g-idScheda").text();  /*nel jquery non posso accedere alla variabile di sessione*/
-    gData = $("g-data").text();
-    gNome=$("g-nome-richiedente").text();
-    gTelefono =$("g-telefono").text();
-    gEmail= $("g-email");
-    gStato=$("g-stato");
-    gSiglaProvincia = $("g-sigla-provincia");
-    gVasca = $("g-vasca");
-    gNomeVeterinario = $("g-nome-veterinario");
-    gSpecie = $("g-specie").text();
-    gSesso = $("g-sesso").text();
-    gTaglia = $("g-taglia").text();
-    gEta = $("g-eta");
-    gPercentualeAffetti = $("g-percentuale-affetti").text();
-    gNumeroEsaminati = $("g-numero-esaminati").text();
-    gSospetto = $("g-sospetto").text();
-    gNote = $("g-note").text();
+    idScheda = $("#g-idScheda").text();  /*nel jquery non posso accedere alla variabile di sessione*/
 
-    //assegno negli input del modale
-    $("e-nomeRichiedente").val(gData);
-    $("e-telefonoRichiedente").val(gNome);
-    $("e-emailRichiedente").val(gNome);
-    $("e-nomeVeterinario").val(gNome);
-    $("e-numeroAffetti").val(gNome);
-    $("e-numeroEsaminati").val(gNome);
-    $("e-numeroAffetti").val(gNome);
-    $("e-numeroEsaminati").val(gNome);
-    $("e-percentualeAffetti").val(gNome);
-    $("e-taglia").val(gNome);
-    $("-specie").val(gNome);
-    $("e-sesso").val(gNome);
-    $("e-eta").val(gNome);
-    $("e-vasca").val(gNome);
-    $("e-origine").val(gNome);
-    $("e-sospetto").val(gNome);
-    $("e-note").val(gNome);
+    alert("id scheda : "+idScheda);
+    gData = $("#g-data").text();
+    gNome=$("#g-nome-richiedente").text();
+    gTelefono =$("#g-telefono").text();
+    gEmail= $("#g-email").text();
+    gStato=$("#g-stato");
+    gSiglaProvincia = $("#g-sigla-provincia").text();
+    gVasca = $("#g-vasca").text();
+    gNomeVeterinario = $("#g-nome-veterinario").text();
+    gSpecie = $("#g-specie").text();
+    gSesso = $("#g-sesso").text();
+    gTaglia = $("#g-taglia").text();
+    gOrigine= $("#origine").text();
+    gEta = $("#g-eta").text();
+    gPercentualeAffetti = $("#g-percentuale-affetti").text();
+    gNumeroAffetti = $("#g-numero-affetti").text();
+    gNumeroEsaminati = $("#g-numero-esaminati").text();
+    gSospetto = $("#g-sospetto").text();
+    gNote = $("#g-note").text();
 
-
+    //assign modal input tags
+    $("#e-nomeRichiedente").val(gData);
+    $("#e-emailRichiedente").val(gEmail);
+    $("#e-telefonoRichiedente").val(gTelefono);
+    $("#e-stato").val(gStato);
+    $("#e-sigla-provincia").val(gSiglaProvincia);
+    $("#e-nomeVeterinario").val(gNomeVeterinario);
+    $("#e-numeroAffetti").val(gNumeroAffetti);
+    $("#e-numeroEsaminati").val(gNumeroEsaminati);
+    $("#e-percentualeAffetti").val(gPercentualeAffetti);
+    $("#e-taglia").val(gTaglia);
+    $("#e-specie").val(gSpecie); /*val sets also select tags*/
+    $("#e-sesso").val(gSesso);
+    $("#e-eta").val(gEta);
+    $("#e-vasca").val(gVasca);
+    $("#e-origine").val(gOrigine);
+    $("#e-sospetto").val(gSospetto);
+    $("#e-note").text(gNote);  /*textarea is the only that needs text*/
   };
 
-  $('#general-info-report-modal').on('shown.bs.modal', function (e) {
+  $('#edit-general-info-report-modal').on('shown.bs.modal', function (e) {
     fetchReportGeneralInfoModal(e);
   });
 });
