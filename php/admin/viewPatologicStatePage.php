@@ -103,7 +103,7 @@ $eventsTableSchema =
   <script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
-  <script src="http://localhost:8081/fishesdiagnosis/js/commons/viewReportPage.js"></script>
+  <script src="http://localhost:8081/fishesdiagnosis/js/admin/viewPatologicStatePage.js"></script>
 
   <style>
     html, body{
@@ -121,8 +121,8 @@ $eventsTableSchema =
       <div class="col-md-4 mb-4 mb-md-0">
         <div class="card">
           <div class="card-body">
-            <div class="card-title font-weight-bolder text-center lead">Informazioni generali stato patologico</div>
-              <table id="reports-info-1" class="table table-hover table-striped table-sm">
+            <div class="card-title font-weight-bolder text-center lead">Infookormazioni generali stato patologico</div>
+              <table id="pat-st-info-1" class="table table-hover table-striped table-sm">
                 <tbody>
                   <tr>
                     <th scope="row">Stato patologico n.</th>
@@ -139,7 +139,7 @@ $eventsTableSchema =
                 </tbody>
               </table>
 
-              <button class="btn btn-secondary ml-auto" data-toggle="modal" data-target="edit-pat-st-modal">Modifica</button>
+              <button class="btn btn-secondary ml-auto" data-toggle="modal" data-target="#edit-pat-st-modal">Modifica</button>
           </div><!--end card-body-->
         </div><!--end card-->
       </div> <!--end 1° half of screen-->

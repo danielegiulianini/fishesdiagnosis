@@ -11,6 +11,10 @@ $(document).ready(function(){
      }
   });
 
+$("#ciao").click(function(){
+  alert("ciaoo");
+});
+
   $("#confirm-editing-list").click(function(){
     /*ajax call to server to insert into segnopresente or segno assente according to radio value
     siccome è un unica form, basta fare serialize.*/

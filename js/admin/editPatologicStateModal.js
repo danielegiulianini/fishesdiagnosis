@@ -41,7 +41,7 @@ $(document).ready(function(){
 
     //retrieve from table
     idStato = $("#g-idStato").text();
-    nome = $("#g-nomeStato").text();  /*nel jquery non posso accedere alla variabile di sessione*/
+    nome = $("#g-nomeStato").text();
     tipoStato = $("#g-tipoStato").text();
 
     //assign modal input tags
@@ -53,5 +53,6 @@ $(document).ready(function(){
   $('#edit-pat-st-modal').on('shown.bs.modal', function (e) {
     fetchReportGeneralInfoModal(e);
   });
+
 
 });
