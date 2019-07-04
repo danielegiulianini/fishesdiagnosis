@@ -64,7 +64,7 @@ foreach($specie_assoc as $item){
   </main>
 
   <!--Modal for inserting new report-->
-  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addReportModal.php");?>
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/insertReportGeneralInfoModal.php");?>
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
