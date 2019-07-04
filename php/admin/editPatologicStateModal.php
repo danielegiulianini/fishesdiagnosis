@@ -14,7 +14,7 @@
         <form id="edit-pat-st-form">
             <fieldset class="form-group">
               <label for="idStato">Id</label>
-              <input type="text" class="form-control nome" name="idStato" id="e-idStato" read-only>
+              <input type="text" class="form-control nome" name="idStato" id="e-idStato" readonly>
 
               <label for="nomeStato">Nome</label>
               <input type="text" class="form-control nome" name="nomeStato" id="e-nomeStato" required>

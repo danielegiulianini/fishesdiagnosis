@@ -121,7 +121,7 @@ $eventsTableSchema =
       <div class="col-md-4 mb-4 mb-md-0">
         <div class="card">
           <div class="card-body">
-            <div class="card-title font-weight-bolder text-center lead">Infookormazioni generali stato patologico</div>
+            <div class="card-title font-weight-bolder text-center lead">Informazioni generali stato patologico</div>
               <table id="pat-st-info-1" class="table table-hover table-striped table-sm">
                 <tbody>
                   <tr>
