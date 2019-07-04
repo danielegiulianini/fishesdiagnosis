@@ -23,6 +23,16 @@ quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagi
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
+                <div class="form-row">
+                  <div class="col">
+                    <label for="e-nomeRichiedente">Stato</label>
+                    <input type="text" class="form-control nome" name="nomeRichiedente" id="e-nomeRichiedente" required>
+                  </div>
+                  <div class="col">
+                    <label for="e-telefonoRichiedente">Sigla provincia</label>
+                    <input type="text" class="form-control nome" name="telefonoRichiedente" id="e-telefonoRichiedente">
+                  </div>
+                </div>
                 <label for="e-nomeRichiedente">nome richiedente</label>
                 <input type="text" class="form-control nome" name="nomeRichiedente" id="e-nomeRichiedente" required>
                 <label for="e-telefonoRichiedente">telefono richiedente</label>
@@ -46,8 +56,8 @@ quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagi
                   <input type="number" class="form-control" id="e-numeroEsaminati" placeholder="50" name="numeroEsaminati">
                 </div>
                 <div class="col-4 col-md-4">
-                  <label for="e-numeroAffetti">perc. affetti</label>
-                  <input type="number" min="0" max=100 class="form-control" id="e-numeroAffetti" placeholder="25" name="numeroAffetti" required>
+                  <label for="e-percentualeAffetti">perc. affetti</label>
+                  <input type="number" min="0" max=100 class="form-control" id="e-percentualeAffetti" placeholder="25" name="numeroAffetti" required>
                 </div>
               </div>
 

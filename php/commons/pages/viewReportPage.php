@@ -126,71 +126,71 @@ $eventsTableSchema =
                 <tbody>
                   <tr>
                     <th scope="row">Scheda n.</th>
-                    <td id="g-idScheda">Mark</td>
+                    <td id="g-idScheda">test</td>
                   </tr>
                   <tr>
                     <th scope="row">Data</th>
-                    <td id="g-data">Jacob</td>
+                    <td id="g-data">test</td>
                   </tr>
                   <tr>
                     <th scope="row">Nome richiedente</th>
-                    <td id="g-nome-richiedente">Larry the Bird</td>
+                    <td id="g-nome-richiedente">test</td>
                   </tr>
                   <tr>
                     <th scope="row">Telefono</th>
-                    <td id="g-telefono">Larry the Bird</td>
+                    <td id="g-telefono">test</td>
                   </tr>
                   <tr>
                     <th scope="row">email</th>
-                    <td id="g-email">Larry the Bird</td>
+                    <td id="g-email">test</td>
                   </tr>
                   <tr>
                     <th scope="row">stato</th>
-                    <td id="g-stato">Larry the Bird</td>
+                    <td id="g-stato">test</td>
                   </tr>
                   <tr>
                     <th scope="row">sigla provincia</th>
-                    <td id="g-sigla-provincia">Larry the Bird</td>
+                    <td id="g-sigla-provincia">test</td>
                   </tr>
                   <tr>
                     <th scope="row">nome vasca</th>
-                    <td id="g-vasca">Larry the Bird</td>
+                    <td id="g-vasca">test</td>
                   </tr>
                   <tr>
                     <th scope="row">nome veterinario</th>
-                    <td id="g-nome-veterinario">Larry the Bird</td>
+                    <td id="g-nome-veterinario">test</td>
                   </tr>
                   <tr>
                     <th scope="row">Nome specie</th>
-                    <td id="g-specie">Larry the Bird</td>
+                    <td id="g-specie">test</td>
                   </tr>
                   <tr>
                     <th scope="row">Sesso</th>
-                    <td id="g-sesso">Larry the Bird</td>
+                    <td id="g-sesso">test</td>
                   </tr>
                   <tr>
                     <th scope="row">Taglia</th>
-                    <td id="g-taglia">Larry the Bird</td>
+                    <td id="g-taglia">test</td>
                   </tr>
                   <tr>
                     <th scope="row">eta</th>
-                    <td id="g-eta">Larry the Bird</td>
+                    <td id="g-eta">test</td>
                   </tr>
                   <tr>
                     <th scope="row">percentuale affetti</th>
-                    <td id="g-percentuale-affetti">Larry the Bird</td>
+                    <td id="g-percentuale-affetti">test</td>
                   </tr>
                   <tr>
                     <th scope="row">numero esaminati</th>
-                    <td id="g-numero-esaminati">Larry the Bird</td>
+                    <td id="g-numero-esaminati">test</td>
                   </tr>
                   <tr>
                     <th scope="row">sospetto</th>
-                    <td id="g-sospetto">Larry the Bird</td>
+                    <td id="g-sospetto">test</td>
                   </tr>
                   <tr>
                     <th scope="row">note</th>
-                    <td id="g-note">Larry the Bird</td>
+                    <td id="g-note">test</td>
                   </tr>
                 </tbody>
               </table>
