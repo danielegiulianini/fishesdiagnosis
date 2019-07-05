@@ -24,14 +24,16 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
         </div>
       <div class="modal-body">
         <form id="add-general-info-report-form">
+          <input type="hidden" name="request" value="add"/>
+          <input type="hidden" name="subject" value="generalInfo"/>
+
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
-
                 <div class="form-row">
                   <div class="col">
                     <label for="e-stato">Stato</label>
-                    <input type="text" class="form-control nome" name="nomeRichiedente" id="e-stato" required>
+                    <input type="text" class="form-control nome" name="nomeRichiedente" id="e-stato">
                   </div>
                   <div class="col">
                     <label for="e-sigla-provincia">Sigla provincia</label>
@@ -62,14 +64,14 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                 </div>
                 <div class="col-4 col-md-4">
                   <label for="e-percentualeAffetti">perc. affetti</label>
-                  <input type="number" min="0" max=100 class="form-control" id="e-percentualeAffetti" placeholder="25" name="numeroAffetti" required>
+                  <input type="number" min="0" max=100 class="form-control" id="e-percentualeAffetti" placeholder="25" name="numeroAffetti">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-3 col-md-3">
                   <label for="e-taglia">taglia(cm)</label>
-                  <input type="number" class="form-control" id="e-taglia" placeholder="15">
+                  <input type="number" class="form-control" id="e-taglia" placeholder="15" required>
                 </div>
                 <div class="col-3 col-md-3">
                   <label for="e-specie">specie</label>
