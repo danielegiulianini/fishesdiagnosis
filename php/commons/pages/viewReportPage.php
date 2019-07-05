@@ -3,7 +3,7 @@
 //var_dump($_GET);
 $idScheda = $_GET["idScheda"];
 
-/*fetching species is needed for editReportModal (it's better to move this code to its file)*/
+/*fetching species is needed for editReportModal (it's better to move this code to its file with include_once connect.php)*/
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 $stmt=$conn->prepare("SELECT specie FROM specie");
 $stmt->execute();
@@ -19,13 +19,12 @@ foreach($specie_assoc as $item){
 
 /*report general info (unlike the other info inside tabs) don't require datatable to be responsive
 so their data are fetched already here with php. Datatble needs js to fetch them instead.*/
+/*the query below doesn't ask for stato and siglaProvincia cause thery are not stored inside db.*/
 $stmt=$conn->prepare("SELECT idScheda,
                               dataOraRegistrazione,
                               nomeRichiedente,
                               telefonoRichiedente,
                               emailRichiedente,
-                              stato,
-                              siglaProvincia,
                               vasca,
                               nomeVeterinario,
                               specie,
@@ -37,7 +36,8 @@ $stmt=$conn->prepare("SELECT idScheda,
                               numeroEsaminati,
                               sospetto,
                               note
-                              FROM schedechiamate where schedechiamate.idScheda = ?");
+                      FROM schedechiamate
+                      where schedechiamate.idScheda = ?");
 $stmt->bind_param("i", $idScheda);
 $stmt->execute();
 $result=$stmt->get_result();
@@ -65,14 +65,6 @@ $reportGeneralInfoTable='<table id="reports-info-1" class="table table-hover tab
                               <tr>
                                 <th scope="row">email</th>
                                 <td id="g-email">'.$row["emailRichiedente"].'</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">stato</th>
-                                <td id="g-stato">'.$row["stato"].'</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">sigla provincia</th>
-                                <td id="g-sigla-provincia">'.$row["siglaProvincia"].'</td>
                               </tr>
                               <tr>
                                 <th scope="row">nome vasca</th>

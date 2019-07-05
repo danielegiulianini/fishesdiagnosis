@@ -10,7 +10,7 @@ $(document).ready(function(){
     form=$("#edit-general-info-report-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
-      var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/addReport.php`;//$(form).attr("action");
+      var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/reportsManager.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(){
             //updateReportGeneralInfoTable();//devo aggiornare la tabella in background DA USARE SOLO QUANDO DATI OK
