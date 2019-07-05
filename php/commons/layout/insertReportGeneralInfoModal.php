@@ -56,15 +56,15 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
               <div class="form-row">
                 <div class="col-4 col-md-4">
                   <label for="e-numeroAffetti">num. affetti</label>
-                  <input type="number" min="0" class="form-control" id="e-numeroAffetti" placeholder="25" name="numeroAffetti">
+                  <input type="number" min="0" class="form-control" name="numeroAffetti" id="e-numeroAffetti" placeholder="25" >
                 </div>
                 <div class="col-4 col-md-4">
                   <label for="e-numeroEsaminati">num. esaminati</label>
-                  <input type="number" class="form-control" id="e-numeroEsaminati" placeholder="50" name="numeroEsaminati">
+                  <input type="number" class="form-control" name="numeroEsaminati" id="e-numeroEsaminati" placeholder="50" >
                 </div>
                 <div class="col-4 col-md-4">
                   <label for="e-percentualeAffetti">perc. affetti</label>
-                  <input type="number" min="0" max=100 class="form-control" id="e-percentualeAffetti" placeholder="25" name="numeroAffetti">
+                  <input type="number" min="0" max=100 class="form-control" name="percentualeAffetti" id="e-percentualeAffetti" placeholder="25">
                 </div>
               </div>
 
