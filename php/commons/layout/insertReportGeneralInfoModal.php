@@ -33,7 +33,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                 <div class="form-row">
                   <div class="col">
                     <label for="e-stato">Stato</label>
-                    <input type="text" class="form-control nome" name="nomeRichiedente" id="e-stato">
+                    <input type="text" class="form-control nome" name="stato" id="e-stato">
                   </div>
                   <div class="col">
                     <label for="e-sigla-provincia">Sigla provincia</label>
