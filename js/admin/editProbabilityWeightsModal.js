@@ -9,11 +9,14 @@ $(document).ready(function(){
   /*siccome è già un modale, non posso sovrapporne un altro ->
   me la gioco con le disabilitazioni / ailitazioni dei bottoni.
   è come l'esame di tecweb, un giochino del genere*/
+  //all'inizio bottone conferma disabilitato , inputs disabilitati
 
+  //al click su modifica abilito bottone conferma e inputs (per a href richesta classe disable + prevent defaukt)
+  //per bottoni si aggiunge attributo disabled
+  $("#previous").addClass('disabled');
+  $('#inputId').prop('readonly', true);
 
-
-
-
+  //al click su conferma invio al server e chiudo modale.
   $("#confirm-edit-general-info-report-button").click(function() {
     form=$("#edit-general-info-report-form").get(0);
     if (isValid(form)){

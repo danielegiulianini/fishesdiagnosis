@@ -22,11 +22,11 @@ foreach($pesi_assoc as $item){
   '<div class="form-row">
     <div class="col-8">
       <label for="e-nomeProbabilita">'.$pesi_assoc["nomeProbabilitaAssociata"].'</label>
-      <input type="text" class="form-control nome" name="nomeProbabilita" id="e-nomeProbabilita" required>
+      <input type="text" class="form-control nome" name="pesi[][nomeProbabilita]" id="e-nomeProbabilita" readonly>
     </div>
     <div class="col-4">
       <label for="e-valore">'.$pesi_assoc["valore"].'</label>
-      <input type="text" class="form-control nome" name="valore" id="e-valore">
+      <input type="text" class="form-control nome" name="pesi[][valore]" id="e-valore" required>
     </div>
   </div>';
 }
@@ -44,7 +44,7 @@ me la gioco con le disabilitazioni / ailitazioni dei bottoni.
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Scheda <span id="e-idScheda">15</span></h5>
+          <h5 class="modal-title">Modifica pesi probabilità</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -52,7 +52,7 @@ me la gioco con le disabilitazioni / ailitazioni dei bottoni.
         <div class="modal-body">
 
           <?php echo $weightsForm; ?>
-          
+
         </div><!--modal body--->
         <div class="modal-footer">
           <button type="button" id="confirm-edit-probability-weights-button" class="btn btn-secondary">Conferma modifica</button>
