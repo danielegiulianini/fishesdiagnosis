@@ -71,7 +71,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
               <div class="form-row">
                 <div class="col-3 col-md-3">
                   <label for="e-taglia">taglia(cm)</label>
-                  <input type="number" class="form-control" id="e-taglia" placeholder="15" required>
+                  <input type="number" class="form-control" name="taglia" id="e-taglia" placeholder="15" required>
                 </div>
                 <div class="col-3 col-md-3">
                   <label for="e-specie">specie</label>

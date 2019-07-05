@@ -1,13 +1,18 @@
 <?php
 header('Content-Type: application/json');
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
+
 session_start();
 
 /*in post c'è la form serializzata*/
 
 $output = array();
+$stmt = null;
 
 $request=$_POST["request"];
 $subject=$_POST["subject"];
+
+var_dump($_POST);
 
 switch($subject){
   case "generalInfo":
@@ -34,6 +39,8 @@ switch($subject){
           /*validation*/
 
           /*ddl*/
+echo "ciaoooo";
+
           $stmt=$conn->prepare("INSERT INTO schedechiamate(nomeVeterinario,nomeRichiedente,telefonoRichiedente,
             emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note)
             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -77,7 +84,7 @@ switch($subject){
   case "absentSigns":
     switch ($request){
       case "add":
-        $sql = ""
+        $sql = "";
         break;
       case "edit":
         break;
@@ -86,16 +93,16 @@ switch($subject){
   case "measurements":
     switch ($request){
       case "add":
-        $sql = ""
+        $sql = "";
         break;
       case "edit":
         break;
     }
-    break:
+    break;
   case "events":
     switch ($request){
       case "add":
-        $sql = ""
+        $sql = "";
         break;
       case "edit":
         break;
@@ -104,7 +111,7 @@ switch($subject){
   case "conclusion":
     switch ($request){
       case "add":
-        $sql = ""
+        $sql = "";
         break;
       case "edit":
         break;
@@ -112,7 +119,9 @@ switch($subject){
     break;
 }
 
-$stmt->execute(); //if fields where not set i should prevent from executing
+if (!is_null ($stmt)){ //if fields required are not set this prevents from executing
+  $stmt->execute();
+}
 
 $conn->close();
 
