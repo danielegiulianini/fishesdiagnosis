@@ -4,7 +4,7 @@ session_start();
 
 /*in post c'è la form serializzata*/
 
-$output = "";
+$output = array();
 
 
 var_dump($_POST);
