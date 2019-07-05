@@ -32,14 +32,13 @@ switch($subject){
           $eta=$_POST["eta"];
           $sesso=$_POST["sesso"];
           $specie=$_POST["specie"];
-          $vasca=$_POST["vasca"];
-          $origine=$_POST["origine"];
+          $vasca=$_POST["vasca"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+          $origine=$_POST["origine"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
           $note=$_POST["note"];
 
           /*validation*/
 
           /*ddl*/
-echo "ciaoooo";
 
           $stmt=$conn->prepare("INSERT INTO schedechiamate(nomeVeterinario,nomeRichiedente,telefonoRichiedente,
             emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note)
