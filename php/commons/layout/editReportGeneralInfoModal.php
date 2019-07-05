@@ -128,7 +128,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           </form>
       </div><!--modal body--->
       <div class="modal-footer">
-        <button type="button" id="confirm-edit-general-info-report-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
+        <button type="button" id="confirm-edit-general-info-report-button" class="btn btn-secondary">Conferma modifica scheda</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->

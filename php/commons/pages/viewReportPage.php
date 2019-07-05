@@ -3,9 +3,8 @@
 //var_dump($_GET);
 $idScheda = $_GET["idScheda"];
 
-/*fetching species is needed for editReportModal*/
+/*fetching species is needed for editReportModal (it's better to move this code to its file)*/
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
-
 $stmt=$conn->prepare("SELECT specie FROM specie");
 $stmt->execute();
 $result=$stmt->get_result();
@@ -16,6 +15,111 @@ $specie=array(); //devo trasformare l'array associativo in array di valori
 foreach($specie_assoc as $item){
   $specie[]=$item["specie"];
 }
+
+
+/*report general info (unlike the other info inside tabs) don't require datatable to be responsive
+so their data are fetched already here with php. Datatble needs js to fetch them instead.*/
+$stmt=$conn->prepare("SELECT idScheda,
+                              dataOraRegistrazione,
+                              nomeRichiedente,
+                              telefonoRichiedente,
+                              emailRichiedente,
+                              stato,
+                              siglaProvincia,
+                              vasca,
+                              nomeVeterinario,
+                              specie,
+                              sesso,
+                              taglia,
+                              eta,
+                              origine,
+                              percentualeAffetti,
+                              numeroEsaminati,
+                              sospetto,
+                              note
+                              FROM schedechiamate where schedechiamate.idScheda = ?");
+$stmt->bind_param("i", $idScheda);
+$stmt->execute();
+$result=$stmt->get_result();
+$row=$result->fetch_assoc();
+
+/*this process could be automatized too (even ids, names etc.)*/
+$reportGeneralInfoTable='<table id="reports-info-1" class="table table-hover table-striped table-sm">
+                            <tbody>
+                              <tr>
+                                <th scope="row">Scheda n.</th>
+                                <td id="g-idScheda">'.$idScheda.'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Data</th>
+                                <td id="g-data">'.$row["dataOraRegistrazione"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Nome richiedente</th>
+                                <td id="g-nome-richiedente">'.$row["nomeRichiedente"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Telefono</th>
+                                <td id="g-telefono">'.$row["telefonoRichiedente"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">email</th>
+                                <td id="g-email">'.$row["emailRichiedente"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">stato</th>
+                                <td id="g-stato">'.$row["stato"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">sigla provincia</th>
+                                <td id="g-sigla-provincia">'.$row["siglaProvincia"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">nome vasca</th>
+                                <td id="g-vasca">'.$row["vasca"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">nome veterinario</th>
+                                <td id="g-nome-veterinario">'.$row["nomeVeterinario"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Nome specie</th>
+                                <td id="g-specie">'.$row["specie"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Sesso</th>
+                                <td id="g-sesso">'.$row["sesso"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Taglia</th>
+                                <td id="g-taglia">'.$row["taglia"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">eta</th>
+                                <td id="g-eta">'.$row["eta"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">origine</th>
+                                <td id="g-origine">'.$row["origine"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">percentuale affetti</th>
+                                <td id="g-percentuale-affetti">'.$row["percentualeAffetti"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">numero esaminati</th>
+                                <td id="g-numero-esaminati">'.$row["numeroEsaminati"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">sospetto</th>
+                                <td id="g-sospetto">'.$row["sospetto"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">note</th>
+                                <td id="g-note">'.$row["note"].'</td>
+                              </tr>
+                            </tbody>
+                          </table>';
 
 
 /*table schemas for datatable (datatables - jquery library - needs table schemas
@@ -126,82 +230,8 @@ $eventsTableSchema =
         <div class="card">
           <div class="card-body">
             <div class="card-title font-weight-bolder text-center lead">Informazioni generali scheda</div>
-              <table id="reports-info-1" class="table table-hover table-striped table-sm">
-                <tbody>
-                  <tr>
-                    <th scope="row">Scheda n.</th>
-                    <td id="g-idScheda"><?php echo $idScheda?></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Data</th>
-                    <td id="g-data">12/06/49</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Nome richiedente</th>
-                    <td id="g-nome-richiedente">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Telefono</th>
-                    <td id="g-telefono">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">email</th>
-                    <td id="g-email">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">stato</th>
-                    <td id="g-stato">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">sigla provincia</th>
-                    <td id="g-sigla-provincia">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">nome vasca</th>
-                    <td id="g-vasca">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">nome veterinario</th>
-                    <td id="g-nome-veterinario">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Nome specie</th>
-                    <td id="g-specie">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Sesso</th>
-                    <td id="g-sesso">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Taglia</th>
-                    <td id="g-taglia">15</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">eta</th>
-                    <td id="g-eta">9</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">origine</th>
-                    <td id="g-origine">2</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">percentuale affetti</th>
-                    <td id="g-percentuale-affetti">0.2</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">numero esaminati</th>
-                    <td id="g-numero-esaminati">10</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">sospetto</th>
-                    <td id="g-sospetto">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">note</th>
-                    <td id="g-note">test</td>
-                  </tr>
-                </tbody>
-              </table>
+
+              <?php echo $reportGeneralInfoTable; ?>
 
               <button id="open-general-info-report-modal" class="btn btn-secondary ml-auto" data-toggle="modal" data-target="#edit-general-info-report-modal">Modifica</button>
           </div><!--end card-body-->
