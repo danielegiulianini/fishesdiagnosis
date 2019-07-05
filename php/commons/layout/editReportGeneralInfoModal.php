@@ -59,22 +59,22 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
               <div class="form-row">
                 <div class="col-4 col-md-4">
                   <label for="e-numeroAffetti">num. affetti</label>
-                  <input type="number" min="0" class="form-control" name="numeroAffetti" id="e-numeroAffetti" placeholder="25">
+                  <input type="number" min="0" class="form-control" name="numeroAffetti" id="e-numeroAffetti">
                 </div>
                 <div class="col-4 col-md-4">
                   <label for="e-numeroEsaminati">num. esaminati</label>
-                  <input type="number" class="form-control" name="numeroEsaminati" id="e-numeroEsaminati" placeholder="50">
+                  <input type="number" class="form-control" name="numeroEsaminati" id="e-numeroEsaminati">
                 </div>
                 <div class="col-4 col-md-4">
                   <label for="e-percentualeAffetti">perc. affetti</label>
-                  <input type="number" min="0" max=100 class="form-control" name="percentualeAffetti" id="e-percentualeAffetti" placeholder="25">
+                  <input type="number" min="0" max=100 class="form-control" name="percentualeAffetti" id="e-percentualeAffetti">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-3 col-md-3">
                   <label for="e-taglia">taglia(cm)</label>
-                  <input type="number" class="form-control" name="taglia" id="e-taglia" placeholder="15" required>
+                  <input type="number" class="form-control" name="taglia" id="e-taglia" required>
                 </div>
                 <div class="col-3 col-md-3">
                   <label for="e-specie">specie</label>
@@ -88,18 +88,18 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                   </div>
                   <div class="col-3 col-md-3">
                     <label for="e-sesso">sesso</label>
-                    <input type="number" class="form-control" name="sesso" id="e-sesso" placeholder="maschio">
+                    <input type="number" class="form-control" name="sesso" id="e-sesso">
                   </div>
                   <div class="col-3 col-md-3">
                     <label for="e-eta">eta(mesi)</label>
-                    <input type="number" class="form-control" name="eta" id="e-eta" placeholder="11">
+                    <input type="number" class="form-control" name="eta" id="e-eta">
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="col-12 col-md-4">
                     <label for="e-vasca">vasca</label>
-                    <input type="number" class="form-control" id="e-vasca" name="vasca" placeholder="vasca1">
+                    <input type="number" class="form-control" id="e-vasca" name="vasca">
                   </div>
                   <div class="col-6 col-md-4">
                     <label for="e-origine">origine</label>
@@ -114,7 +114,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                     </div>
                     <div class="col-6 col-md-4">
                       <label for="e-sospetto">sospetto</label>
-                      <input type="text" class="form-control" id="e-sospetto" name="sospetto" placeholder="KVD">
+                      <input type="text" class="form-control" id="e-sospetto" name="sospetto">
                     </div>
                   </div>
 
