@@ -65,6 +65,7 @@ switch($subject){
       if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"])) { /*mandatory fields*/
         /*$dataOraRegistrazione = $_POST["dataOraRegistrazione"];*/
 
+        $idScheda = $_POST["idScheda"];
         $nomeVeterinario=$_POST["nomeVeterinario"];
         $nomeRichiedente=$_POST["nomeRichiedente"];
         $telefonoRichiedente=$_POST["telefonoRichiedente"];
@@ -83,11 +84,10 @@ switch($subject){
         /*validation*/
 
         /*ddl*/
-        $stmt=$conn->prepare("INSERT INTO schedechiamate(nomeVeterinario,nomeRichiedente,telefonoRichiedente,
-          emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note)
-          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
+          emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
 
-        $stmt->bind_param("sssssiiiisssis",
+        $stmt->bind_param("sssssiiiisssisi",
           $nomeVeterinario,
           $nomeRichiedente,
           $telefonoRichiedente,
@@ -101,7 +101,8 @@ switch($subject){
           $specie,
           $vasca,   /*vasca key is string*/
           $origine, /*origin key is integer*/
-          $note
+          $note,
+          $idScheda
           );
         }
     }

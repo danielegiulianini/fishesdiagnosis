@@ -3,11 +3,12 @@ a variable $conn containing a mysqli connection
 -->
 
 <?php
-/*
-da decommentare quando dati pronti e sostituire l'array specie nel select sotto con l'array idSchede:
+//da sostituire con questa sottostante quando db pronto:
 
-$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate where schedechiamate.idUtente = ?");
-$stmt->bind_param("i", $IDUtente);
+//$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate where schedechiamate.idUtente = ?");
+//$stmt->bind_param("i", $IDUtente);
+
+$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate");
 $stmt->execute();
 $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
@@ -17,7 +18,6 @@ $idSchede=array(); //devo trasformare l'array associativo in array di valori
 foreach($idSchede_assoc as $item){
   $idSchede[]=$item["idScheda"];
 }
-*/
 ?>
 
 <!--
@@ -34,13 +34,13 @@ no need of js (bootstrap validation here is not required.)
           </button>
         </div>
       <div class="modal-body">
-        <form id="choose-pat-st-form" action="get" method="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
+        <form id="choose-report-form" action="get" method="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
             <fieldset class="form-group">
                   <label for="idScheda">scheda:</label>
                   <select class="form-control" name="idScheda" id="idScheda" style="display: inline-block" required>
                     <?php
-                      for ($i=0; $i<count($specie); $i++){
-                          echo '<option>'.$specie[$i].'</option>';
+                      for ($i=0; $i<count($idSchede); $i++){
+                          echo '<option>'.$idSchede[$i].'</option>';
                       }
                     ?>
                   </select>
