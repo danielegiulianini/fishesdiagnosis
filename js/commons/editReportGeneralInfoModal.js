@@ -92,11 +92,7 @@ $(document).ready(function(){
     gNote = $("#g-note").text();
 
     //assign modal input tags
-
-    //$('#e-idScheda').prop('readonly', false);
     $("#e-idScheda").val(idScheda);
-    //alert("il val dall input readnly e'"+$("#e-idScheda").val());
-    //$('#e-idScheda').prop('readonly', true);
     $("#e-nomeRichiedente").val(gNome);
     $("#e-emailRichiedente").val(gEmail);
     $("#e-telefonoRichiedente").val(gTelefono);
