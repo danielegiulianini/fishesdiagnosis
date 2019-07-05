@@ -101,8 +101,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                   <div class="col-6 col-md-4">
                     <label for="e-origine">origine</label>
                     <select class="form-control" name="origine" id="e-origine" style="display: inline-block">
-                      <!--cause it's a nullable value I add empty option-->
-                      <option></option>
+                      <option></option><!--cause it's a nullable value I add empty option-->
                       <?php
                         for ($i=0; $i<count($specie); $i++){
                             echo '<option>'.$specie[$i].'</option>';

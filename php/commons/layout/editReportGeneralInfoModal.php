@@ -23,6 +23,9 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
         </div>
       <div class="modal-body">
         <form id="edit-general-info-report-form">
+          <input type="hidden" name="request" value="edit"/>
+          <input type="hidden" name="subject" value="generalInfo"/>
+
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
@@ -121,8 +124,8 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
             </fieldset>
           </div>
             </div><!--row-->
-          </div><!--modal body--->
-      </form>
+          </form>
+      </div><!--modal body--->
       <div class="modal-footer">
         <button type="button" id="confirm-edit-general-info-report-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
