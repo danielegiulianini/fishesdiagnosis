@@ -76,7 +76,7 @@ $(document).ready(function(){
     gNome=$("#g-nome-richiedente").text();
     gTelefono =$("#g-telefono").text();
     gEmail= $("#g-email").text();
-    gStato=$("#g-stato");
+    gStato=$("#g-stato").text();
     gSiglaProvincia = $("#g-sigla-provincia").text();
     gVasca = $("#g-vasca").text();
     gNomeVeterinario = $("#g-nome-veterinario").text();
@@ -93,7 +93,7 @@ $(document).ready(function(){
 
     //assign modal input tags
     $("#e-idScheda").val(idScheda);
-    $("#e-nomeRichiedente").val(gData);
+    $("#e-nomeRichiedente").val(gNome);
     $("#e-emailRichiedente").val(gEmail);
     $("#e-telefonoRichiedente").val(gTelefono);
     $("#e-stato").val(gStato);

@@ -29,11 +29,11 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
+                <div class="form-row">
                 <div class="col-4">
                   <label for="e-idScheda">Id</label>
                   <input type="text" class="form-control nome" name="idScheda" id="e-idScheda" readonly>
                 </div>
-                <div class="form-row">
                   <div class="col-6">
                     <label for="e-stato">Stato</label>
                     <input type="text" class="form-control nome" name="stato" id="e-stato">

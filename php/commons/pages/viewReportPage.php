@@ -1,5 +1,7 @@
 <?php
-/*in get oppure cookie c'è l'idScheda, lo memorizzo in una sessione?*/
+/*in get oppure cookie c'è l'idScheda, lo memorizzo in una sessione? per ora il modal choose la specifica in get*/
+//var_dump($_GET);
+$idScheda = $_GET["idScheda"];
 
 /*fetching species is needed for editReportModal*/
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
@@ -128,11 +130,11 @@ $eventsTableSchema =
                 <tbody>
                   <tr>
                     <th scope="row">Scheda n.</th>
-                    <td id="g-idScheda">test</td>
+                    <td id="g-idScheda"><?php echo $idScheda?></td>
                   </tr>
                   <tr>
                     <th scope="row">Data</th>
-                    <td id="g-data">test</td>
+                    <td id="g-data">12/06/49</td>
                   </tr>
                   <tr>
                     <th scope="row">Nome richiedente</th>
@@ -172,23 +174,23 @@ $eventsTableSchema =
                   </tr>
                   <tr>
                     <th scope="row">Taglia</th>
-                    <td id="g-taglia">test</td>
+                    <td id="g-taglia">15</td>
                   </tr>
                   <tr>
                     <th scope="row">eta</th>
-                    <td id="g-eta">test</td>
+                    <td id="g-eta">9</td>
                   </tr>
                   <tr>
                     <th scope="row">origine</th>
-                    <td id="g-origine">test</td>
+                    <td id="g-origine">2</td>
                   </tr>
                   <tr>
                     <th scope="row">percentuale affetti</th>
-                    <td id="g-percentuale-affetti">test</td>
+                    <td id="g-percentuale-affetti">0.2</td>
                   </tr>
                   <tr>
                     <th scope="row">numero esaminati</th>
-                    <td id="g-numero-esaminati">test</td>
+                    <td id="g-numero-esaminati">10</td>
                   </tr>
                   <tr>
                     <th scope="row">sospetto</th>
