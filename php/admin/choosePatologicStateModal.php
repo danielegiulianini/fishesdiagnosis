@@ -49,7 +49,7 @@ $nomiStatiPatologiciJson = json_encode($nomiStatiPatologici);
           </button>
         </div>
       <div class="modal-body">
-        <form id="choose-pat-st-form" action="get" method="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
+        <form id="choose-pat-st-form" method="get" action="/fishesdiagnosis/php/commons/pages/viewPatologicStatePage.php">
             <fieldset class="form-group">
               <input type="hidden" name="idStatoPat" id="idStatoPat"/>
               <label for="nomeStatoPat">Stato patologico:</label>
