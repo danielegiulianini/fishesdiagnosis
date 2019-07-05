@@ -27,6 +27,7 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
           <div class="row">
             <div class="col-md-6">
               <fieldset class="form-group">
+
                 <div class="form-row">
                   <div class="col">
                     <label for="e-stato">Stato</label>
@@ -117,9 +118,10 @@ this modal is the same of insertReportGeneralInfoModal (only js links change)
                   </div>
             </fieldset>
           </div>
-            </div><!--row-->
-          </div><!--modal body--->
+        </div><!--row inside row-->
       </form>
+    </div><!--modal body--->
+
       <div class="modal-footer">
         <button type="button" id="confirm-add-button" class="btn btn-secondary">Conferma inserimento nuova scheda</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
