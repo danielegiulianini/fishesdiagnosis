@@ -62,7 +62,7 @@ switch($subject){
           }
         break;
       case "edit":
-      if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"])) { /*mandatory fields*/
+      if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"]) and isset($_POST["idScheda"])) { /*mandatory fields*/
         /*$dataOraRegistrazione = $_POST["dataOraRegistrazione"];*/
 
         $idScheda = $_POST["idScheda"];
@@ -85,7 +85,7 @@ switch($subject){
 
         /*ddl*/
         $stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
-          emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
+          emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia=?,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
 
         $stmt->bind_param("sssssiiiisssisi",
           $nomeVeterinario,
