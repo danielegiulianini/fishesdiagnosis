@@ -22,7 +22,7 @@ foreach($idSchede_assoc as $item){
 
 <!--
 no need of js (bootstrap validation here is not required.)
-<script src="/fishesdiagnosis/js/commons/insertReportGeneralInfoModal.js"></script>-->
+<script src="/fishesdiagnosis/js/commons/chooseReportModal.js"></script>-->
 
 <div id="choose-report-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -34,7 +34,7 @@ no need of js (bootstrap validation here is not required.)
           </button>
         </div>
       <div class="modal-body">
-        <form id="choose-report-form" action="get" method="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
+        <form id="choose-report-form" method="get" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
             <fieldset class="form-group">
                   <label for="idScheda">scheda:</label>
                   <select class="form-control" name="idScheda" id="idScheda" style="display: inline-block" required>
@@ -47,8 +47,8 @@ no need of js (bootstrap validation here is not required.)
             </fieldset>
           </form>
           </div><!--modal body--->
-      <div class="modal-footer">
-        <button type="button" id="confirm-choose-report-button" class="btn btn-secondary">Conferma</button>
+      <div class="modal-footer"><!--attribute form is used to reference form, since button is out of it-->
+        <button type="submit"  form="choose-report-form" id="confirm-choose-report-button" class="btn btn-secondary">Conferma</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->
