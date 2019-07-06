@@ -16,17 +16,24 @@ while($row=$result->fetch_assoc()){
 $weightsForm = '';
 $weightsForm .= '<form id="edit-probability-weights-form">
                   <fieldset class="form-group">';
-
+$weightsForm.= '<div class="form-row mb-1" aria-role="form-header">
+                  <div class="col-8">
+                  Nome probabilità
+                  </div>
+                  <div class="col-4">
+                  Valore peso
+                  </div>
+                </div>';
 foreach($pesi_assoc as $item){
-  echo
-  '<div class="form-row">
+  $weightsForm.=
+  '<div class="form-row mb-1">
     <div class="col-8">
-      <label for="e-nomeProbabilita">'.$pesi_assoc["nomeProbabilitaAssociata"].'</label>
-      <input type="text" class="form-control nome" name="pesi[][nomeProbabilita]" id="e-nomeProbabilita" readonly>
+      <!--<label for="e-nomeProbabilitaAssociata">'.$item["nomeProbabilitaAssociata"].'</label>-->
+      <input type="text" class="form-control e-nomeProbabilita" name="pesi[][nomeProbabilitaAssociata]" value="'.$item["nomeProbabilitaAssociata"].'" readonly>
     </div>
     <div class="col-4">
-      <label for="e-valore">'.$pesi_assoc["valore"].'</label>
-      <input type="text" class="form-control nome" name="pesi[][valore]" id="e-valore" required>
+      <!--<label for="e-valore">'.$item["valore"].'</label>-->
+      <input type="text" class="form-control e-valore" name="pesi[][valore]" required readonly>
     </div>
   </div>';
 }
@@ -40,7 +47,7 @@ me la gioco con le disabilitazioni / ailitazioni dei bottoni.
 
 <script src="/fishesdiagnosis/js/admin/editProbabilityWeightsModal.js"></script>
 
-<div id="edit-probability-weights-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="edit-probability-weights-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -55,7 +62,8 @@ me la gioco con le disabilitazioni / ailitazioni dei bottoni.
 
         </div><!--modal body--->
         <div class="modal-footer">
-          <button type="button" id="confirm-edit-probability-weights-button" class="btn btn-secondary">Conferma modifica</button>
+          <button type="button" id="enable-edit-probability-weights-button" class="btn btn-secondary">Modifica</button>
+          <button type="button" id="confirm-edit-probability-weights-button" class="btn btn-secondary" disabled>Conferma modifica</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
         </div>
       </div><!--modal-content-->
