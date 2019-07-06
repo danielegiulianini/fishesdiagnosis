@@ -33,7 +33,7 @@ foreach($pesi_assoc as $item){
     </div>
     <div class="col-4">
       <!--<label for="e-valore">'.$item["valore"].'</label>-->
-      <input type="text" class="form-control e-valore" name="pesi[][valore]" required readonly>
+      <input type="number" class="form-control e-valore" name="pesi[][valore]" min="0" max="1" step=".1" required readonly>
     </div>
   </div>';
 }

@@ -1,4 +1,5 @@
 function isValid(form){
+  /*control over sum of weights, that must be 1*/
   valid = form.checkValidity();
   form.classList.add("was-validated");
   return valid;
@@ -10,20 +11,17 @@ $(document).ready(function(){
   me la gioco con le disabilitazioni / ailitazioni dei bottoni.
   è come l'esame di tecweb, un giochino del genere*/
   //all'inizio bottone conferma disabilitato , inputs disabilitati
-  //(potrei farlo scomparire il botoneconferma addirittura)
+  //(potrei farlo scomparire il bottone conferma addirittura)
 
-  //al click su modifica abilito bottone conferma e inputs (per a href richesta classe disable + prevent defaukt)
-  //per bottoni si aggiunge attributo disabled
-  /*$("#previous").addClass('disabled');
-  $('#inputId').prop('readonly', true);*/
-
+  //al click su modifica abilito bottone conferma e inputs
   $("#enable-edit-probability-weights-button").click(function() {
     $('input.e-valore').prop('readonly', false);
     $('#confirm-edit-probability-weights-button').prop('disabled', false);
     $(this).prop('disabled', true);
   });
 
-  //al click su conferma invio al server e chiudo modale.
+  //al click su conferma invio al server e chiudo modale, reimpostando i bottoni e
+  //gli input allo stato iniziale.
   $("#confirm-edit-probability-weights-button").click(function() {
     form=$("#edit-probability-weights-form").get(0);
     if (isValid(form)){
@@ -32,9 +30,11 @@ $(document).ready(function(){
       $.post(url, data)
         .done(function(){
             window.alert("data correctly updated.");  //for debugging, to replace with a auto closing box
-            $('input.e-valore').prop('readonly', true);
+
+            $('input.e-valore').prop('readonly', true); //reset buttons and inputs to initial state (ready for next use)
             $('#confirm-edit-probability-weights-button').prop('disabled', true);
             $("#confirm-edit-probability-weights-button").addClass('disabled');
+
             $(".modal").modal("hide");  //chiudere i modali (non serve perché faccio redirect)
         })
         .fail(function(xhr, ajaxOptions, thrownError){  //error of transmission
