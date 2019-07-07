@@ -209,13 +209,9 @@ $eventsTableSchema =
 
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mb-4">
-          <!--<div class="col-md-8">-->
             <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active font-weight-bolder lead" id="present-signs-tab" data-toggle="tab" href="#present-signs" role="tab" aria-controls="present-signs-tab" aria-selected="true">Resoconto segni riscontrati</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link font-weight-bolder lead" id="absent-signs-tab" data-toggle="tab" href="#absent-signs" role="tab" aria-controls="absent-signs" aria-selected="true">Resoconto segni assenti</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link font-weight-bolder lead" id="measurements-tab" data-toggle="tab" href="#measurements" role="tab" aria-controls="measurements" aria-selected="false">Misurazioni effettuate</a>
@@ -263,6 +259,9 @@ $eventsTableSchema =
 
   <!--Modal for adding measurement-->
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addMeasurementModal.php");?>
+
+  <!--Modal for adding event-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addEventModal.php");?>
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 </body>

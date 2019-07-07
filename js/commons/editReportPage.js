@@ -4,6 +4,19 @@ function isValid(form){ /*this function isn't actually required, browser validat
   return valid;
 }
 
+/*css properties to apply to custom button the same color of pagination buttons (copied from developer tool)*/
+function applyDataTableDefaultButtonStyle(button){
+  button.css("color", "#333 !important")
+      .css("border", "1px solid #979797")
+      .css("background-color", "white")
+      .css("background", "-webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #dcdcdc))")
+      .css("background", "-webkit-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
+      .css("background", "-moz-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
+      .css("background", "-ms-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
+      .css("background", "-o-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
+      .css("background", "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)");
+}
+
 $(document).ready(function(){
   $('#table').basictable();
 
@@ -66,19 +79,38 @@ $(document).ready(function(){
           ]
     });
 
-  /*css properties to apply to custom button the same color of pagination buttons (copied from developer tool)*/
-  $(".addMeasurement").css("color", "#333 !important")
-      .css("border", "1px solid #979797")
-      .css("background-color", "white")
-      .css("background", "-webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #dcdcdc))")
-      .css("background", "-webkit-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
-      .css("background", "-moz-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
-      .css("background", "-ms-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
-      .css("background", "-o-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
-      .css("background", "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)");
+    /*apply same css as pagination button for seamless ux*/
+    applyDataTableDefaultButtonStyle($(".addMeasurement"));
 
-  /*$(".modificaElencoSegni").attr("data-toggle", "modal")
-                            .attr("data-target", "#edit-probability-weights-modal");*/
+    table2 = $('#events-table').DataTable({
+        "responsive" : true,
+        "ajax": { //this is for sending request to server
+               "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON IL FILE CHE INVIA I DATI*/
+               "data": {request: "clients", type : "select"},
+               "type": 'POST',
+               "dataSrc": ""
+             },
+         "columns": [
+          {  "data": "IDUtente" }, //schema della tabella ( devo aggiungere action dove serve)
+          {  "data" : "nome"},
+          {  "data": "IDUtente" }, //schema della tabella ( devo aggiungere action dove serve)
+          {  "data" : "nome"},
+          {  "data": "IDUtente" }
+        ],
+        "language": {
+            "infoEmpty": "Nessuna evento registrato per questa scheda.",  /*empty table message*/
+        },
+        "dom": 'Bfrtip',  /*show button for inserting new record, Bfrtip is nonintuitive string required for button*/
+        "buttons": [
+                {
+                    text: 'Aggiungi nuovo evento',
+                    className: "addEvent",  /*datatables buttons can't have an id, so I use a class to apply custom style*/
+                    action: function ( e, dt, node, config ) {  /*handler attached to button*/
+                        $('#add-event-modal').modal('show');
+                    }
+                }
+            ]
+      });
 
-
+      applyDataTableDefaultButtonStyle($(".addEvent"));
 });
