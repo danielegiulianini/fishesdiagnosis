@@ -149,7 +149,7 @@ $absentSignsTableSchema =
 </table>';
 
 $measurementsTableSchema =
-'<table id="absents-signs-table" class="display" style="width:100%">
+'<table id="measurements-table" class="display" style="width:100%">
    <thead>
      <tr>
       <th>Nome caratteristica</th>
@@ -334,10 +334,6 @@ $eventsTableSchema =
 
   <!--Modal for updating existing report general info-->
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/editReportGeneralInfoModal.php");?>
-
-
-  <!--Modal for editing probability weights TO DELETE-->
-  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/editProbabilityWeightsModal.php");?>
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>

@@ -39,7 +39,7 @@ $(document).ready(function(){
       "dom": 'Bfrtip',  /*show button for inserting new record, Bfrtip is nonintuitive string require for button*/
       "buttons": [
               {
-                  text: 'Aggiungi',
+                  text: 'Aggiungi nuova misurazione',
                   className: "addMeasurement",  /*datatables buttons can't have an id, so I use a class to apply custom style*/
                   action: function ( e, dt, node, config ) {  /*handler attached to button*/
                       /*$('#edit-probability-weights-modal').modal('show');*/ alert( 'Button activated' );
