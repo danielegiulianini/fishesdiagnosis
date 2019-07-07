@@ -4,15 +4,13 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 session_start();
 
-/*in post c'è la form serializzata*/
-
 $output = array();
 $stmt = null;
 
 $request=$_POST["request"];
 $subject=$_POST["subject"];
 
-var_dump($_POST);
+var_dump($_POST); //in post c'è la form serializzata
 
 switch($subject){
   case "generalInfo":
@@ -129,7 +127,7 @@ switch($subject){
           /*validation*/
 
 
-          /*ddl*/
+          /*dml*/
           /*1.cleaning segnipresenti e segniassenti tables*/
           $stmt=$conn->prepare("DELETE from segnipresenti where idScheda=?");
           $stmt->bind_param("i", $idScheda);
@@ -162,7 +160,19 @@ switch($subject){
   case "measurements":
     switch ($request){
       case "add":
-        $sql = "";
+        if (isset($_POST["caratteristicaAcqua"]) and isset($_POST["valore"]) and isset($_POST["idScheda"])) {
+
+          $idScheda = $_POST["idScheda"];
+          $caratteristicaAcqua = $_POST["caratteristicaAcqua"];
+          $valore = $_POST["valore"];
+
+          /*validation*/
+
+
+          /*dml*/
+          $stmt=$conn->prepare("INSERT into misurazioni(idScheda, caratteristicaAcqua, valore) values(?, ?, ?)");
+          $stmt->bind_param("isi", $idScheda, $caratteristicaAcqua, $valore);
+        }
         break;
       case "edit":
         break;
@@ -190,7 +200,7 @@ switch($subject){
     break;
 }
 
-if (!is_null ($stmt)){ //if fields required are not set this prevents from executing
+if (!is_null ($stmt)){ //if fields required are not set, this prevents from executing
   $stmt->execute();
 }
 
