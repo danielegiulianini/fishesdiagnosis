@@ -8,7 +8,11 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 /*basic table library, unlike datatable, needs that the data are already inside
 the table tag, so I have to fetch them in php like here below. Datatables fetch
 data by js instead. If i'll want to change technology, I 'll just replace this code.*/
-$precompiledSignsListTable ='<div class="card d-md-block p-2">
+$precompiledSignsListTable='<form id="signs-list-form">';
+$precompiledSignsListTable.='<input type="hidden" name="request" value="edit"/>
+                            <input type="hidden" name="subject" value="signs"/>
+                            <input type="hidden" name="idScheda" value="'.$idScheda.'"/>';
+$precompiledSignsListTable.='<div class="card d-md-block p-2">
                               <table id="table" class="table table-sm table-striped header-fixed p-2">
                                 <thead>
                                   <tr>
@@ -18,11 +22,6 @@ $precompiledSignsListTable ='<div class="card d-md-block p-2">
                                   </tr>
                                 </thead>
                                 <tbody>';
-$precompiledSignsListTable.='</form>';
-$precompiledSignsListTable.='<input type="hidden" name="request" value="edit"/>
-                            <input type="hidden" name="subject" value="signs"/>
-                            <input type="hidden" name="idScheda" value='.$idScheda.'/>';
-
 $stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno)");/*to add: where idScheda =". $idScheda, mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
 $stmt->execute();
 $result=$stmt->get_result();
@@ -55,7 +54,7 @@ of input fields, so that the server can recognize every single item.*/
     }
   }
 
-/*I must include a input type hidden field for the server to know which record to update in the db*/
+/*I must include a input type hidden field(segno) for the server to know which record to update in the db*/
   $precompiledSignsListTable.='<tr>
                                 <td headers="sign"><input type="hidden" value='.$row["segno_idSegno"].'\>'.$row["nome"].'</td>
                                 <td headers="yes-no-dontknow">
@@ -75,10 +74,11 @@ of input fields, so that the server can recognize every single item.*/
                                 '.$percentageField.'
                               </tr>';
 }
-$precompiledSignsListTable.='</form>';
+
 $precompiledSignsListTable.='</tbody>
                              </table>
                              </div><!--card (single line)-->';
+$precompiledSignsListTable.='</form>';
 
 /*table schemas needed by datatables. This table will be fetched by js.*/
 $measurementsTableSchema =
@@ -137,20 +137,20 @@ $eventsTableSchema =
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
   <!--for dataTables buttons-->
-<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/mixins.scss"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/common.scss"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.min.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.css"></link>-->
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.css"></link>
-<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.min.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.min.css"></link>
-  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.min.css"></link>-->
+<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/mixins.scss"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/common.scss"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.css"  rel="stylesheet">-->
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.css" rel="stylesheet">
+<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.min.css"  rel="stylesheet">-->
 
   <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
@@ -199,7 +199,7 @@ $eventsTableSchema =
 <body>
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/headers.php"); ?><!-- shared navbar-->
 
-  <main role="main" class="mt-5">
+  <main class="mt-5">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
@@ -255,7 +255,6 @@ $eventsTableSchema =
               </div>
             </div><!--tab content-->
           </div><!--2° half-->
-        </div>
       </div> <!--1° row-->
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
@@ -267,4 +266,4 @@ $eventsTableSchema =
 
   </main>
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
-<body>
+</body>

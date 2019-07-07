@@ -1,3 +1,9 @@
+function isValid(form){ /*this function isn't actually required, browser validation is enough*/
+  valid = form.checkValidity();
+  form.classList.add("was-validated");
+  return valid;
+}
+
 $(document).ready(function(){
   $('#table').basictable();
 
@@ -14,8 +20,20 @@ $(document).ready(function(){
   $("#confirm-editing-list").click(function(){
     /*ajax call to server to insert into segnopresente or segno assente according to radio value
     siccome è un unica form, basta fare serialize.*/
-  });
 
+      form=$("#signs-list-form").get(0);
+      if (isValid(form)){
+        var data = $(form).serialize();
+        var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/reportsManager.php`;
+        $.post(url, data)
+          .done(function(){
+              /*window.location = `${location.origin}/fishesdiagnosis/php/commons/pages/viewReportPage.php`;*/
+          })
+          .fail(function(xhr, ajaxOptions, thrownError){  //error of transmission
+              window.alert("transimission error:"+xhr.status + "," + ajaxOptions +"," + thrownError);//for debugging
+          });
+      }
+  });
 
 
   //interrogo una volta il server con ajax per reperire gli attributi della tabella (questa cosa la potevo fare anche con php nella pagina)

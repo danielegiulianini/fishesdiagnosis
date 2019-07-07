@@ -118,7 +118,7 @@ switch($subject){
 
         $iScheda = $_POST["idScheda"];
 
-        var_dump($)
+        var_dump($_POST);
         /*validation*/
 
         /*ddl*/
@@ -126,9 +126,9 @@ switch($subject){
 
 
         /*2. inserting into segnipresenti e segniassenti tables according to values of radios*/
-        $stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
+        /*$stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
           emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia=?,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
-
+*/
         break;
     }
     break;

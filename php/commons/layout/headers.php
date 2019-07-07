@@ -1,5 +1,6 @@
 <!--<script src="/progettoweb/js/supplier/headers.js"></script>
-<script src="/progettoweb/js/supplier/notificationsHandling.js"></script> <!-- file che recupera le notifiche dal server-->
+<script src="/progettoweb/js/supplier/notificationsHandling.js"></script> -->
+<!-- file che recupera le notifiche dal server-->
 
 <link href="http://localhost:8081/fishesdiagnosis/css/headerStyle.css" rel="stylesheet"/>
 
