@@ -109,48 +109,46 @@ $measurementsTableSchema =
   <script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
-<!--for dataTables buttons-->
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/mixins.scss"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/common.scss"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.min.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.min.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.min.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.min.css"></script>
+  <!--for dataTables buttons-->
+<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/mixins.scss"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/common.scss"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.min.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.css"></link>-->
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.css"></link>
+<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.min.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.min.css"></link>
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.min.css"></link>-->
 
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.jqueryui.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.semanticui.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.jqueryui.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.foundation.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.foundation.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.semanticui.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.dataTables.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.jqueryui.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.semanticui.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.jqueryui.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.foundation.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.foundation.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.semanticui.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.js"></script>
 
-<script src="https://cdn.datatables.net/buttons/1.5.6/swf/flashExport.swf"></script>
-
-
+  <!--<script src="https://cdn.datatables.net/buttons/1.5.6/swf/flashExport.swf"></script>-->
 
 <!--for responsive basic tables-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/basictable.min.css" integrity="sha256-mbGb4F0wO234UQjFyqRSrFFMI8Nk2HgoIUv2Zly7z8I=" crossorigin="anonymous" />
