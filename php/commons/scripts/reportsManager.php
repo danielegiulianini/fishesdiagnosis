@@ -182,24 +182,24 @@ switch($subject){
   case "event":
     switch ($request){
       case "add":
-      if (isset($_POST["dataEvento"]) and isset($_POST["dataComparsaSegni"]) /*and isset($_POST["tipologia"])*/ and isset($_POST["idScheda"])) {/*mandatory fields (tipologia temp removed as db is empty and it is a foreign key)*/
+        if (isset($_POST["dataEvento"]) and isset($_POST["dataComparsaSegni"]) /*and isset($_POST["tipologia"])*/ and isset($_POST["idScheda"])) {/*mandatory fields (tipologia temp removed as db is empty and it is a foreign key)*/
 
-        $idScheda = $_POST["idScheda"];//mandatory fields
-        $dataEvento = $_POST["dataEvento"];
-        $dataComparsaSegni = $_POST["dataComparsaSegni"];
-        //$tipologia = $_POST["tipologia"]; temp moved in optional (db is empty)
+          $idScheda = $_POST["idScheda"];//mandatory fields
+          $dataEvento = $_POST["dataEvento"];
+          $dataComparsaSegni = $_POST["dataComparsaSegni"];
+          //$tipologia = $_POST["tipologia"]; temp moved in optional (db is empty)
 
-        //optional fields
-        $tipologia = !isset($_POST["tipologia"])?"":null;
-        $provenienza = !isset($_POST["provenienza"])? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-        $note =!isset($_POST["note"])? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+          //optional fields
+          $tipologia = !isset($_POST["tipologia"])?null:$_POST["tipologia"];
+          $provenienza = !isset($_POST["provenienza"])? null :$_POST["provenienza"]; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+          $note =!isset($_POST["note"])?null : $_POST["note"];/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
 
-        /*validation*/
+          /*validation*/
 
-        /*dml*/
-        $stmt=$conn->prepare("INSERT into eventi(dataEvento,dataComparsaSegniClinici, tipologia, idScheda, provenienza, note) values(?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssiis", $dataEvento, $dataComparsaSegni, $tipologia,$idScheda, $provenienza, $note);/*dates want string format*/
-      }
+          /*dml*/
+          $stmt=$conn->prepare("INSERT into eventi(dataEvento,dataComparsaSegniClinici, tipologia, idScheda, provenienza, note) values(?, ?, ?, ?, ?, ?)");
+          $stmt->bind_param("sssiis", $dataEvento, $dataComparsaSegni, $tipologia,$idScheda, $provenienza, $note);/*dates want string format*/
+        }
         break;
       case "edit":
         break;
@@ -209,7 +209,21 @@ switch($subject){
   case "conclusion":
     switch ($request){
       case "add":
-        $sql = "";
+        if (isset($_POST["idScheda"]) and isset($_POST["risposta"])) {/*mandatory fields*/
+
+          //mandatory fields
+          $idScheda = $_POST["idScheda"];
+          $risposta = $_POST["risposta"];
+
+          //optional fields
+          $evoluzione = !isset($_POST["evoluzione"])?null:$_POST["evoluzione"];
+
+          /*validation*/
+
+          /*dml*/
+          $stmt=$conn->prepare("INSERT into conclusioni(idScheda, risposta, evoluzione) values(?, ?, ?)");
+          $stmt->bind_param("iss", $idScheda, $risposta, $evoluzione);
+        }
         break;
       case "edit":
         break;
