@@ -122,7 +122,7 @@ switch($subject){
           $arrayIdSegni = $_POST["idSegno"];
           $arrayPresences = $_POST["presences"];
 
-          $arrayPercentuali = !isset($_POST["percentages"]) ? null : $_POST["percentages"];
+          $arrayPercentuali = !isset($_POST["percentages"]) ? null : $_POST["percentages"];/*in 'percentuale' della tabella presentazione si può inserire null, ma non empty string*/
 
           /*validation*/
 
@@ -157,7 +157,7 @@ switch($subject){
     }
     break;
 
-  case "measurements":
+  case "measurement":
     switch ($request){
       case "add":
         if (isset($_POST["caratteristicaAcqua"]) and isset($_POST["valore"]) and isset($_POST["idScheda"])) {
@@ -179,10 +179,27 @@ switch($subject){
     }
     break;
 
-  case "events":
+  case "event":
     switch ($request){
       case "add":
-        $sql = "";
+      if (isset($_POST["dataEvento"]) and isset($_POST["dataComparsaSegni"]) /*and isset($_POST["tipologia"])*/ and isset($_POST["idScheda"])) {/*mandatory fields (tipologia temp removed as db is empty and it is a foreign key)*/
+
+        $idScheda = $_POST["idScheda"];//mandatory fields
+        $dataEvento = $_POST["dataEvento"];
+        $dataComparsaSegni = $_POST["dataComparsaSegni"];
+        $tipologia = $_POST["tipologia"];
+
+        //optional fields
+        $provenienza = $_POST["provenienza"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+        $note =$_POST["note"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+
+        /*validation*/
+
+echo "ciaoooooo";
+        /*dml*/
+        $stmt=$conn->prepare("INSERT into eventi(dataEvento,dataComparsaSegniClinici, tipologia, idScheda, provenienza, note) values(?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssiis", $dataEvento, $dataComparsaSegni, $tipologia,$idScheda, $provenienza, $note);/*dates want string format*/
+      }
         break;
       case "edit":
         break;

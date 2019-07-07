@@ -1,6 +1,10 @@
 <!--dependencies of this file:
-a variable $conn containing a mysqli connection
+- a variable $conn containing a mysqli connection (I could use include_once() to delete this depen)
+- $idScheda variable set by calling page
 -->
+
+<script src="/fishesdiagnosis/js/commons/addMeasurementModal.js"></script>
+
 <?php
 $caratteristicheAcqua_assoc = array();
 
@@ -29,6 +33,8 @@ foreach($caratteristicheAcqua_assoc as $item){
         <form id="add-measurement-form"><!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
           <input type="hidden" name="request" value="add"/>
           <input type="hidden" name="subject" value="measurement"/>
+          <input type="hidden" name="idScheda" value="<?php echo $idScheda;?>">/>
+
 
           <fieldset class="form-group">
             <div class="form-row">

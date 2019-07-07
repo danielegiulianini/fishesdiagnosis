@@ -1,6 +1,12 @@
 <!--dependencies of this file:
-a variable $conn containing a mysqli connection
+- a variable $conn containing a mysqli connection (I could use include_once() to delete this depen)
+- $idScheda variable set by calling page
 -->
+
+
+
+<script src="/fishesdiagnosis/js/commons/addEventModal.js"></script>
+
 <?php
 
 $idLuoghi_assoc = array();
@@ -45,6 +51,8 @@ foreach($nomiTipiEventi_assoc as $item){
         <form id="add-event-form"> <!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
           <input type="hidden" name="request" value="add"/>
           <input type="hidden" name="subject" value="event"/>
+          <input type="hidden" name="idScheda" value="<?php echo $idScheda;?>">/>
+
 
           <fieldset class="form-group">
             <div class="form-row">
@@ -64,7 +72,7 @@ foreach($nomiTipiEventi_assoc as $item){
               <div class="col-8">
                 <label for="tipologia">tipologia</label>
 
-                <select class="form-control" name="tipologia" id="tipologia" required>
+                <select class="form-control" name="tipologia" id="tipologia"><!--momentaneally remove required cause db empty-->
                   <?php
                     for ($i=0; $i<count($nomiTipiEventi); $i++){
                         echo '<option>'.$nomiTipiEventi[$i].'</option>';
@@ -93,7 +101,7 @@ foreach($nomiTipiEventi_assoc as $item){
         </form>
       </div><!--modal body--->
       <div class="modal-footer"><!--attribute form is used to reference form, since button is out of it-->
-        <button  form="add-event-form" id="confirm-add-event-button" class="btn btn-secondary">Conferma</button>
+        <button id="confirm-add-event-button" class="btn btn-secondary">Conferma</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->

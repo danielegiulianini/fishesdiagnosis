@@ -1,3 +1,8 @@
+<!-- dependencies of this file:
+- $idScheda variable set by calling page-->
+
+<script src="/fishesdiagnosis/js/commons/addConclusionModal.js"></script>
+
 <div id="add-conclusion-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
@@ -11,6 +16,9 @@
         <form id="add-conclusion-form"><!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
           <input type="hidden" name="request" value="add"/>
           <input type="hidden" name="subject" value="conclusion"/>
+          <input type="hidden" name="idScheda" value="<?php echo $idScheda;?>">/>
+
+
 
           <fieldset class="form-group">
             <label for="risposta">risposta</label>
