@@ -52,7 +52,7 @@ $(document).ready(function(){
         {  "data" : "nome"}
       ],
       "language": {
-          "infoEmpty": "No records available yet.",  /*empty table message*/
+          "infoEmpty": "Nessuna misurazione effettuata per questa scheda.",  /*empty table message*/
       },
       "dom": 'Bfrtip',  /*show button for inserting new record, Bfrtip is nonintuitive string require for button*/
       "buttons": [
@@ -60,7 +60,7 @@ $(document).ready(function(){
                   text: 'Aggiungi nuova misurazione',
                   className: "addMeasurement",  /*datatables buttons can't have an id, so I use a class to apply custom style*/
                   action: function ( e, dt, node, config ) {  /*handler attached to button*/
-                      /*$('#edit-probability-weights-modal').modal('show');*/ alert( 'Button activated' );
+                      $('#add-measurement-modal').modal('show'); //alert( 'Button activated' );
                   }
               }
           ]
@@ -75,7 +75,7 @@ $(document).ready(function(){
       .css("background", "-moz-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
       .css("background", "-ms-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
       .css("background", "-o-linear-gradient(top, #fff 0%, #dcdcdc 100%)")
-      .css("background", "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)")
+      .css("background", "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)");
 
   /*$(".modificaElencoSegni").attr("data-toggle", "modal")
                             .attr("data-target", "#edit-probability-weights-modal");*/

@@ -233,11 +233,6 @@ $eventsTableSchema =
                 <?php echo $precompiledSignsListTable;?>
 
               </div><!--tab pane-->
-              <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">
-
-                <?php echo $absentSignsTableSchema;?>
-
-              </div>
               <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
 
                 <?php echo $measurementsTableSchema;?>
@@ -265,5 +260,9 @@ $eventsTableSchema =
     </div><!--container-fluid-->
 
   </main>
+
+  <!--Modal for adding measurement-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addMeasurementModal.php");?>
+
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 </body>
