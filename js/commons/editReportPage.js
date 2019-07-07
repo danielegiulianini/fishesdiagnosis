@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('input:radio').change(function() {
     let percentageField = $(this).closest("tr").find(".percentage");
      if($(this).val()=="yes"){
-       $(percentageField).prop('disabled', false);
+        $(percentageField).prop('disabled', false);
      } else{
         $(percentageField).val('');
         $(percentageField).prop('disabled', true);

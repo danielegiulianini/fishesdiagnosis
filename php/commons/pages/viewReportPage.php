@@ -117,7 +117,7 @@ $reportGeneralInfoTable='<table id="reports-info-1" class="table table-hover tab
 /*table schemas for datatable (datatables - jquery library - needs table schemas
 already inside DOM before fetching data to it through js )*/
 $presentSignsTableSchema =
-'<table id="presents-signs-table" class="display" style="width:100%">
+'<table id="present-signs-table" class="display" style="width:100%">
    <thead>
      <tr>
       <th>Segno presente</th>
@@ -133,7 +133,7 @@ $presentSignsTableSchema =
 </table>';
 
 $absentSignsTableSchema =
-'<table id="absents-signs-table" class="display" style="width:100%">
+'<table id="absent-signs-table" class="display" style="width:100%">
    <thead>
      <tr>
       <th>Segno presente</th>
@@ -325,7 +325,7 @@ $eventsTableSchema =
     <div class="row">
       <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
         <button class="btn btn-secondary my-1 my-md-0">Visualizza probabilità</button>
-        <a class="btn btn-secondary my-1 my-md-0" href="./editReportPage.php">Modifica informazioni</a>
+        <a class="btn btn-secondary my-1 my-md-0" href="./editReportPage.php?idScheda=<?php echo $idScheda;?>">Modifica informazioni</a>
       </div>
     </div> <!--2° row-->
   </div><!--container-fluid-->

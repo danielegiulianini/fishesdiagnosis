@@ -1,6 +1,6 @@
 $(document).ready(function() {
   //interrogo una volta il server con ajax per reperire gli attributi della tabella (questa cosa la potevo fare anche con php nella pagina)
-  table = $('#presents-signs-table').DataTable({
+  table1 = $('#present-signs-table').DataTable({
     "responsive" : true,
     //"processing": true,
     //"serverSide": true,
@@ -34,8 +34,8 @@ $(document).ready(function() {
 
     });
 
-    table = $('#presents-signs-table').DataTable({
-      "responsive" : true
+    table2 = $('#absent-signs-table').DataTable({
+      "responsive" : true,
       "ajax": { //this is for sending request to server
              "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON URL CHE INVIA I DATI*/
              "data": {request: "clients", type : "select"},
@@ -48,6 +48,43 @@ $(document).ready(function() {
       ],
       "language": {
           "infoEmpty": "No records available yet.",  /*empty table message*/
+      }
+    });
+
+    table = $('#measurements-table').DataTable({
+      "responsive" : true,
+      "ajax": { //this is for sending request to server
+             "url": "/progettoweb/php/administrator/administrator.php", //DA SOSTITUIRE CON URL CHE INVIA I DATI
+             "data": {request: "clients", type : "select"},
+             "type": 'POST',
+             "dataSrc": ""
+           },
+       "columns": [
+        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "nome"}
+      ],
+      "language": {
+          "infoEmpty": "No records available yet.",  //empty table message
+      }
+    });
+
+    table = $('#events-table').DataTable({
+      "responsive" : true,
+      "ajax": { //this is for sending request to server
+             "url": "/progettoweb/php/administrator/administrator.php", //DA SOSTITUIRE CON URL CHE INVIA I DATI
+             "data": {request: "clients", type : "select"},
+             "type": 'POST',
+             "dataSrc": ""
+           },
+       "columns": [
+        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "nome"},
+        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "nome"},
+        {  "data": "IDUtente" }
+      ],
+      "language": {
+          "infoEmpty": "No records available yet.",  //empty table message
       }
     });
 });

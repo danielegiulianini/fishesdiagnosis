@@ -107,14 +107,28 @@ switch($subject){
         }
     }
     break;
-  case "presentSigns":
+  case "signs":
     switch ($request){
       case "add":
-        /*validation*/
-        $stmt= $conn->prepare("");
-        $stmt->bind_param("", $a1, $a2);
+        /*this is not used*/
         break;
       case "edit":
+        /*Avrei potuto fare il demux in js, lasciando lì tutta la complessità per la scelta di inserire in una
+        o nell'altra tabella a seconda del valore dei radios. Così facendo avrei avuto la parte server banale.*/
+
+        $iScheda = $_POST["idScheda"];
+
+        var_dump($)
+        /*validation*/
+
+        /*ddl*/
+        /*1.cleaning segnipresenti e segniassenti tables*/
+
+
+        /*2. inserting into segnipresenti e segniassenti tables according to values of radios*/
+        $stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
+          emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia=?,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
+
         break;
     }
     break;

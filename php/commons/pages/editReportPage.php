@@ -1,6 +1,7 @@
 <?php
 session_start();
-$_SESSION["reportId"] = 1;
+
+$idScheda = $_GET["idScheda"];
 
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
@@ -18,8 +19,11 @@ $precompiledSignsListTable ='<div class="card d-md-block p-2">
                                 </thead>
                                 <tbody>';
 $precompiledSignsListTable.='</form>';
+$precompiledSignsListTable.='<input type="hidden" name="request" value="edit"/>
+                            <input type="hidden" name="subject" value="signs"/>
+                            <input type="hidden" name="idScheda" value='.$idScheda.'/>';
 
-$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno)");/*to add: where idScheda = $_SESSION["reportId"], mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
+$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno)");/*to add: where idScheda =". $idScheda, mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
 $stmt->execute();
 $result=$stmt->get_result();
 for($i=0; $row=$result->fetch_assoc(); $i++){
@@ -51,7 +55,7 @@ of input fields, so that the server can recognize every single item.*/
     }
   }
 
-/*I must include a input type hiden field for the server to know which record to ipdate in the db*/
+/*I must include a input type hidden field for the server to know which record to update in the db*/
   $precompiledSignsListTable.='<tr>
                                 <td headers="sign"><input type="hidden" value='.$row["segno_idSegno"].'\>'.$row["nome"].'</td>
                                 <td headers="yes-no-dontknow">
@@ -76,7 +80,7 @@ $precompiledSignsListTable.='</tbody>
                              </table>
                              </div><!--card (single line)-->';
 
-
+/*table schemas needed by datatables. This table will be fetched by js.*/
 $measurementsTableSchema =
 '<table id="measurements-table" class="display" style="width:100%">
   <thead>
@@ -92,6 +96,29 @@ $measurementsTableSchema =
    </tr>
  </tfoot>
 </table>';
+
+$eventsTableSchema =
+'<table id="events-table" class="display" style="width:100%">
+   <thead>
+     <tr>
+      <th>Tipo evento</th>
+      <th>Data evento</th>
+      <th>Data comparsa segni</th>
+      <th>Stato</th>
+      <th>Sigla provincia</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+     <th>Tipo evento</th>
+     <th>Data evento</th>
+     <th>Data comparsa segni</th>
+     <th>Stato</th>
+     <th>Sigla provincia</th>
+   </tr>
+  </tfoot>
+</table>';
+
 ?>
 
 <!DOCTYPE html>
@@ -176,7 +203,7 @@ $measurementsTableSchema =
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <h1>Scheda n. <?php echo $_SESSION["reportId"]?></h1> <!--questa sarà settata dalla sessione-->
+          <h1>Scheda n. <?php echo $idScheda;?></h1> <!--questa sarà settata dalla sessione-->
         </div>
       </div> <!--1° row-->
 
