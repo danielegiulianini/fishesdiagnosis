@@ -22,7 +22,7 @@ $precompiledSignsListTable.='<div class="card d-md-block p-2">
                                   </tr>
                                 </thead>
                                 <tbody>';
-$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno)");/*to add: where idScheda =". $idScheda, mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
+$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno) order by segni.idSegno");/*to add: where idScheda =". $idScheda, mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
 $stmt->execute();
 $result=$stmt->get_result();
 for($i=0; $row=$result->fetch_assoc(); $i++){
@@ -39,7 +39,7 @@ of input fields, so that the server can recognize every single item.*/
     $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes" checked>';
     $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no">';
     $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="dontKnow">';
-    $percentageField.='<td headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']"></td>';
+    $percentageField.='<td headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']" value="'.$row["percentuale"].'"></td>';
   } else {
     if ($row["segniassenti_idSegno"]){  /*se segniassenti_idSegno è != null allora la tupla era in segniassenti */
       $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes">';

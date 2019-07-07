@@ -124,7 +124,7 @@ switch($subject){
           $arrayIdSegni = $_POST["idSegno"];
           $arrayPresences = $_POST["presences"];
 
-          $arrayPercentuali = isset($_POST["percentages"]) ? null : $_POST["percentages"];
+          $arrayPercentuali = !isset($_POST["percentages"]) ? null : $_POST["percentages"];
 
           /*validation*/
 
