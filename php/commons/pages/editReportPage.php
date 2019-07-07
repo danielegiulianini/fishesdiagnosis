@@ -119,6 +119,22 @@ $eventsTableSchema =
   </tfoot>
 </table>';
 
+$conclusionsTableSchema =
+'<table id="conclusions-table" class="display" style="width:100%">
+   <thead>
+     <tr>
+      <th>Risposta</th>
+      <th>Evoluzione</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+     <th>Risposta</th>
+     <th>Evoluzione</th>
+   </tr>
+  </tfoot>
+</table>';
+
 ?>
 
 <!DOCTYPE html>
@@ -262,6 +278,8 @@ $eventsTableSchema =
 
   <!--Modal for adding event-->
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addEventModal.php");?>
+
+
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 </body>
