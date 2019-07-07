@@ -11,7 +11,6 @@ function isValid(form){
 $(document).ready(function(){
 
   $("#confirm-add-event-button").click(function() {
-    alert("ciaoo");
     form=$("#add-event-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();

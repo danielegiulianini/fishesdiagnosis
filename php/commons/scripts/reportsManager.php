@@ -187,15 +187,15 @@ switch($subject){
         $idScheda = $_POST["idScheda"];//mandatory fields
         $dataEvento = $_POST["dataEvento"];
         $dataComparsaSegni = $_POST["dataComparsaSegni"];
-        $tipologia = $_POST["tipologia"];
+        //$tipologia = $_POST["tipologia"]; temp moved in optional (db is empty)
 
         //optional fields
-        $provenienza = $_POST["provenienza"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-        $note =$_POST["note"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+        $tipologia = !isset($_POST["tipologia"])?"":null;
+        $provenienza = !isset($_POST["provenienza"])? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+        $note =!isset($_POST["note"])? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
 
         /*validation*/
 
-echo "ciaoooooo";
         /*dml*/
         $stmt=$conn->prepare("INSERT into eventi(dataEvento,dataComparsaSegniClinici, tipologia, idScheda, provenienza, note) values(?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssiis", $dataEvento, $dataComparsaSegni, $tipologia,$idScheda, $provenienza, $note);/*dates want string format*/

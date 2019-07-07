@@ -51,7 +51,7 @@ foreach($nomiTipiEventi_assoc as $item){
         <form id="add-event-form"> <!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
           <input type="hidden" name="request" value="add"/>
           <input type="hidden" name="subject" value="event"/>
-          <input type="hidden" name="idScheda" value="<?php echo $idScheda;?>">/>
+          <input type="hidden" name="idScheda" value="<?php echo $idScheda;?>"/>
 
 
           <fieldset class="form-group">

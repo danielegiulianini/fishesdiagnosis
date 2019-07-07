@@ -33,8 +33,7 @@ foreach($caratteristicheAcqua_assoc as $item){
         <form id="add-measurement-form"><!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
           <input type="hidden" name="request" value="add"/>
           <input type="hidden" name="subject" value="measurement"/>
-          <input type="hidden" name="idScheda" value="<?php echo $idScheda;?>">/>
-
+          <input type="hidden" name="idScheda" value="<?php echo $idScheda;?>"/>
 
           <fieldset class="form-group">
             <div class="form-row">
