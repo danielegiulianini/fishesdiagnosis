@@ -123,12 +123,14 @@ $conclusionsTableSchema =
 '<table id="conclusions-table" class="display" style="width:100%">
    <thead>
      <tr>
+      <th>id conclusione</th>
       <th>Risposta</th>
       <th>Evoluzione</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
+     <th>id conclusione</th>
      <th>Risposta</th>
      <th>Evoluzione</th>
    </tr>
@@ -257,7 +259,7 @@ $conclusionsTableSchema =
               </div>
               <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
 
-                ...
+                <?php echo $conclusionsTableSchema;?>
 
               </div>
             </div><!--tab content-->
@@ -278,6 +280,9 @@ $conclusionsTableSchema =
 
   <!--Modal for adding event-->
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addEventModal.php");?>
+
+  <!--Modal for adding conclusion-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addConclusionModal.php");?>
 
 
 

@@ -113,4 +113,34 @@ $(document).ready(function(){
       });
 
       applyDataTableDefaultButtonStyle($(".addEvent"));
+
+      table3 = $('#conclusions-table').DataTable({
+          "responsive" : true,
+          "ajax": { //this is for sending request to server
+                 "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON IL FILE CHE INVIA I DATI*/
+                 "data": {request: "clients", type : "select"},
+                 "type": 'POST',
+                 "dataSrc": ""
+               },
+           "columns": [
+            {  "data": "IDUtente" }, //schema della tabella ( devo aggiungere action dove serve)
+            {  "data" : "nome"},
+            {  "data" : "nome"}
+          ],
+          "language": {
+              "infoEmpty": "Nessuna conclusione registrata per questa scheda.",  /*empty table message*/
+          },
+          "dom": 'Bfrtip',  /*show button for inserting new record, Bfrtip is nonintuitive string required for button*/
+          "buttons": [
+                  {
+                      text: 'Aggiungi nuova conclusione',
+                      className: "addConclusion",  /*datatables buttons can't have an id, so I use a class to apply custom style*/
+                      action: function ( e, dt, node, config ) {  /*handler attached to button*/
+                          $('#add-conclusion-modal').modal('show');
+                      }
+                  }
+              ]
+        });
+
+        applyDataTableDefaultButtonStyle($(".addConclusion"));
 });
