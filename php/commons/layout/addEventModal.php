@@ -42,7 +42,10 @@ foreach($nomiTipiEventi_assoc as $item){
           </button>
         </div>
       <div class="modal-body">
-        <form id="add-event-form" method="get" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
+        <form id="add-event-form"> <!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
+          <input type="hidden" name="request" value="add"/>
+          <input type="hidden" name="subject" value="event"/>
+
           <fieldset class="form-group">
             <div class="form-row">
               <div class="col-6">
@@ -90,7 +93,7 @@ foreach($nomiTipiEventi_assoc as $item){
         </form>
       </div><!--modal body--->
       <div class="modal-footer"><!--attribute form is used to reference form, since button is out of it-->
-        <button type="submit"  form="add-event-form" id="confirm-add-event-button" class="btn btn-secondary">Conferma</button>
+        <button  form="add-event-form" id="confirm-add-event-button" class="btn btn-secondary">Conferma</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->

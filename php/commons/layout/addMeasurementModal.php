@@ -26,7 +26,10 @@ foreach($caratteristicheAcqua_assoc as $item){
           </button>
         </div>
       <div class="modal-body">
-        <form id="add-measurement-form" method="get" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
+        <form id="add-measurement-form"><!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
+          <input type="hidden" name="request" value="add"/>
+          <input type="hidden" name="subject" value="measurement"/>
+
           <fieldset class="form-group">
             <div class="form-row">
               <div class="col-8">
@@ -49,7 +52,7 @@ foreach($caratteristicheAcqua_assoc as $item){
         </form>
       </div><!--modal body--->
       <div class="modal-footer"><!--attribute form is used to reference form, since button is out of it-->
-        <button type="submit"  form="add-measurement-form" id="confirm-add-measurement-button" class="btn btn-secondary">Conferma</button>
+        <button  form="add-measurement-form" id="confirm-add-measurement-button" class="btn btn-secondary">Conferma</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->

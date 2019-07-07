@@ -8,7 +8,10 @@
           </button>
         </div>
       <div class="modal-body">
-        <form id="add-conclusion-form" method="get" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php">
+        <form id="add-conclusion-form"><!--not specify method="post" action="/fishesdiagnosis/php/commons/pages/viewReportPage.php" since submitting is done through js-->
+          <input type="hidden" name="request" value="add"/>
+          <input type="hidden" name="subject" value="conclusion"/>
+
           <fieldset class="form-group">
             <label for="risposta">risposta</label>
             <textarea class="form-control" id="risposta"></textarea>
@@ -20,7 +23,7 @@
         </form>
       </div><!--modal body--->
       <div class="modal-footer"><!--attribute form is used to reference form, since button is out of it-->
-        <button type="submit"  form="add-conclusion-form" id="confirm-add-conclusion-button" class="btn btn-secondary">Conferma</button>
+        <button form="add-conclusion-form" id="confirm-add-conclusion-button" class="btn btn-secondary">Conferma</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
       </div>
     </div><!--modal-content-->
