@@ -56,7 +56,7 @@ of input fields, so that the server can recognize every single item.*/
 
 /*I must include a input type hidden field(segno) for the server to know which record to update in the db*/
   $precompiledSignsListTable.='<tr>
-                                <td headers="sign"><input type="hidden" value='.$row["segno_idSegno"].'\>'.$row["nome"].'</td>
+                                <td headers="sign"><input type="hidden" name="idSegno['.$i.']" value="'.$row["segno_idSegno"].'"\>'.$row["nome"].'</td>
                                 <td headers="yes-no-dontknow">
                                   <div class="form-check form-check-inline">
                                     '.$yesRadio.'

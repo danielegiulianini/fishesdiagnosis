@@ -107,6 +107,7 @@ switch($subject){
         }
     }
     break;
+
   case "signs":
     switch ($request){
       case "add":
@@ -116,31 +117,48 @@ switch($subject){
         /*Avrei potuto fare il demux in js, lasciando lì tutta la complessità per la scelta di inserire in una
         o nell'altra tabella a seconda del valore dei radios. Così facendo avrei avuto la parte server banale.*/
 
-        $iScheda = $_POST["idScheda"];
+        if (isset($_POST["idScheda"]) and isset($_POST["idSegno"]) and isset($_POST["presences"])) { /*mandatory fields*/
 
-        var_dump($_POST);
-        /*validation*/
+          $idScheda = $_POST["idScheda"];
 
-        /*ddl*/
-        /*1.cleaning segnipresenti e segniassenti tables*/
+          $arrayIdSegni = $_POST["idSegno"];
+          $arrayPresences = $_POST["presences"];
+
+          $arrayPercentuali = isset($_POST["percentages"]) ? null : $_POST["percentages"];
+
+          /*validation*/
 
 
-        /*2. inserting into segnipresenti e segniassenti tables according to values of radios*/
-        /*$stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
-          emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia=?,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
-*/
+          /*ddl*/
+          /*1.cleaning segnipresenti e segniassenti tables*/
+          $stmt=$conn->prepare("DELETE from segnipresenti where idScheda=?");
+          $stmt->bind_param("i", $idScheda);
+          $stmt->execute();
+
+          $stmt=$conn->prepare("DELETE from segniassenti where idScheda=?");
+          $stmt->bind_param("i", $idScheda);
+          $stmt->execute();
+
+          /*2.inserting into segnipresenti e segniassenti tables according to values of radios*/
+          for ($i=0; $i<count($arrayIdSegni); $i++){
+            switch($arrayPresences[$i]){
+              case "yes":
+                $stmt=$conn->prepare("INSERT into segnipresenti(idSegno, idScheda, percentuale) values(?, ?, ?)");
+                $stmt->bind_param("iii",$arrayIdSegni[$i], $idScheda, $arrayPercentuali[$i]);
+                break;
+              case "no":
+                $stmt=$conn->prepare("INSERT into segniassenti(idSegno, idScheda) values(?, ?)");
+                $stmt->bind_param("ii",$arrayIdSegni[$i], $idScheda);
+                break;
+              default:/*dont'know : do nothing*/
+            }
+          }
+
+        }
         break;
     }
     break;
-  case "absentSigns":
-    switch ($request){
-      case "add":
-        $sql = "";
-        break;
-      case "edit":
-        break;
-    }
-    break;
+
   case "measurements":
     switch ($request){
       case "add":
@@ -150,6 +168,7 @@ switch($subject){
         break;
     }
     break;
+
   case "events":
     switch ($request){
       case "add":
@@ -159,6 +178,7 @@ switch($subject){
         break;
     }
     break;
+
   case "conclusion":
     switch ($request){
       case "add":
