@@ -26,7 +26,7 @@ SELECT `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.idStatoPat2,
                                                               ) AS p1 right join presentazioni p2 on (p1.idStatoPat2 = p2.idStatoPat and p1.idSegno = p2.idSegno and p1.specie = p2.specie)
                                                             ) as z ORDER BY `Sottoquery Patologia Segni riscontrati`.idStatoPat2
                                                           ) as `Sottoquery Patologia Segni teorici`
-                                                        ) as `Sottoquery Patologia Segni teorici2`
+                                                        ) `Sottoquery Patologia Segni teorici2`
   ) as `Sottoquery Patologia Segni riscontrati unito Segni Teoricia`
 ) as `Sottoquery Patologia Segni riscontrati unito Segni Teorici`
 INNER JOIN statipatologici ON `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.idStatoPat2=statipatologici.idStatoPat GROUP BY `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.idStatoPat2, `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.specie, statipatologici.nome ORDER BY Avg(1-ABS(`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.grado_freq-`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.prob)) DESC;

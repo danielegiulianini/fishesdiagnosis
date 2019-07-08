@@ -101,6 +101,7 @@ $eventsTableSchema =
 '<table id="events-table" class="display" style="width:100%">
    <thead>
      <tr>
+       <th>Id evento</th>
       <th>Tipo evento</th>
       <th>Data evento</th>
       <th>Data comparsa segni</th>
@@ -110,6 +111,7 @@ $eventsTableSchema =
   </thead>
   <tfoot>
     <tr>
+      <th>Id evento</th>
      <th>Tipo evento</th>
      <th>Data evento</th>
      <th>Data comparsa segni</th>
@@ -221,7 +223,7 @@ $conclusionsTableSchema =
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <h1>Scheda n. <?php echo $idScheda;?></h1> <!--questa sarà settata dalla sessione-->
+          <h1>Scheda n. <span id="e-idScheda"><?php echo $idScheda;?></span></h1> <!--questa sarà settata dalla sessione-->
         </div>
       </div> <!--1° row-->
 

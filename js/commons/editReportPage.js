@@ -48,6 +48,9 @@ $(document).ready(function(){
       }
   });
 
+  //idScheda is needed by server to fetch datatables
+  idScheda = $("#e-idScheda").text();  // take idScheda from span
+
 
   //interrogo una volta il server con ajax per reperire gli attributi della tabella (questa cosa la potevo fare anche con php nella pagina)
   table = $('#measurements-table').DataTable({
@@ -55,14 +58,14 @@ $(document).ready(function(){
       //"processing": true,
       //"serverSide": true,
       "ajax": { //this is for sending request to server
-             "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON IL FILE CHE INVIA I DATI*/
-             "data": {request: "clients", type : "select"},
+        "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+        "data": {subject : "measurements", "idScheda" : idScheda},
              "type": 'POST',
              "dataSrc": ""
            },
        "columns": [
-        {  "data": "IDUtente" }, //schema della tabella ( devo aggiungere action dove serve)
-        {  "data" : "nome"}
+        {  "data": "caratteristicaAcqua" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "valore"}
       ],
       "language": {
           "infoEmpty": "Nessuna misurazione effettuata per questa scheda.",  /*empty table message*/
@@ -85,18 +88,19 @@ $(document).ready(function(){
     table2 = $('#events-table').DataTable({
         "responsive" : true,
         "ajax": { //this is for sending request to server
-               "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON IL FILE CHE INVIA I DATI*/
-               "data": {request: "clients", type : "select"},
+          "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+          "data": {subject : "events", "idScheda" : idScheda},
                "type": 'POST',
                "dataSrc": ""
              },
-         "columns": [
-          {  "data": "IDUtente" }, //schema della tabella ( devo aggiungere action dove serve)
-          {  "data" : "nome"},
-          {  "data": "IDUtente" }, //schema della tabella ( devo aggiungere action dove serve)
-          {  "data" : "nome"},
-          {  "data": "IDUtente" }
-        ],
+             "columns": [
+              {  "data": "idEvento" }, //schema della tabella nel db (devo aggiungere action dove serve)
+              {  "data" : "dataEvento"},
+              {  "data": "dataComparsaSegniClinici" }, //schema della tabella nel db (devo aggiungere action dove serve)
+              {  "data" : "tipologia"},
+              {  "data": "provenienza" },
+              {  "data": "note" }
+            ],
         "language": {
             "infoEmpty": "Nessuna evento registrato per questa scheda.",  /*empty table message*/
         },
@@ -117,15 +121,15 @@ $(document).ready(function(){
       table3 = $('#conclusions-table').DataTable({
           "responsive" : true,
           "ajax": { //this is for sending request to server
-                 "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON IL FILE CHE INVIA I DATI*/
-                 "data": {request: "clients", type : "select"},
+                "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+                "data": {subject : "conclusions", "idScheda" : idScheda},
                  "type": 'POST',
                  "dataSrc": ""
                },
            "columns": [
-            {  "data": "IDUtente" }, //schema della tabella ( devo aggiungere action dove serve)
-            {  "data" : "nome"},
-            {  "data" : "nome"}
+            {  "data": "idConclusione" }, //schema della tabella nel db (devo aggiungere action dove serve)
+            {  "data" : "risposta"},
+            {  "data": "evoluzione" }
           ],
           "language": {
               "infoEmpty": "Nessuna conclusione registrata per questa scheda.",  /*empty table message*/
