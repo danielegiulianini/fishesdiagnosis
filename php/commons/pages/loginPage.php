@@ -59,7 +59,12 @@
 
 
   <style>
-    html, body, main{
+    @media (min-width: 768px) { /*required for pulling footer to thebottom of the page*/
+      main{
+        height: 94%;
+      }
+    }
+    html, body{
        height: 94%;
     }
     .big-icon{
