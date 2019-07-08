@@ -22,15 +22,13 @@ if (isset($_POST["pesi"])) { /*mandatory fields*/
       /*validation*/
 
       /*dml*/
-      $stmt=$conn->prepare("INSERT INTO pesi(nomeProbabilitaAssociata,valore) VALUES (?,?)");
+      $stmt=$conn->prepare("UPDATE pesi SET valore = ? where nomeProbabilitaAssociata=?");
+      echo "update pesi set valore= ".$item['valore']." where nomeProbabilitaAssociata = ".$item['nomeProbabilitaAssociata'];
 
-      echo "INSERT INTO pesi(nomeProbabilitaAssociata,valore) VALUES ( $item['nomeProbabilitaAssociata'],
-      $item['valore'])";
-
-      $stmt->bind_param("si", $item["nomeProbabilitaAssociata"], $item["valore"]);
+      $stmt->bind_param("ds", $item["valore"], $item["nomeProbabilitaAssociata"]);
 
       if (!is_null ($stmt)){
-      //  $stmt->execute();
+        $stmt->execute();
       }
   }
 }

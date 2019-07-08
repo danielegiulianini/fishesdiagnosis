@@ -33,7 +33,7 @@ for($i=0; $i<count($pesi_assoc) ;$i++){
     </div>
     <div class="col-4">
       <!--<label for="e-valore">'.$pesi_assoc[$i]["valore"].'</label>-->
-      <input type="number" class="form-control e-valore" name="pesi['.$i.'][valore]" min="0" max="1" step=".1" required readonly>
+      <input type="number" class="form-control e-valore" name="pesi['.$i.'][valore]" value="'.$pesi_assoc[$i]["valore"].'" min="0" max="1" step=".1" required readonly>
     </div>
   </div>';
 }
