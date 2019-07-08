@@ -74,7 +74,7 @@
 
 </head>
 <body>
-<?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/headers.php"); ?><!-- shared navbar-->
+<?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/loginPageHeader.php"); ?><!-- shared navbar-->
 
   <main role="main" class="mt-5">
   <div class="container-fluid">
