@@ -1,5 +1,7 @@
 <?php
 /*in this page i must perform regstration and login check*/
+session_start();
+
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 /*var_dump($_POST);*/
