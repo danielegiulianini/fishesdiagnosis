@@ -117,6 +117,7 @@ if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
   <script src="http://localhost:8081/fishesdiagnosis/js/commons/loginPage.js"></script>
+  <script src="/fishesdiagnosis/js/commons/encFunctions.js"></script>
 
 
   <!--for dataTables buttons-->
