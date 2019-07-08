@@ -62,6 +62,8 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
   <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.js"></script>
 
+<!--chartjs for display graphs-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 
 <script src="http://localhost:8081/fishesdiagnosis/js/commons/displayProbabilitiesPage.js"></script>
