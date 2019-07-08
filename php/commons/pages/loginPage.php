@@ -86,14 +86,24 @@ if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"
 		$password = $_POST["r_password"];
 		$tipoUtente = "utente";
 
-		$stmt = $conn->prepare("INSERT INTO utenti (username, password, tipoUtente) VALUES (?, ?, ?)");
-		$stmt->bind_param("sss", $username, $password, $tipoUtente);
+    /*check if username already in use*/
+    $stmt=$conn->prepare("SELECT * FROM utenti WHERE username=?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+    if ($stmt->num_rows==0 ){
+      $stmt = $conn->prepare("INSERT INTO utenti (username, password, tipoUtente) VALUES (?, ?, ?)");
+  		$stmt->bind_param("sss", $username, $password, $tipoUtente);
 
-		$isInserted = $stmt->execute();
-		if(!$isInserted){
-			$insertError = $stmt->error;
-		}
-		$stmt->close();
+  		$isInserted = $stmt->execute();
+  		if(!$isInserted){
+  			$insertError = $stmt->error;
+  		}
+    } else {
+      $errors.="username già in uso.";
+    }
+
+    $stmt->close();
 	}
 
   print json_encode($errors);
@@ -234,7 +244,7 @@ if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"
                   </div>
                   <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">Login</button>
                   <!--<a href="./resetPasswordPage.php" class="small text-center">Password dimenticata? Clicca qui.</a><br>-->
-                  <a href="./registrationPage.php" class="small text-center">Non sei registrato? Registrati.</a>
+                  <div class="small text-center" data-toggle="modal" data-target="#add-user-modal">Non sei registrato? Registrati qui.</div>
               </form>
             </div>
           </div>

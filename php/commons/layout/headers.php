@@ -28,7 +28,7 @@
   </button>
 
   <div id="user" class="dropdown-menu dropdown-menu-right"> <!--Dropdwon for logout-->
-    <a class="dropdown-item" href="/fishesdiagnosis/php/commons/scripts/logout.php">logout</a>
+    <a href="/fishesdiagnosis/php/commons/scripts/logout.php" class="dropdown-item" >logout</a>
   </div>
 </div>
 
