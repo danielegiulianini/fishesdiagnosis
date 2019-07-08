@@ -1,7 +1,7 @@
-/**/
-
 $(document).ready(function() {
-/*signs_prob-line_chart
+/*
+canvas ids:
+signs_prob-line_chart
 signs_prob-bar_chart
 signs_prob-radar_chart
 signs_prob-pie_chart
@@ -22,22 +22,28 @@ overall_prob-bar_chart
 overall_prob-radar_chart
 overall_prob-pie_chart*/
 
-/*il codice fra i 4 quadranti di una stesso tab (prob) cambiano solo per il selettore e il tipo*/
+/*il codice fra i 4 quadranti di una stesso tab (prob) cambiano solo per il selettore e il tipo, potrei rifattorizzare
+forse posso fare ogni tab con una sola chiamta ajax!!
+il backend php  esattamente lostesso per i diversi quadranti di uno stesso tab, perché ciò che cambia è solo la
+rappresentazione, non i dati*/
+  idScheda = $("#p-idScheda").text();
+  console.log("l'id scheda e'"+idScheda)
+
   $.ajax({
-    url: `${location.origin}/fishesdiagnosis/php/scripts/data.php?request=signs_line`,
+    url: `${location.origin}/fishesdiagnosis/php/scripts/probabilitiesComputer.php?request=signs&idScheda=${idScheda}`,
     method: "GET",
     success: function(data) {
-      console.log(data);
-      var player = [];
-      var score = [];
+      /*console.log(data);
+      var nomi = [];
+      var probabilitas = [];
 
       for(var i in data) {
-        player.push("Player " + data[i].playerid);
-        score.push(data[i].score);
+        nomi.push("Player " + data[i].nome);  //same attribute name as in db
+        probabilitas.push(data[i].probabilita); //same attribute name as in db
       }
 
       var chartdata = {
-        labels: player,
+        labels: nomi,
         datasets : [
           {
             label: 'Player Score',
@@ -45,76 +51,20 @@ overall_prob-pie_chart*/
             borderColor: 'rgba(200, 200, 200, 0.75)',
             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
             hoverBorderColor: 'rgba(200, 200, 200, 1)',
-            data: score
+            data: probabilitas
           }
         ]
       };
 
-      var ctx = $("#mycanvas");
+      var ctx = $("#signs_prob-line_chart");
 
       var barGraph = new Chart(ctx, {
         type: 'bar',
         data: chartdata
-      });
+      });*/
     },
     error: function(data) {
       console.log(data);
     }
   });
-});
-
-
-    table2 = $('#absent-signs-table').DataTable({
-      "responsive" : true,
-      "ajax": { //this is for sending request to server
-             "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON URL CHE INVIA I DATI*/
-             "data": {request: "clients", type : "select"},
-             "type": 'POST',
-             "dataSrc": ""
-           },
-       "columns": [
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"}
-      ],
-      "language": {
-          "infoEmpty": "No records available yet.",  /*empty table message*/
-      }
-    });
-
-    table = $('#measurements-table').DataTable({
-      "responsive" : true,
-      "ajax": { //this is for sending request to server
-             "url": "/progettoweb/php/administrator/administrator.php", //DA SOSTITUIRE CON URL CHE INVIA I DATI
-             "data": {request: "clients", type : "select"},
-             "type": 'POST',
-             "dataSrc": ""
-           },
-       "columns": [
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"}
-      ],
-      "language": {
-          "infoEmpty": "No records available yet.",  //empty table message
-      }
-    });
-
-    table = $('#events-table').DataTable({
-      "responsive" : true,
-      "ajax": { //this is for sending request to server
-             "url": "/progettoweb/php/administrator/administrator.php", //DA SOSTITUIRE CON URL CHE INVIA I DATI
-             "data": {request: "clients", type : "select"},
-             "type": 'POST',
-             "dataSrc": ""
-           },
-       "columns": [
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"},
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"},
-        {  "data": "IDUtente" }
-      ],
-      "language": {
-          "infoEmpty": "No records available yet.",  //empty table message
-      }
-    });
 });

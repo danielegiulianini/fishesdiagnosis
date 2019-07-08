@@ -5,7 +5,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 if (checkSessionElapsedOrCredentialsCorrupted($conn)){
   /*qui ho bisogno di un indirizzo assoluto perché questo file viene incluso in file situati in directory diverse*/
-    header("Location: ".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/loginPage.php");
+    header("Location: /fishesdiagnosis/php/commons/pages/loginPage.php");
     exit;
 }
 

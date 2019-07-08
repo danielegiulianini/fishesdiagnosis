@@ -324,7 +324,7 @@ $eventsTableSchema =
 
     <div class="row">
       <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-        <button class="btn btn-secondary my-1 my-md-0">Visualizza probabilità</button>
+        <a href="./displayProbabilitiesPage.php?idScheda=<?php echo $idScheda;?>" class="btn btn-secondary my-1 my-md-0">Visualizza probabilità</a>
         <a class="btn btn-secondary my-1 my-md-0" href="./editReportPage.php?idScheda=<?php echo $idScheda;?>">Modifica informazioni</a>
       </div>
     </div> <!--2° row-->

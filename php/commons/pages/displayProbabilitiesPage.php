@@ -1,10 +1,9 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/checkLoggedInAndRedirect.php");
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
 
 $idScheda = $_GET["idScheda"];
 
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
-
 ?>
 
 
@@ -63,8 +62,8 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
   <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.js"></script>
 
 <!--chartjs for display graphs-->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+-->
 
 <script src="http://localhost:8081/fishesdiagnosis/js/commons/displayProbabilitiesPage.js"></script>
 
@@ -112,7 +111,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <h1>Scheda n. <?php echo $idScheda;?></h1> <!--questa sarà settata dalla sessione-->
+          <h1>Scheda n. <span id="p-idScheda"> <?php echo $idScheda;?></span></h1> <!--questa sarà settata dalla sessione-->
         </div>
       </div> <!--1° row-->
 

@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/checkLoggedInAndRedirect.php");
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
 
 $idScheda = $_GET["idScheda"];
 
