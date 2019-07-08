@@ -5,41 +5,40 @@ if(isset($_POST["login"])){
 	$errors = "";
 
   /*validation*/
-  
-	if(!isset($_GET["nome"]) || strlen($_GET["nome"]) < 2){
+	if(!isset($_POST["nome"]) || strlen($_POST["nome"]) < 2){
 		$errors .= "Nome è obbligatorio e deve essere almeno 2 caratteri <br/>";
 	}
 
-	if(!isset($_GET["cognome"]) || strlen($_GET["cognome"]) < 2){
+	if(!isset($_POST["cognome"]) || strlen($_POST["cognome"]) < 2){
 		$errors .= "Cognome è obbligatorio e deve essere almeno 2 caratteri";
 	}
 
-	if(!isset($_GET["email"]) || !filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)){
+	if(!isset($_POST["email"]) || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
 		$errors .= "Email è obbligatoria e deve essere valida <br/>";
 	}
 
 	if(strlen($errors) == 0){
 
-    $nome = $_GET["nome"];
-		$cognome = $_GET["cognome"];
-		$email = $_GET["email"];
+    $username = $_POST["l_username"];
+		$password = $_POST["l_password"];
 
     if ($stmt = $conn->prepare("SELECT idUtente, password, tipoUtente FROM utenti WHERE username = ? LIMIT 1")) { //prepared statement difende da attacco sql injection
-      $stmt->bind_param('s', $email);
+      $stmt->bind_param('s', $username);
       $stmt->execute();
       $stmt->store_result();
-      $stmt->bind_result($user_id, $email, $db_password, $salt, $userType);
+      $stmt->bind_result($user_id, $db_password, $userType);
       $stmt->fetch();
 
        if($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
 
-         $_SESSION['IDFornitore'] = $user_id; //inzio la sessione->IMPORTANTE, questi dati poi non saranno da richiedere al server nell chiamate ad ajax
-         $_SESSION["userType"]= $userType;
-       } else{
+         $_SESSION['idUtente'] = $user_id; //inzio la sessione->IMPORTANTE, questi dati poi non saranno da richiedere al server nell chiamate ad ajax
+         $_SESSION["tipoUtente"]= $userType;
 
+       } else {
+         $errors.="Password errata.";
        }
     } else {
-
+      $errors.="username errato.";
     }
 
 		$isInserted = $stmt->execute();
@@ -49,33 +48,32 @@ if(isset($_POST["login"])){
 }
 
 
-/*to eventually put in registrationPage if I will move regitstration
-from modal to its page*/
+/*to eventually put in registrationPage if I will move regitstration from modal to its page*/
 if(isset($_POST["registration"])){
 
 	$errors = "";
 
   /*validation*/
-	if(!isset($_GET["nome"]) || strlen($_GET["nome"]) < 2){
+	if(!isset($_POST["nome"]) || strlen($_POST["nome"]) < 2){
 		$errors .= "Nome è obbligatorio e deve essere almeno 2 caratteri <br/>";
 	}
 
-	if(!isset($_GET["cognome"]) || strlen($_GET["cognome"]) < 2){
+	if(!isset($_POST["cognome"]) || strlen($_POST["cognome"]) < 2){
 		$errors .= "Cognome è obbligatorio e deve essere almeno 2 caratteri";
 	}
 
-	if(!isset($_GET["email"]) || !filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)){
+	if(!isset($_POST["email"]) || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
 		$errors .= "Email è obbligatoria e deve essere valida <br/>";
 	}
 
 	if(strlen($errors) == 0){
 
-    $nome = $_GET["nome"];
-		$cognome = $_GET["cognome"];
-		$email = $_GET["email"];
+    $username = $_POST["r_username"];
+		$password = $_POST["r_password"];
+		$tipoUtente = "utente";
 
-		$stmt = $conn->prepare("INSERT INTO utenti (nome, cognome, email) VALUES (?, ?, ?)");
-		$stmt->bind_param("sss", $nome, $cognome, $email);
+		$stmt = $conn->prepare("INSERT INTO utenti (username, password, tipoUtente) VALUES (?, ?, ?)");
+		$stmt->bind_param("sss", $username, $password, $tipoUtente);
 
 		$isInserted = $stmt->execute();
 		if(!$isInserted){
@@ -168,9 +166,16 @@ if(isset($_POST["registration"])){
 
   <main role="main" class="mt-5">
   <div class="container-fluid">
-    <div class="alert alert-danger alert-php" role="alert">
-			Errore durante l'inserimento.
-			<p><?=$errors?></p>
+    <?php
+      if(strlen($errors) != 0){
+    ?>
+      <div class="alert alert-danger alert-php" role="alert">
+  			Errore durante l'inserimento.
+  			<p><?=$errors?></p>
+
+    <?php
+      }
+    ?>
 		</div>
     <div class="row mb-4 mb-md-0">
       <div class="col-md-9 mb-4 mb-md-0 pr-md-0">
@@ -196,25 +201,18 @@ if(isset($_POST["registration"])){
               <div class="text-center">
                 <span id="profileImg" class="d-block fas fa-user mt-4 mb-4 big-icon"></span>
               </div>
-
-              <?php
-              if (isset($_SESSION["errors"]) && !empty($_SESSION["errors"])){ //forse era più gestibile usare la get
-                echo '<div id="errorsDiv" class="alert alert-danger">'.$_SESSION["errors"].'</div>';
-              }
-              ?> <!--should be filled by server-->
-
-              <form class="needs-validation" method="post" action="../../commons/checkInputLogin.php" novalidate><!--novalidate cause I want to use my validation, not the browser default-->
+              <form class="needs-validation" method="post" action="#" novalidate><!--novalidate cause I want to use my validation, not the browser default-->
                   <input type="hidden" name="request" value="login"/>
 
                   <div class="form-group">
-                    <label for="email" class="sr-only">Email</label>
-                    <input type="email" class="form-control" id="email" name=email placeholder="Email" required autofocus/>
+                    <label for="l_username" class="sr-only">Username</label>
+                    <input type="text" class="form-control" id="l_username" name="l_username" placeholder="drPesci" required autofocus/>
 
-                    <div class="invalid-feedback">Email necessaria.</div>
+                    <div class="invalid-feedback">Username necessaria.</div>
                   </div>
                   <div class="form-group mt-2">
-                    <label for="password" class="sr-only">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
+                    <label for="l_password" class="sr-only">Password</label>
+                    <input type="password" class="form-control" id="l_password" name="l_password" placeholder="Password" required/>
 
                     <div class="invalid-feedback">Password necessaria.</div>
                   </div>
