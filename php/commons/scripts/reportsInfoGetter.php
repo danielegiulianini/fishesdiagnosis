@@ -12,8 +12,9 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
  url trough thier js file. DataTables could also be fetched filling tables in the dom.
 In future I could put this code in the DOM directly.*/
 
+//not used
 function fillOutputWithPrepStatResults($sql, $conn, &$output){
-  /*$stmt=$conn->prepare($sql." where idScheda = ?");
+  $stmt=$conn->prepare($sql." where idScheda = ?");
   $stmt->bind_param("i", $idScheda);
 
   $stmt->execute();
@@ -21,7 +22,7 @@ function fillOutputWithPrepStatResults($sql, $conn, &$output){
   $result=$stmt->get_result();
   while($row=$result->fetch_assoc()){
     $output[]=$row;
-  }*/
+  }
 
 }
 
@@ -39,17 +40,17 @@ $stmt = null;
 $subject=$_POST["subject"];
 $idScheda = $_POST["idScheda"];
 
-var_dump($_POST);
+//var_dump($_POST);
 
 switch($subject){
   case "present_signs":
-
-    fillOutputWithQueryResults("select * from segnipresenti inner join segni on segni.idSegno=segnipresenti.idSegno where idScheda = ".$idScheda, $conn, $output);//yes need of join
+//echo "select * from segnipresenti inner join segni on segni.idSegno=segnipresenti.idSegno where segnipresenti.idScheda = ".$idScheda;
+    fillOutputWithQueryResults("select * from segnipresenti inner join segni on segni.idSegno=segnipresenti.idSegno where segnipresenti.idScheda = ".$idScheda, $conn, $output);//yes need of join
 
     break;
   case "absent_signs":
 
-    fillOutputWithQueryResults("select * from segniassenti inner join segni on segni.idSegno=segniassenti.idSegno where idScheda = ".$idScheda, $conn, $output);//yes need of join
+    fillOutputWithQueryResults("select * from segniassenti inner join segni on segni.idSegno=segniassenti.idSegno where segniassenti.idScheda = ".$idScheda, $conn, $output);//yes need of join
 
   case "measurements":
 

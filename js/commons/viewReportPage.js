@@ -1,18 +1,20 @@
 $(document).ready(function() {
+  idScheda = $("#g-idScheda").text();  // take idScheda from table
+
   //interrogo una volta il server con ajax per reperire gli attributi della tabella (questa cosa la potevo fare anche con php nella pagina)
   table1 = $('#present-signs-table').DataTable({
     "responsive" : true,
     //"processing": true,
     //"serverSide": true,
     "ajax": { //this is for sending request to server
-           "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON URL CHE INVIA I DATI*/
-           "data": {request: "clients", type : "select"},
+           "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+           "data": {subject : "present_signs", "idScheda" : idScheda},
            "type": 'POST',
            "dataSrc": ""
          },
      "columns": [
-      {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-      {  "data" : "nome"}
+      {  "data": "nome" }, //schema della tabella nel db (devo aggiungere action dove serve)
+      {  "data" : "percentuale"}
     ],
     "language": {
         "infoEmpty": "No records available yet.",  /*empty table message*/
