@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
-session_start();
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
 
 $output = array();
 $stmt = null;
@@ -34,14 +34,15 @@ switch($subject){
           $origine=$_POST["origine"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
           $note=$_POST["note"];
 
+          $idUtente = $_SESSION["idUtente"];
           /*validation*/
 
           /*ddl*/
           $stmt=$conn->prepare("INSERT INTO schedechiamate(nomeVeterinario,nomeRichiedente,telefonoRichiedente,
-            emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note, idUtente)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-          $stmt->bind_param("sssssiiiisssis",
+          $stmt->bind_param("sssssiiiisssisi",
             $nomeVeterinario,
             $nomeRichiedente,
             $telefonoRichiedente,
@@ -55,7 +56,8 @@ switch($subject){
             $specie,
             $vasca,   /*vasca key is string*/
             $origine, /*origin key is integer*/
-            $note
+            $note,
+            $idUtente
             );
           }
         break;
