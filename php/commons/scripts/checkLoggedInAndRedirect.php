@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-//include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 echo $_SESSION['idUtente'];
 exit;
