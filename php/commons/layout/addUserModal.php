@@ -1,6 +1,6 @@
 
 <!--Modal for inserting new user-->
-<script src="/fishesdiagnosis/js/admin/addUserModal.js"></script>
+<script src="/fishesdiagnosis/js/commons/addUserModal.js"></script>
 
 <div id="add-user-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">

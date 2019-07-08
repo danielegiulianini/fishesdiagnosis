@@ -1,16 +1,17 @@
-/*for using encrypting functions is assumed that encPassword.js file is incuded
-in html before this file is included as this file uses functions there defined.*/
+/*
+dependencies of this file:
+1.  is assumed that encPassword.js file is incuded in html before this file is included as this file
+    uses function hex_sha512 there defined.
+*/
 
 /*Client side validation is automatically done by javascript it automatically add is-valid is-invalid class*/
 $(document).ready(function(){
   (function() {
     window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
+      var forms = document.getElementsByClassName('needs-validation');  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var validation = Array.prototype.filter.call(forms, function(form) {  // Loop over them and prevent submission
         form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false ) {  //potevo specificare il pattern nell'input e con checkValidity lo controllava lui
+          if (form.checkValidity() === false ) {
             event.preventDefault();
             event.stopPropagation();
           }

@@ -1,11 +1,14 @@
 <?php
 /*in this page i must perform regstration and login check*/
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
-if(isset($_POST["login"])){
+var_dump($_POST);
+
+if(isset($_POST["request"])and !is_null($_POST["request"]) and $_POST["request"]=="login"){
 	$errors = "";
 
   /*validation*/
-	if(!isset($_POST["nome"]) || strlen($_POST["nome"]) < 2){
+	/*if(!isset($_POST["nome"]) || strlen($_POST["nome"]) < 2){
 		$errors .= "Nome è obbligatorio e deve essere almeno 2 caratteri <br/>";
 	}
 
@@ -15,7 +18,7 @@ if(isset($_POST["login"])){
 
 	if(!isset($_POST["email"]) || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
 		$errors .= "Email è obbligatoria e deve essere valida <br/>";
-	}
+	}*/
 
 	if(strlen($errors) == 0){
 
@@ -34,6 +37,16 @@ if(isset($_POST["login"])){
          $_SESSION['idUtente'] = $user_id; //inzio la sessione->IMPORTANTE, questi dati poi non saranno da richiedere al server nell chiamate ad ajax
          $_SESSION["tipoUtente"]= $userType;
 
+         switch($userType){
+            case "admin":
+              header("Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/pages/adminStartPage.php");  /*to update to dashboard*/
+              break;
+            case "utente":
+              header("Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/user/pages/userStartPage.php");  /*to update to dashboard*/
+              break;
+          }
+
+
        } else {
          $errors.="Password errata.";
        }
@@ -49,12 +62,12 @@ if(isset($_POST["login"])){
 
 
 /*to eventually put in registrationPage if I will move regitstration from modal to its page*/
-if(isset($_POST["registration"])){
-
+if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"]=="registration"){
+echo "ciaiiaii";
 	$errors = "";
 
   /*validation*/
-	if(!isset($_POST["nome"]) || strlen($_POST["nome"]) < 2){
+	/*if(!isset($_POST["r_username"]) || strlen($_POST["nome"]) < 2){
 		$errors .= "Nome è obbligatorio e deve essere almeno 2 caratteri <br/>";
 	}
 
@@ -64,7 +77,7 @@ if(isset($_POST["registration"])){
 
 	if(!isset($_POST["email"]) || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
 		$errors .= "Email è obbligatoria e deve essere valida <br/>";
-	}
+	}*/
 
 	if(strlen($errors) == 0){
 
@@ -83,6 +96,7 @@ if(isset($_POST["registration"])){
 	}
 
   print json_encode($errors);
+  exit;
 }
 
  ?>
@@ -101,7 +115,8 @@ if(isset($_POST["registration"])){
   <script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
-  <script src="http://localhost:8081/fishesdiagnosis/js/commons/viewReportPage.js"></script>
+  <script src="http://localhost:8081/fishesdiagnosis/js/commons/loginPage.js"></script>
+  <script src="http://localhost:8081/fishesdiagnosis/js/commons/adduserModal.js"></script>
 
 
   <!--for dataTables buttons-->
@@ -217,7 +232,7 @@ if(isset($_POST["registration"])){
                     <div class="invalid-feedback">Password necessaria.</div>
                   </div>
                   <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">Login</button>
-                  <a href="./resetPasswordPage.php" class="small text-center">Password dimenticata? Clicca qui.</a><br>
+                  <!--<a href="./resetPasswordPage.php" class="small text-center">Password dimenticata? Clicca qui.</a><br>-->
                   <a href="./registrationPage.php" class="small text-center">Non sei registrato? Registrati.</a>
               </form>
             </div>
@@ -231,8 +246,6 @@ if(isset($_POST["registration"])){
 
   </main>
 
-  <!--Modal for updating existing report general info-->
-  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/editReportGeneralInfoModal.php");?>
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
 <body>
