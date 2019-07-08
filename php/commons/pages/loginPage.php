@@ -60,10 +60,10 @@
 
   <style>
     html, body, main{
-       height: 93%;
+       height: 94%;
     }
     .big-icon{
-        font-size:300%;
+        font-size:270%;
     }
   </style>
 
@@ -74,13 +74,13 @@
   <main role="main" class="mt-5">
   <div class="container-fluid">
     <div class="row mb-4 mb-md-0">
-      <div class="col-md-9">
+      <div class="col-md-9 mb-4 mb-md-0 pr-md-0">
         <div class="container-fluid d-flex align-items-center justify-content-center h-100 w-100">
           <!--<div class="card">
             <div class="card-body">
               <div class="card-title font-weight-bolder text-center lead">Informazioni generali scheda</div>-->
                 <div class="jumbotron w-100 mb-0">
-                  <h1 class="display-4">FishesDiagnosis</h1>
+                  <h1 class="display-4" style="font-size:260%!important">FishesDiagnosis</h1>
                   <p class="lead">Non tutti sani come pesci.</p>
                   <hr class="my-4">
                   <p>Sistema di supporto alla diagnosi della fauna marina.</p>
@@ -94,8 +94,8 @@
     </div> <!--end 1° half of screen-->
       <!--un margine visibile solo per i mobile realizzato tramite mb-4 mb-md-0-->
 </div>
-      <div class="col-md-3">
-        <div class="container-fluid d-flex align-items-center h-100 w-100">
+      <div class="col-md-3 p-0">
+        <div class="container-fluid d-flex align-items-center h-100 w-100 pl-md-0">
           <div class="card mx-auto text-center login-card">
             <div class="card-body">
               <h5 class="card-title">Benvenuto!</h5>
