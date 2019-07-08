@@ -8,7 +8,7 @@ a variable $conn containing a mysqli connection
 //$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate where schedechiamate.idUtente = ?");
 //$stmt->bind_param("i", $IDUtente);
 
-$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate");
+$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate ");
 $stmt->execute();
 $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
