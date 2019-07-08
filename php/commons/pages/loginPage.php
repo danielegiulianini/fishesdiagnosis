@@ -1,3 +1,93 @@
+<?php
+/*in this page i must perform regstration and login check*/
+
+if(isset($_POST["login"])){
+	$errors = "";
+
+  /*validation*/
+  
+	if(!isset($_GET["nome"]) || strlen($_GET["nome"]) < 2){
+		$errors .= "Nome è obbligatorio e deve essere almeno 2 caratteri <br/>";
+	}
+
+	if(!isset($_GET["cognome"]) || strlen($_GET["cognome"]) < 2){
+		$errors .= "Cognome è obbligatorio e deve essere almeno 2 caratteri";
+	}
+
+	if(!isset($_GET["email"]) || !filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)){
+		$errors .= "Email è obbligatoria e deve essere valida <br/>";
+	}
+
+	if(strlen($errors) == 0){
+
+    $nome = $_GET["nome"];
+		$cognome = $_GET["cognome"];
+		$email = $_GET["email"];
+
+    if ($stmt = $conn->prepare("SELECT idUtente, password, tipoUtente FROM utenti WHERE username = ? LIMIT 1")) { //prepared statement difende da attacco sql injection
+      $stmt->bind_param('s', $email);
+      $stmt->execute();
+      $stmt->store_result();
+      $stmt->bind_result($user_id, $email, $db_password, $salt, $userType);
+      $stmt->fetch();
+
+       if($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
+
+         $_SESSION['IDFornitore'] = $user_id; //inzio la sessione->IMPORTANTE, questi dati poi non saranno da richiedere al server nell chiamate ad ajax
+         $_SESSION["userType"]= $userType;
+       } else{
+
+       }
+    } else {
+
+    }
+
+		$isInserted = $stmt->execute();
+
+		$stmt->close();
+	}
+}
+
+
+/*to eventually put in registrationPage if I will move regitstration
+from modal to its page*/
+if(isset($_POST["registration"])){
+
+	$errors = "";
+
+  /*validation*/
+	if(!isset($_GET["nome"]) || strlen($_GET["nome"]) < 2){
+		$errors .= "Nome è obbligatorio e deve essere almeno 2 caratteri <br/>";
+	}
+
+	if(!isset($_GET["cognome"]) || strlen($_GET["cognome"]) < 2){
+		$errors .= "Cognome è obbligatorio e deve essere almeno 2 caratteri";
+	}
+
+	if(!isset($_GET["email"]) || !filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)){
+		$errors .= "Email è obbligatoria e deve essere valida <br/>";
+	}
+
+	if(strlen($errors) == 0){
+
+    $nome = $_GET["nome"];
+		$cognome = $_GET["cognome"];
+		$email = $_GET["email"];
+
+		$stmt = $conn->prepare("INSERT INTO utenti (nome, cognome, email) VALUES (?, ?, ?)");
+		$stmt->bind_param("sss", $nome, $cognome, $email);
+
+		$isInserted = $stmt->execute();
+		if(!$isInserted){
+			$insertError = $stmt->error;
+		}
+		$stmt->close();
+	}
+
+  print json_encode($errors);
+}
+
+ ?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -78,13 +168,14 @@
 
   <main role="main" class="mt-5">
   <div class="container-fluid">
+    <div class="alert alert-danger alert-php" role="alert">
+			Errore durante l'inserimento.
+			<p><?=$errors?></p>
+		</div>
     <div class="row mb-4 mb-md-0">
       <div class="col-md-9 mb-4 mb-md-0 pr-md-0">
         <div class="container-fluid d-flex align-items-center justify-content-center h-100 w-100">
-          <!--<div class="card">
-            <div class="card-body">
-              <div class="card-title font-weight-bolder text-center lead">Informazioni generali scheda</div>-->
-                <div class="jumbotron w-100 mb-0">
+          <div class="jumbotron w-100 mb-0">
                   <h1 class="display-4" style="font-size:260%!important">FishesDiagnosis</h1>
                   <p class="lead">Non tutti sani come pesci.</p>
                   <hr class="my-4">
@@ -93,9 +184,7 @@
                     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                   </p>
                </div><!--jumbotron-->
-            <!-- </div><!--end card-body-->
-          <!-- </div><!--end card-->
-    <!--  </div>-->
+
     </div> <!--end 1° half of screen-->
       <!--un margine visibile solo per i mobile realizzato tramite mb-4 mb-md-0-->
 </div>
@@ -115,6 +204,8 @@
               ?> <!--should be filled by server-->
 
               <form class="needs-validation" method="post" action="../../commons/checkInputLogin.php" novalidate><!--novalidate cause I want to use my validation, not the browser default-->
+                  <input type="hidden" name="request" value="login"/>
+
                   <div class="form-group">
                     <label for="email" class="sr-only">Email</label>
                     <input type="email" class="form-control" id="email" name=email placeholder="Email" required autofocus/>
