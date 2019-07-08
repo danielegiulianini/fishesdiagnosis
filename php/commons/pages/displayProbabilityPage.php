@@ -1,0 +1,242 @@
+<?php
+session_start();
+
+$idScheda = $_GET["idScheda"];
+
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/commonHeadContent.php"); ?>
+
+<!--aa the end to add in commonHeadContent-->
+<!--for responsive datatable -->
+  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/rowreorder/1.2.5/css/rowReorder.dataTables.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+  <!--for dataTables buttons-->
+<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/mixins.scss"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/common.scss"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.css"  rel="stylesheet">-->
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.css" rel="stylesheet">
+<!--  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.jqueryui.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.foundation.min.css"  rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.semanticui.min.css"  rel="stylesheet">-->
+
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.jqueryui.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.semanticui.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.jqueryui.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.foundation.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.foundation.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.semanticui.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.js"></script>
+
+  <!--<script src="https://cdn.datatables.net/buttons/1.5.6/swf/flashExport.swf"></script>-->
+
+<!--for responsive basic tables-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/basictable.min.css" integrity="sha256-mbGb4F0wO234UQjFyqRSrFFMI8Nk2HgoIUv2Zly7z8I=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.basictable/1.0.9/jquery.basictable.min.js" integrity="sha256-bRyGcU6tP9c78IZuj1jld29tzek4+eR+dBkdml3spKI=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>
+
+  <style>
+    html, body{
+       height: 100%;
+    }
+
+
+.block-header {
+  margin-bottom: 15px; }
+  .block-header h2 {
+    margin: 0 !important;
+    color: #666 !important;
+    font-weight: normal;
+    font-size: 16px; }
+    .block-header h2 small {
+      display: block;
+      font-size: 12px;
+      margin-top: 8px;
+      color: #888; }
+      .block-header h2 small a {
+        font-weight: bold;
+        color: #777; }
+  </style>
+
+</head>
+<body>
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/headers.php"); ?><!-- shared navbar-->
+
+  <main class="mt-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
+          <h1>Scheda n. <?php echo $idScheda;?></h1> <!--questa sarà settata dalla sessione-->
+        </div>
+      </div> <!--1° row-->
+
+      <div class="row">
+        <div class="col-md-12 col-md-offset-4 text-center mb-4">
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active font-weight-bolder lead" id="present-signs-tab" data-toggle="tab" href="#present-signs" role="tab" aria-controls="present-signs-tab" aria-selected="true">Resoconto segni riscontrati</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link font-weight-bolder lead" id="measurements-tab" data-toggle="tab" href="#measurements" role="tab" aria-controls="measurements" aria-selected="false">Misurazioni effettuate</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link font-weight-bolder lead" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Eventi considerati</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link font-weight-bolder lead" id="conclusion-tab" data-toggle="tab" href="#conclusion" role="tab" aria-controls="conclusion" aria-selected="false">Conclusione</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="present-signs" role="tabpanel" aria-labelledby="present-signs-tab">
+
+
+
+<!--first tab-->
+<section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h1>
+                    Probabilità segni
+                </h1>
+            </div>
+            <div class="row">
+                <!-- Line Chart -->
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="card m-1">
+                        <div class="card-header"><!--or card-title-->
+                            <h2>Line chart</h2>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="line_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Line Chart -->
+                <!-- Bar Chart -->
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="card m-1">
+                        <div class="card-header">
+                            <h2>Bar chart</h2>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="bar_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Bar Chart -->
+            </div>
+
+            <div class="row">
+                <!-- Radar Chart -->
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="card m-1">
+                        <div class="card-header">
+                            <h2>Radar chart</h2>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="radar_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Radar Chart -->
+                <!-- Pie Chart -->
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="card m-1">
+                        <div class="card-header">
+                            <h2>Pie chart</h2>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="pie_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div><!-- #END# Pie Chart -->
+            </div>
+        </div>
+    </section>
+
+
+
+
+              </div><!--tab pane-->
+              <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
+
+                <?php echo $measurementsTableSchema;?>
+
+              </div>
+              <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+
+                <?php echo $eventsTableSchema;?>
+
+              </div>
+              <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
+
+                <?php echo $conclusionsTableSchema;?>
+
+              </div>
+            </div><!--tab content-->
+          </div><!--2° half-->
+      </div> <!--1° row-->
+      <div class="row">
+        <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
+          <button id="confirm-editing-list" class="btn btn-secondary my-1 my-md-0">Conferma inserimento</button>
+          <button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>
+        </div>
+      </div> <!--2° row-->
+    </div><!--container-fluid-->
+
+  </main>
+
+  <!--Modal for adding measurement-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addMeasurementModal.php");?>
+
+  <!--Modal for adding event-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addEventModal.php");?>
+
+  <!--Modal for adding conclusion-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/addConclusionModal.php");?>
+
+
+
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>
+</body>
