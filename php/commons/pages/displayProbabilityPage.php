@@ -97,6 +97,19 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
       .block-header h2 small a {
         font-weight: bold;
         color: #777; }
+
+  .header { /*anche questo va bene .> posso sosituirla lla classe card-header*/
+    color: #555;
+    padding: 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+  }
+
+
+  .card-shadow{
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
   </style>
 
 </head>
@@ -133,17 +146,15 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 
 <!--first tab-->
-<section class="content">
+<section class="content mt-2">
         <div class="container-fluid">
-            <div class="block-header">
-                <h1>
-                    Probabilità segni
-                </h1>
-            </div>
+            <!--<div class="block-header">
+                <h1>Probabilità segni</h1>
+            </div>-->
             <div class="row">
                 <!-- Line Chart -->
                 <div class="col-lg-6 col-md-6 col-12">
-                    <div class="card m-1">
+                    <div class="card m-1 card-shadow">
                         <div class="card-header"><!--or card-title-->
                             <h2>Line chart</h2>
                         </div>
@@ -151,8 +162,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <canvas id="line_chart" height="150"></canvas>
                         </div>
                     </div>
-                </div>
-                <!-- #END# Line Chart -->
+                </div><!-- Line Chart -->
                 <!-- Bar Chart -->
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="card m-1">
@@ -163,8 +173,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <canvas id="bar_chart" height="150"></canvas>
                         </div>
                     </div>
-                </div>
-                <!-- #END# Bar Chart -->
+                </div><!-- #END# Bar Chart -->
             </div>
 
             <div class="row">
@@ -178,8 +187,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <canvas id="radar_chart" height="150"></canvas>
                         </div>
                     </div>
-                </div>
-                <!-- #END# Radar Chart -->
+                </div><!-- #END# Radar Chart -->
                 <!-- Pie Chart -->
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="card m-1">
@@ -190,7 +198,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <canvas id="pie_chart" height="150"></canvas>
                         </div>
                     </div>
-                </div><!-- #END# Pie Chart -->
+                </div><!--Pie Chart -->
             </div>
         </div>
     </section>
@@ -217,12 +225,15 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
             </div><!--tab content-->
           </div><!--2° half-->
       </div> <!--1° row-->
-      <div class="row">
-        <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <button id="confirm-editing-list" class="btn btn-secondary my-1 my-md-0">Conferma inserimento</button>
-          <button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>
-        </div>
-      </div> <!--2° row-->
+
+
+<!--not required here:<div class="row">
+  <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
+    <button id="confirm-editing-list" class="btn btn-secondary my-1 my-md-0">Conferma inserimento</button>
+    <button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>
+  </div>
+</div> 2° row-->
+
     </div><!--container-fluid-->
 
   </main>
