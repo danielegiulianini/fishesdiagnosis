@@ -39,14 +39,13 @@ $(document).ready(function() {
     table2 = $('#absent-signs-table').DataTable({
       "responsive" : true,
       "ajax": { //this is for sending request to server
-             "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON URL CHE INVIA I DATI*/
-             "data": {request: "present_signs", type : "select"},
+            "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+            "data": {subject : "absent_signs", "idScheda" : idScheda},
              "type": 'POST',
              "dataSrc": ""
            },
        "columns": [
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"}
+        {  "data": "nome" }
       ],
       "language": {
           "infoEmpty": "No records available yet.",  /*empty table message*/

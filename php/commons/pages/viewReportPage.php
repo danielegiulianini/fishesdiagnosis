@@ -139,15 +139,13 @@ $absentSignsTableSchema =
 '<table id="absent-signs-table" class="display" style="width:100%">
    <thead>
      <tr>
-      <th>Segno presente</th>
-      <th>Percentuale di presenza</th>
+      <th>Segno assente</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
-       <th>Segno presente</th>
-       <th>Percentuale di presenza</th>
-    </tr>
+     <th>Segno assente</th>
+   </tr>
   </tfoot>
 </table>';
 
@@ -185,6 +183,25 @@ $eventsTableSchema =
      <th>Data comparsa segni</th>
      <th>Stato</th>
      <th>Sigla provincia</th>
+   </tr>
+  </tfoot>
+</table>';
+
+
+$conclusionsTableSchema =
+'<table id="conclusions-table" class="display" style="width:100%">
+   <thead>
+     <tr>
+      <th>id conclusione</th>
+      <th>Risposta</th>
+      <th>Evoluzione</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+     <th>id conclusione</th>
+     <th>Risposta</th>
+     <th>Evoluzione</th>
    </tr>
   </tfoot>
 </table>';
@@ -317,7 +334,7 @@ $eventsTableSchema =
           </div>
           <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
 
-            ...
+            <?php echo $conclusionsTableSchema;?>
 
           </div>
         </div><!--tab content-->
