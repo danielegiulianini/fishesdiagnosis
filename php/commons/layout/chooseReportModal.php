@@ -1,22 +1,25 @@
 <!--dependencies of this file:
-a variable $conn containing a mysqli connection
+1. a variable $conn containing a mysqli connection
+2. a session already started
 -->
 
 <?php
-//da sostituire con questa sottostante quando db pronto:
 
-//$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate where schedechiamate.idUtente = ?");
-//$stmt->bind_param("i", $IDUtente);
 
-$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate ");
+
+$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate where schedechiamate.idUtente = ?");
+$stmt->bind_param("i", $_SESSION["idUtente"]);
 $stmt->execute();
 $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
   $idSchede_assoc[]=$row;
 }
 $idSchede=array(); //devo trasformare l'array associativo in array di valori
-foreach($idSchede_assoc as $item){
-  $idSchede[]=$item["idScheda"];
+
+if(isset($idSchede_assoc)){
+  foreach($idSchede_assoc as $item){
+    $idSchede[]=$item["idScheda"];
+  }
 }
 ?>
 
