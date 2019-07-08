@@ -128,25 +128,23 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
         <div class="col-md-12 col-md-offset-4 text-center mb-4">
             <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active font-weight-bolder lead" id="present-signs-tab" data-toggle="tab" href="#present-signs" role="tab" aria-controls="present-signs-tab" aria-selected="true">Resoconto segni riscontrati</a>
+                <a class="nav-link active font-weight-bolder lead" id="signs_prob-tab" data-toggle="tab" href="#signs_prob-tab-pane" role="tab" aria-controls="presigns_prob" aria-selected="true">Resoconto segni riscontrati</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link font-weight-bolder lead" id="measurements-tab" data-toggle="tab" href="#measurements" role="tab" aria-controls="measurements" aria-selected="false">Misurazioni effettuate</a>
+                <a class="nav-link font-weight-bolder lead" id="water_prob-tab" data-toggle="tab" href="#water_prob-tab-pane" role="tab" aria-controls="water_prob" aria-selected="false">Misurazioni effettuate</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link font-weight-bolder lead" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Eventi considerati</a>
+                <a class="nav-link font-weight-bolder lead" id="location_prob-tab" data-toggle="tab" href="#location_prob-tab-pane" role="tab" aria-controls="location_prob" aria-selected="false">Eventi considerati</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link font-weight-bolder lead" id="conclusion-tab" data-toggle="tab" href="#conclusion" role="tab" aria-controls="conclusion" aria-selected="false">Conclusione</a>
+                <a class="nav-link font-weight-bolder lead" id="overall_prob-tab" data-toggle="tab" href="#overall_prob-tab-pane" role="tab" aria-controls="overall_prob" aria-selected="false">Conclusione</a>
               </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="present-signs" role="tabpanel" aria-labelledby="present-signs-tab">
+              <div class="tab-pane fade show active" id="signs_prob-tab-pane" role="tabpanel" aria-labelledby="signs_prob-tab">
 
 
-
-<!--first tab-->
-<section class="content mt-2">
+<section id="signs_prob" class="content mt-2">
         <div class="container-fluid">
             <!--<div class="block-header">
                 <h1>Probabilità segni</h1>
@@ -207,19 +205,182 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 
               </div><!--tab pane-->
-              <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
+              <div class="tab-pane fade" id="location_prob-tab-pane" role="tabpanel" aria-labelledby="location_prob-tab">
 
-                <?php echo $measurementsTableSchema;?>
+<section id="location_prob" class="content mt-2">
+    <div class="container-fluid">
+        <!--<div class="block-header">
+            <h1>Probabilità segni</h1>
+        </div>-->
+        <div class="row">
+            <!-- Line Chart -->
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="card m-1 card-shadow">
+                    <div class="card-header"><!--or card-title-->
+                        <h2>Line chart</h2>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="location_prob-line_chart" height="150"></canvas>
+                    </div>
+                </div>
+            </div><!-- Line Chart -->
+            <!-- Bar Chart -->
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="card m-1">
+                    <div class="card-header">
+                        <h2>Bar chart</h2>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="location_prob-bar_chart" height="150"></canvas>
+                    </div>
+                </div>
+            </div><!--bar Chart-->
+        </div>
+
+        <div class="row">
+            <!-- Radar Chart -->
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="card m-1">
+                    <div class="card-header">
+                        <h2>Radar chart</h2>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="location_prob-radar_chart" height="150"></canvas>
+                    </div>
+                </div>
+            </div><!--radar Chart -->
+            <!-- Pie Chart -->
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="card m-1">
+                    <div class="card-header">
+                        <h2>Pie chart</h2>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="location_prob-pie_chart" height="150"></canvas>
+                    </div>
+                </div>
+            </div><!--Pie Chart -->
+        </div>
+    </div>
+</section>
 
               </div>
-              <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+              <div class="tab-pane fade" id="water_prob-tab-pane" role="tabpanel" aria-labelledby="water_prob-tab">
 
-                <?php echo $eventsTableSchema;?>
+                <section id="water_prob" class="content mt-2">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <!-- Line Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1 card-shadow">
+                                        <div class="card-header"><!--or card-title-->
+                                            <h2>Line chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="signs_prob-line_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!-- Line Chart -->
+                                <!-- Bar Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1">
+                                        <div class="card-header">
+                                            <h2>Bar chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="water_prob-bar_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!--bar Chart-->
+                            </div>
+
+                            <div class="row">
+                                <!-- Radar Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1">
+                                        <div class="card-header">
+                                            <h2>Radar chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="water_prob-radar_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!--radar Chart -->
+                                <!-- Pie Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1">
+                                        <div class="card-header">
+                                            <h2>Pie chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="water_prob-pie_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!--Pie Chart -->
+                            </div>
+                        </div>
+                    </section>
 
               </div>
-              <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
+              <div class="tab-pane fade" id="overall_prob-tab-pane" role="tabpanel" aria-labelledby="overall_prob-tab">
 
-                <?php echo $conclusionsTableSchema;?>
+
+                <section id="overall_prob" class="content mt-2">
+                        <div class="container-fluid">
+                            <!--<div class="block-header">
+                                <h1>Probabilità segni</h1>
+                            </div>-->
+                            <div class="row">
+                                <!-- Line Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1 card-shadow">
+                                        <div class="card-header"><!--or card-title-->
+                                            <h2>Line chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="overall_prob-line_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!-- Line Chart -->
+                                <!-- Bar Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1">
+                                        <div class="card-header">
+                                            <h2>Bar chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="overall_prob-bar_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!--bar Chart-->
+                            </div>
+
+                            <div class="row">
+                                <!-- Radar Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1">
+                                        <div class="card-header">
+                                            <h2>Radar chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="overall_prob-radar_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!--radar Chart -->
+                                <!-- Pie Chart -->
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card m-1">
+                                        <div class="card-header">
+                                            <h2>Pie chart</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="overall_prob-pie_chart" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div><!--Pie Chart -->
+                            </div>
+                        </div>
+                    </section>
 
               </div>
             </div><!--tab content-->
