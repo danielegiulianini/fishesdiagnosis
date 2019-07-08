@@ -79,7 +79,7 @@
           <!--<div class="card">
             <div class="card-body">
               <div class="card-title font-weight-bolder text-center lead">Informazioni generali scheda</div>-->
-                <div class="jumbotron w-100">
+                <div class="jumbotron w-100 mb-0">
                   <h1 class="display-4">FishesDiagnosis</h1>
                   <p class="lead">Non tutti sani come pesci.</p>
                   <hr class="my-4">
