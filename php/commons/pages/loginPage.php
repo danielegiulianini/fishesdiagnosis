@@ -40,10 +40,12 @@ if(isset($_POST["request"])and !is_null($_POST["request"]) and $_POST["request"]
 
          switch($userType){
             case "admin":
-              header("Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/pages/adminStartPage.php");  /*to update to dashboard*/
+              header("Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/adminStartPage.php");  /*to update to dashboard*/
               break;
             case "utente":
-              header("Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/user/pages/userStartPage.php");  /*to update to dashboard*/
+              header("Location: /fishesdiagnosis/php/user/userStartPage.php");  /*to update to dashboard*/
+//echo "Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/user/pages/userStartPage.php";
+//exit;
               break;
           }
 
@@ -100,7 +102,7 @@ if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"
   			$insertError = $stmt->error;
   		}
     } else {
-      $errors.="username già in uso.";
+      $errors.="username gia' in uso.";
     }
 
     $stmt->close();
@@ -227,7 +229,7 @@ if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"
               <div class="text-center">
                 <span id="profileImg" class="d-block fas fa-user mt-4 mb-4 big-icon"></span>
               </div>
-              <form class="needs-validation" method="post" action="#" novalidate><!--novalidate cause I want to use my validation, not the browser default-->
+              <form class="needs-validation" method="post" action=""><!--novalidate cause I want to use my validation, not the browser default-->
                   <input type="hidden" name="request" value="login"/>
 
                   <div class="form-group">
@@ -244,7 +246,7 @@ if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"
                   </div>
                   <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">Login</button>
                   <!--<a href="./resetPasswordPage.php" class="small text-center">Password dimenticata? Clicca qui.</a><br>-->
-                  <div class="small text-center" data-toggle="modal" data-target="#add-user-modal">Non sei registrato? Registrati qui.</div>
+                  <a href="#add-user-modal" class="small text-center" data-toggle="modal" data-target="#add-user-modal">Non sei registrato? Registrati qui.</a>
               </form>
             </div>
           </div>

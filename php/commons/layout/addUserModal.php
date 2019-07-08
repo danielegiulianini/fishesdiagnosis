@@ -12,6 +12,10 @@
           </button>
         </div>
       <div class="modal-body">
+        <div id ="errorsBox" class="alert alert-danger alert-php" role="alert" style="display:none">
+          Errore durante l'inserimento.
+          <p></p>
+        </div>
         <form id="add-user-form">
             <input type="hidden" name="request" value="registration"/>
 

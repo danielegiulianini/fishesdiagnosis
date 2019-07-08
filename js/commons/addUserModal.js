@@ -38,9 +38,13 @@ $(document).ready(function(){
       $.post(url, data)
         .done(function(errorOutput){
           if (errorOutput.length<3){  //if server replayed with no errors (response than less 3 means long no errors)
-              //window.alert("data correctly updated.");//for debugging
-              window.location = `${location.origin}/fishesdiagnosis/php/user/userStartPage.php`;
-            }
+            //window.alert("data correctly updated.");//for debugging
+            //window.location = `${location.origin}/fishesdiagnosis/php/user/userStartPage.php`;
+          } else{
+            //window.alert(errorOutput);//for debugging
+            $("#errorsBox p").text(errorOutput);
+            $("#errorsBox").show();
+          }
         })
         .fail(function(xhr, ajaxOptions, thrownError){  //error of transmission
             window.alert("transimission error:"+xhr.status + "," + ajaxOptions +"," + thrownError);//for debugging
