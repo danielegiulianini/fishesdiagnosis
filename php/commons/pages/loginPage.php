@@ -2,10 +2,11 @@
 /*in this page i must perform regstration and login check*/
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
-var_dump($_POST);
+/*var_dump($_POST);*/
+
+$errors = "";
 
 if(isset($_POST["request"])and !is_null($_POST["request"]) and $_POST["request"]=="login"){
-	$errors = "";
 
   /*validation*/
 	/*if(!isset($_POST["nome"]) || strlen($_POST["nome"]) < 2){
@@ -63,7 +64,7 @@ if(isset($_POST["request"])and !is_null($_POST["request"]) and $_POST["request"]
 
 /*to eventually put in registrationPage if I will move regitstration from modal to its page*/
 if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"]=="registration"){
-echo "ciaiiaii";
+
 	$errors = "";
 
   /*validation*/
@@ -116,7 +117,6 @@ echo "ciaiiaii";
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
   <script src="http://localhost:8081/fishesdiagnosis/js/commons/loginPage.js"></script>
-  <script src="http://localhost:8081/fishesdiagnosis/js/commons/adduserModal.js"></script>
 
 
   <!--for dataTables buttons-->

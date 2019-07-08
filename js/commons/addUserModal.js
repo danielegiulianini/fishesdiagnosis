@@ -23,8 +23,7 @@ $(document).ready(function(){
       var url = `${location.origin}/fishesdiagnosis/php/commons/pages/loginPage.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(errorOutput){
-          console.log(errorOutput);
-            if (!errorOutput){
+          if (errorOutput.length<3){  //if server replayed with no errors
               window.alert("data correctly updated.");//for debugging, to replace with a auto closing box
               //window.location = `${location.origin}/fishesdiagnosis/php/user/pages/userStartPage.php`;
             }
