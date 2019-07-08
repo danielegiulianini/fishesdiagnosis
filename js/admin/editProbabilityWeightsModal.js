@@ -34,6 +34,7 @@ $(document).ready(function(){
             $('input.e-valore').prop('readonly', true); //reset buttons and inputs to initial state (ready for next use)
             $('#confirm-edit-probability-weights-button').prop('disabled', true);
             $("#confirm-edit-probability-weights-button").addClass('disabled');
+            $('#enable-edit-probability-weights-button').prop('disabled', false);
 
             $(".modal").modal("hide");
         })

@@ -8,22 +8,34 @@ $output = array();
 
 var_dump($_POST); //in post c'è la form serializzata
 
-if (isset($_POST["nomeProbabilitaAssociata"]) and isset($_POST["valore"])) { /*mandatory fields*/
+if (isset($_POST["pesi"])) { /*mandatory fields*/
 
-  $nomeProbabilitaAssociata=$_POST["nomeProbabilitaAssociata"];
-  $valore=$_POST["valore"];
+  $arrayPesi = $_POST["pesi"];
 
-  /*validation*/
+  foreach($arrayPesi as $item){
 
-  /*dml*/
-  $stmt=$conn->prepare("INSERT INTO pesi(nomeProbabilitaAssociata,valore) VALUES (?,?)");
+    if (isset($item["nomeProbabilitaAssociata"]) and isset($item["valore"]))
 
-  $stmt->bind_param("si", $nomeProbabilitaAssociata, $valore);
+      $nomeProbabilitaAssociata=$item["nomeProbabilitaAssociata"];
+      $valore=$item["valore"];
+
+      /*validation*/
+
+      /*dml*/
+      $stmt=$conn->prepare("INSERT INTO pesi(nomeProbabilitaAssociata,valore) VALUES (?,?)");
+
+      echo "INSERT INTO pesi(nomeProbabilitaAssociata,valore) VALUES ( $item['nomeProbabilitaAssociata'],
+      $item['valore'])";
+
+      $stmt->bind_param("si", $item["nomeProbabilitaAssociata"], $item["valore"]);
+
+      if (!is_null ($stmt)){
+      //  $stmt->execute();
+      }
+  }
 }
 
-if (!is_null ($stmt)){
-  $stmt->execute();
-}
+
 
 $conn->close();
 
