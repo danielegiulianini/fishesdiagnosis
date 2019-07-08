@@ -52,37 +52,56 @@ $(document).ready(function() {
       }
     });
 
-    table = $('#measurements-table').DataTable({
+    table3 = $('#measurements-table').DataTable({
       "responsive" : true,
       "ajax": { //this is for sending request to server
-             "url": "/progettoweb/php/administrator/administrator.php", //DA SOSTITUIRE CON URL CHE INVIA I DATI
-             "data": {request: "clients", type : "select"},
+              "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+              "data": {subject : "measurements", "idScheda" : idScheda},
              "type": 'POST',
              "dataSrc": ""
            },
        "columns": [
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"}
+        {  "data": "caratteristicaAcqua" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "valore"}
       ],
       "language": {
           "infoEmpty": "No records available yet.",  //empty table message
       }
     });
 
-    table = $('#events-table').DataTable({
+    table4 = $('#events-table').DataTable({
       "responsive" : true,
       "ajax": { //this is for sending request to server
-             "url": "/progettoweb/php/administrator/administrator.php", //DA SOSTITUIRE CON URL CHE INVIA I DATI
-             "data": {request: "clients", type : "select"},
+            "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+            "data": {subject : "events", "idScheda" : idScheda},
              "type": 'POST',
              "dataSrc": ""
            },
        "columns": [
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"},
-        {  "data": "IDUtente" }, //schema della tabella nel db (devo aggiungere action dove serve)
-        {  "data" : "nome"},
-        {  "data": "IDUtente" }
+        {  "data": "idEvento" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "dataEvento"},
+        {  "data": "dataComparsaSegniClinici" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "tipologia"},
+        {  "data": "provenienza" },
+        {  "data": "note" }
+      ],
+      "language": {
+          "infoEmpty": "No records available yet.",  //empty table message
+      }
+    });
+
+    table5 = $('#conclusions-table').DataTable({
+      "responsive" : true,
+      "ajax": { //this is for sending request to server
+        "url": "/fishesdiagnosis/php/commons/scripts/reportsInfoGetter.php",
+        "data": {subject : "conclusions", "idScheda" : idScheda},
+             "type": 'POST',
+             "dataSrc": ""
+           },
+       "columns": [
+        {  "data": "idConclusione" }, //schema della tabella nel db (devo aggiungere action dove serve)
+        {  "data" : "risposta"},
+        {  "data": "evoluzione" }
       ],
       "language": {
           "infoEmpty": "No records available yet.",  //empty table message

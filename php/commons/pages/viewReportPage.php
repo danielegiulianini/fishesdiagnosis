@@ -169,6 +169,7 @@ $eventsTableSchema =
 '<table id="events-table" class="display" style="width:100%">
    <thead>
      <tr>
+     <th>Id evento</th>
       <th>Tipo evento</th>
       <th>Data evento</th>
       <th>Data comparsa segni</th>
@@ -178,6 +179,7 @@ $eventsTableSchema =
   </thead>
   <tfoot>
     <tr>
+      <th>Id evento</th>
      <th>Tipo evento</th>
      <th>Data evento</th>
      <th>Data comparsa segni</th>
