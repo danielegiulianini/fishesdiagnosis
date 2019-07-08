@@ -24,15 +24,15 @@ $weightsForm.= '<div class="form-row mb-1" aria-role="form-header">
                   Valore peso
                   </div>
                 </div>';
-foreach($pesi_assoc as $item){
+for($i=0; $i<count($pesi_assoc) ;$i++){
   $weightsForm.=
   '<div class="form-row mb-1">
     <div class="col-8">
-      <!--<label for="e-nomeProbabilitaAssociata">'.$item["nomeProbabilitaAssociata"].'</label>-->
-      <input type="text" class="form-control e-nomeProbabilita" name="pesi[][nomeProbabilitaAssociata]" value="'.$item["nomeProbabilitaAssociata"].'" readonly>
+      <!--<label for="e-nomeProbabilitaAssociata">'.$pesi_assoc[$i]["nomeProbabilitaAssociata"].'</label>-->
+      <input type="text" class="form-control e-nomeProbabilita" name="pesi[][nomeProbabilitaAssociata]" value="'.$pesi_assoc[$i]["nomeProbabilitaAssociata"].'" readonly>
     </div>
     <div class="col-4">
-      <!--<label for="e-valore">'.$item["valore"].'</label>-->
+      <!--<label for="e-valore">'.$pesi_assoc[$i]["valore"].'</label>-->
       <input type="number" class="form-control e-valore" name="pesi[][valore]" min="0" max="1" step=".1" required readonly>
     </div>
   </div>';

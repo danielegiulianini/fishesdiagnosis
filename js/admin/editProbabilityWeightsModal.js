@@ -26,7 +26,7 @@ $(document).ready(function(){
     form=$("#edit-probability-weights-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
-      var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/addReport.php`;//$(form).attr("action");
+      var url = `${location.origin}/fishesdiagnosis/php/admin/scripts/probabilityWeightsEditor.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(){
             window.alert("data correctly updated.");  //for debugging, to replace with a auto closing box
@@ -35,7 +35,7 @@ $(document).ready(function(){
             $('#confirm-edit-probability-weights-button').prop('disabled', true);
             $("#confirm-edit-probability-weights-button").addClass('disabled');
 
-            $(".modal").modal("hide");  //chiudere i modali (non serve perché faccio redirect)
+            $(".modal").modal("hide");
         })
         .fail(function(xhr, ajaxOptions, thrownError){  //error of transmission
             window.alert("transimission error:"+xhr.status + "," + ajaxOptions +"," + thrownError);//for debugging
