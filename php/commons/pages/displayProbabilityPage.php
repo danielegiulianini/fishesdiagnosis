@@ -82,7 +82,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
     }
 
 
-.block-header {
+.block-header { /*not used*/
   margin-bottom: 15px; }
   .block-header h2 {
     margin: 0 !important;
@@ -98,7 +98,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
         font-weight: bold;
         color: #777; }
 
-  .header { /*anche questo va bene .> posso sosituirla lla classe card-header*/
+  .header { /*anche questo va bene ->> posso sosituirla lla classe card-header*/
     color: #555;
     padding: 20px;
     position: relative;
@@ -106,10 +106,10 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
   }
 
 
-  .card-shadow{
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
+  .card-shadow {  /*non molto coerente con la ux attuale*/
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }
   </style>
 
 </head>
@@ -159,7 +159,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <h2>Line chart</h2>
                         </div>
                         <div class="card-body">
-                            <canvas id="line_chart" height="150"></canvas>
+                            <canvas id="signs_prob-line_chart" height="150"></canvas>
                         </div>
                     </div>
                 </div><!-- Line Chart -->
@@ -170,10 +170,10 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <h2>Bar chart</h2>
                         </div>
                         <div class="card-body">
-                            <canvas id="bar_chart" height="150"></canvas>
+                            <canvas id="signs_prob-bar_chart" height="150"></canvas>
                         </div>
                     </div>
-                </div><!-- #END# Bar Chart -->
+                </div><!--bar Chart-->
             </div>
 
             <div class="row">
@@ -184,10 +184,10 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <h2>Radar chart</h2>
                         </div>
                         <div class="card-body">
-                            <canvas id="radar_chart" height="150"></canvas>
+                            <canvas id="signs_prob-radar_chart" height="150"></canvas>
                         </div>
                     </div>
-                </div><!-- #END# Radar Chart -->
+                </div><!--radar Chart -->
                 <!-- Pie Chart -->
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="card m-1">
@@ -195,7 +195,7 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
                             <h2>Pie chart</h2>
                         </div>
                         <div class="card-body">
-                            <canvas id="pie_chart" height="150"></canvas>
+                            <canvas id="signs_prob-pie_chart" height="150"></canvas>
                         </div>
                     </div>
                 </div><!--Pie Chart -->
