@@ -1,160 +1,72 @@
 <?php
 header('Content-Type: application/json');
+
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
+
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
-session_start();
 
-/*The task of this file is fetching datatbles. They ask for info by contacting this
-url trough js file. DataTables could also be fetched filling tables in the dom.
+/*The task of this file is fetching datatbles od viewReportPage (general info table
+ is fetched directly in viewReportPage because is styling is particular and because
+ of that it is not a datatable). datatables ask for info by contacting this
+ url trough thier js file. DataTables could also be fetched filling tables in the dom.
 In future I could put this code in the DOM directly.*/
+
+function fillOutputWithPrepStatResults($sql, $conn, &$output){
+  /*$stmt=$conn->prepare($sql." where idScheda = ?");
+  $stmt->bind_param("i", $idScheda);
+
+  $stmt->execute();
+
+  $result=$stmt->get_result();
+  while($row=$result->fetch_assoc()){
+    $output[]=$row;
+  }*/
+
+}
+
+function fillOutputWithQueryResults($sql, $conn, &$output){
+  $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) {
+      $row["action"]="";
+      $output[]=$row;
+    }
+}
 
 $output = array();
 $stmt = null;
 
-$request=$_POST["request"];
 $subject=$_POST["subject"];
+$idScheda = $_POST["idScheda"];
 
 var_dump($_POST);
 
 switch($subject){
-  case "generalInfo":
-    switch ($request){
-      case "add":
-        if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"])) { /*mandatory fields*/
-          /*$dataOraRegistrazione = $_POST["dataOraRegistrazione"];*/
+  case "present_signs":
 
-          $nomeVeterinario=$_POST["nomeVeterinario"];
-          $nomeRichiedente=$_POST["nomeRichiedente"];
-          $telefonoRichiedente=$_POST["telefonoRichiedente"];
-          $emailRichiedente=$_POST["emailRichiedente"];
-          $sospetto=$_POST["sospetto"];
-          $percentualeAffetti=$_POST["percentualeAffetti"];
-          $numeroEsaminati=$_POST["numeroEsaminati"];
-          $taglia=$_POST["taglia"];
-          $eta=$_POST["eta"];
-          $sesso=$_POST["sesso"];
-          $specie=$_POST["specie"];
-          $vasca=$_POST["vasca"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-          $origine=$_POST["origine"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-          $note=$_POST["note"];
+    fillOutputWithQueryResults("select * from segnipresenti inner join segni on segni.idSegno=segnipresenti.idSegno where idScheda = ".$idScheda, $conn, $output);//yes need of join
 
-          /*validation*/
-
-          /*ddl*/
-          $stmt=$conn->prepare("INSERT INTO schedechiamate(nomeVeterinario,nomeRichiedente,telefonoRichiedente,
-            emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-
-          $stmt->bind_param("sssssiiiisssis",
-            $nomeVeterinario,
-            $nomeRichiedente,
-            $telefonoRichiedente,
-            $emailRichiedente,
-            $sospetto,
-            $percentualeAffetti,
-            $numeroEsaminati,
-            $taglia,
-            $eta,
-            $sesso,
-            $specie,
-            $vasca,   /*vasca key is string*/
-            $origine, /*origin key is integer*/
-            $note
-            );
-          }
-        break;
-      case "edit":
-      if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"]) and isset($_POST["idScheda"])) { /*mandatory fields*/
-        /*$dataOraRegistrazione = $_POST["dataOraRegistrazione"];*/
-
-        $idScheda = $_POST["idScheda"];
-        $nomeVeterinario=$_POST["nomeVeterinario"];
-        $nomeRichiedente=$_POST["nomeRichiedente"];
-        $telefonoRichiedente=$_POST["telefonoRichiedente"];
-        $emailRichiedente=$_POST["emailRichiedente"];
-        $sospetto=$_POST["sospetto"];
-        $percentualeAffetti=$_POST["percentualeAffetti"];
-        $numeroEsaminati=$_POST["numeroEsaminati"];
-        $taglia=$_POST["taglia"];
-        $eta=$_POST["eta"];
-        $sesso=$_POST["sesso"];
-        $specie=$_POST["specie"];
-        $vasca=$_POST["vasca"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-        $origine=$_POST["origine"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-        $note=$_POST["note"];
-
-        /*validation*/
-
-        /*ddl*/
-        $stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
-          emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia=?,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
-
-        $stmt->bind_param("sssssiiiisssisi",
-          $nomeVeterinario,
-          $nomeRichiedente,
-          $telefonoRichiedente,
-          $emailRichiedente,
-          $sospetto,
-          $percentualeAffetti,
-          $numeroEsaminati,
-          $taglia,
-          $eta,
-          $sesso,
-          $specie,
-          $vasca,   /*vasca key is string*/
-          $origine, /*origin key is integer*/
-          $note,
-          $idScheda
-          );
-        }
-    }
     break;
-  case "presentSigns":
-    switch ($request){
-      case "add":
-        /*validation*/
-        $stmt= $conn->prepare("");
-        $stmt->bind_param("", $a1, $a2);
-        break;
-      case "edit":
-        break;
-    }
-    break;
-  case "absentSigns":
-    switch ($request){
-      case "add":
-        $sql = "";
-        break;
-      case "edit":
-        break;
-    }
-    break;
+  case "absent_signs":
+
+    fillOutputWithQueryResults("select * from segniassenti inner join segni on segni.idSegno=segniassenti.idSegno where idScheda = ".$idScheda, $conn, $output);//yes need of join
+
   case "measurements":
-    switch ($request){
-      case "add":
-        $sql = "";
-        break;
-      case "edit":
-        break;
-    }
+
+    fillOutputWithQueryResults("select * from misurazioni where idScheda = ".$idScheda, $conn, $output); //no need of join
+
     break;
+
   case "events":
-    switch ($request){
-      case "add":
-        $sql = "";
-        break;
-      case "edit":
-        break;
-    }
-    break;
-  case "conclusion":
-    switch ($request){
-      case "add":
-        $sql = "";
-        break;
-      case "edit":
-        break;
-    }
+
+      fillOutputWithQueryResults("select * from eventi where idScheda = ".$idScheda, $conn, $output); //no need of join
+
+  break;
+
+  case "conclusions":
+
+    fillOutputWithQueryResults("select * from conclusioni where idScheda = ".$idScheda, $conn, $output); //no need of join
+
     break;
 }
 

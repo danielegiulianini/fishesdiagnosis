@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
-session_start();
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
 
 $output = array();
 $stmt = null;

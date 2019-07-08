@@ -38,7 +38,7 @@ $(document).ready(function() {
       "responsive" : true,
       "ajax": { //this is for sending request to server
              "url": "/progettoweb/php/administrator/administrator.php", /*DA SOSTITUIRE CON URL CHE INVIA I DATI*/
-             "data": {request: "clients", type : "select"},
+             "data": {request: "present_signs", type : "select"},
              "type": 'POST',
              "dataSrc": ""
            },
