@@ -1,6 +1,9 @@
 <?php
 /*in get oppure cookie c'è l'idScheda, lo memorizzo in una sessione? per ora il modal choose la specifica in get*/
 //var_dump($_GET);
+
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
+
 $idScheda = $_GET["idScheda"];
 
 /*fetching species is needed for editReportModal (it's better to move this code to its file with include_once connect.php)*/

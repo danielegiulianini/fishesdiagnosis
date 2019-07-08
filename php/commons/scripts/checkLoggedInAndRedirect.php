@@ -1,21 +1,28 @@
 <?php
 session_start();
 
-include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
+//include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
-if (checkSessionElapsedOrCredentialsCorrupted($conn)){
+echo $_SESSION['idUtente'];
+exit;
+
+//if (checkSessionElapsedOrCredentialsCorrupted($conn)){
+if (!isset($_SESSION["idUtente"])){
   /*qui ho bisogno di un indirizzo assoluto perché questo file viene incluso in file situati in directory diverse*/
     header("Location: /fishesdiagnosis/php/commons/pages/loginPage.php");
-    exit;
+    //exit;
 }
-
+/*
 function checkSessionElapsedOrCredentialsCorrupted($conn) {
 /*questa funzione controlla che:
 1. la sessione non sia scaduta (bastava un booleano logged)
 2. i dati che mantiene non siano stati corrotti da qualcuno*/
-
+/*
   if(isset($_SESSION['idUtente'])) {
+    echo "ciaooaooaooa";
+    exit;
     $user_id = $_SESSION['idUtente'];
+    return false;
      /*if ($stmt = $conn->prepare("SELECT password FROM utenti WHERE IDUtente = ? LIMIT 1")) {
         $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$user_id'.
         $stmt->execute(); // Esegue la query creata.
@@ -40,9 +47,9 @@ function checkSessionElapsedOrCredentialsCorrupted($conn) {
        error_log("prepard erraro", 3, "error.txt");
         return true; //errore preparazione prepared statement
      }*/
-   } else {
+/*   } else {
      return true;  //sessione scaduta
    }
-}
+}*/
 
 ?>

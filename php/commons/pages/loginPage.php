@@ -101,6 +101,10 @@ if(isset($_POST["request"]) and !is_null($_POST["request"]) and $_POST["request"
   		if(!$isInserted){
   			$insertError = $stmt->error;
   		}
+      $user_id = $conn->insert_id;  //get last id inserted in a auto_increment table column
+
+      $_SESSION['idUtente'] = $user_id; //inzio la sessione->IMPORTANTE, questi dati poi non saranno da richiedere al server nell chiamate ad ajax
+      $_SESSION["tipoUtente"]= "utente";
     } else {
       $errors.="username gia' in uso.";
     }
