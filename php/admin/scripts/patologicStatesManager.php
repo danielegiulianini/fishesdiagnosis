@@ -64,11 +64,8 @@ switch($subject){
         break;
       case "edit":
       if (isset($_POST["idStato"]) and isset($_POST["nomeStato"]) and isset($_POST["tipoStato"])) { /*mandatory fields*/
-echo "UPDATE statipatologici SET nome=?,tipologia=? WHERE idStatoPat=?";
-echo $idStatoPat;
-echo $nome;
- echo $tipologia;
-        /*$idStatoPat = $_POST["idStato"];
+
+        $idStatoPat = $_POST["idStato"];
         $nome=$_POST["nomeStato"];
         $tipologia=$_POST["tipoStato"];
 
@@ -83,7 +80,7 @@ echo $nome;
           $idStatoPat
         );
 
-        $stmt->execute();*/
+        $stmt->execute();
       }
       break;
     }
@@ -105,32 +102,32 @@ echo $nome;
           $arrayIdSegni = $_POST["idSegno"];
           $arrayPresences = $_POST["presences"];
 
-          $arrayPercentuali = !isset($_POST["percentages"]) ? null : $_POST["percentages"];/*in 'percentuale' della tabella presentazione si può inserire null, ma non empty string*/
+        /*  $arrayPercentuali = !isset($_POST["percentages"]) ? null : $_POST["percentages"];//in 'percentuale' della tabella presentazione si può inserire null, ma non empty string
 
-          /*validation*/
+          //validation
 
 
-          /*dml*/
-          /*1.cleaning presentazioni table*/
+          //dml
+          //1.cleaning presentazioni table
           $stmt=$conn->prepare("DELETE from presentazioni where idStatoPat=? and specie=?");
           $stmt->bind_param("is", $idStatoPat, $specie);
           $stmt->execute();
 
-          /*2.inserting into presentazioni table according to values of radios savd in presences*/
+          //2.inserting into presentazioni table according to values of radios savd in presences
           for ($i=0; $i<count($arrayIdSegni); $i++){
             switch($arrayPresences[$i]){
               case "yes":
-                $stmt=$conn->prepare("INSERT into presentazioni(idStatoPat, idSegno, specie, gradoFrequenza) values(?, ?, ?)");
+                $stmt=$conn->prepare("INSERT into presentazioni(idStatoPat, idSegno, specie, gradoFrequenza) values(?, ?, ?, ?)");
                 $stmt->bind_param("iisd",$idStatoPat, $arrayIdSegni[$i], $specie, $arrayPercentuali[$i]);
                 $stmt->execute();
                 break;
               case "no":
-                /*do nothing*/
+                //do nothing
                 break;
               default:
-                /*do nothing*/
+                //do nothing
             }
-          }
+          }*/
 
         }
         break;

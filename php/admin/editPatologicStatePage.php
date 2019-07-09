@@ -4,8 +4,9 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLog
 $idStatoPat = $_GET["idStatoPat"];
 $specie = $_GET["specie"];
 
+/*
 var_dump($idStatoPat);
-var_dump($specie);
+var_dump($specie);*/
 
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
@@ -31,8 +32,11 @@ $precompiledSignsListTable.='<div class="card d-md-block p-2">
 
 //per marcare i radio giusti si poteva operare in maniera + procedurale:
 //prima interrogare per i segni e, iterando su di loro, verificando con un ciclo innestato su presentazioni se il segno corrente era presente al suo interno.
-$stmt=$conn->prepare("SELECT segni.idSegno, segni.nome, presentazioni.gradoFrequenza FROM segni left outer join presentazioni on (segni.idSegno = presentazioni.idSegno) where (presentazioni.specie is null or presentazioni.specie = ?) order by segni.idSegno");
-$stmt->bind_param("i", $specie);
+//$stmt=$conn->prepare("SELECT segni.idSegno, segni.nome, presentazioni.gradoFrequenza FROM segni left outer join presentazioni on (segni.idSegno = presentazioni.idSegno) where (presentazioni.specie is null or presentazioni.specie = ?) and (presentazioni.idStatoPat is null or presentazioni.idStatoPat=?) order by segni.idSegno");
+
+$stmt=$conn->prepare("SELECT * FROM segni left outer join (select presentazioni.idStatoPat, presentazioni.specie, presentazioni.idSegno, presentazioni.gradoFrequenza from presentazioni where idStatoPat = ? and specie =?)
+as temp  on (segni.idSegno = temp.idSegno) order by segni.idSegno");
+$stmt->bind_param("is", $idStatoPat, $specie);
 $stmt->execute();
 $result=$stmt->get_result();
 for($i=0; $row=$result->fetch_assoc(); $i++){
@@ -51,7 +55,7 @@ of input fields, so that the server can recognize every single item.*/
   } else {
     $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes">';
     $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no" checked>';
-    $percentageField.='<td  headers="percentage"><input class="percentage" type="number" min="0" max="1" step=".1" name="percentages['.$i.']" disabled></td>';
+    $frequencyField.='<td  headers="percentage"><input class="percentage" type="number" min="0" max="1" step=".1" name="percentages['.$i.']" disabled></td>';
   }
 
 /*I must include a input type hidden field(segno) for the server to know which record to update in the db*/
@@ -203,7 +207,7 @@ $conclusionsTableSchema =
 
 
 
-<script src="http://localhost:8081/fishesdiagnosis/js/admin/editPatologicStatePage.js"></script>
+<!--<script src="http://localhost:8081/fishesdiagnosis/js/admin/editPatologicStatePage.js"></script>-->
 
   <style>
     html, body{
