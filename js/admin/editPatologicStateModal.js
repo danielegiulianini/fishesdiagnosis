@@ -40,19 +40,19 @@ $(document).ready(function(){
     //le recupero dalla tabella nell'html e li assegno (anziché chiederli al server)
 
     //retrieve from table
-    idStato = $("#g-idStato").text();
-    nome = $("#g-nomeStato").text();
-    tipoStato = $("#g-tipoStato").text();
+    idStato = $("#g-idStatoPat").text();
+    nome = $("#g-nomeStatoPat").text();
+    tipoStato = $("#g-tipologiaStatoPat").text();
+    alert("ids"+idStato+", "+"nome"+nome+", "+tipoStato);
 
     //assign modal input tags
     $("#e-idStato").val(idStato);
     $("#e-nomeStato").val(nome);
     $("#e-tipoStato").val(tipoStato);
+    $('#e-tipoStato option[value="'+tipoStato+'"]').attr('selected','selected');//to show as selected (doesn0t work yet)
   };
 
   $('#edit-pat-st-modal').on('shown.bs.modal', function (e) {
     fetchReportGeneralInfoModal(e);
   });
-
-
 });

@@ -1,7 +1,7 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
 
-$idStatoPat = $_GET["idScheda"];
+$idStatoPat = $_GET["idStatoPat"];
 $specie = $_GET["specie"];
 
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
@@ -12,7 +12,7 @@ data by js instead. If i'll want to change technology, I 'll just replace this c
 $precompiledSignsListTable='<form id="signs-list-form">';
 $precompiledSignsListTable.='<input type="hidden" name="request" value="edit"/>
                             <input type="hidden" name="subject" value="signs"/>
-                            <input type="hidden" name="idScheda" value="'.$idScheda.'"/>';
+                            <input type="hidden" name="idScheda" value="'.$idStatoPat.'"/>';
 $precompiledSignsListTable.='<div class="card d-md-block p-2">
                               <table id="table" class="table table-sm table-striped header-fixed p-2">
                                 <thead>
@@ -82,6 +82,7 @@ $precompiledSignsListTable.='</tbody>
 $precompiledSignsListTable.='</form>';
 
 /*table schemas needed by datatables. This table will be fetched by js.*/
+/*
 $measurementsTableSchema =
 '<table id="measurements-table" class="display" style="width:100%">
   <thead>
@@ -137,6 +138,7 @@ $conclusionsTableSchema =
    </tr>
   </tfoot>
 </table>';
+*/
 
 ?>
 
@@ -206,7 +208,7 @@ $conclusionsTableSchema =
 
 
 
-<script src="http://localhost:8081/fishesdiagnosis/js/commons/editReportPage.js"></script>
+<script src="http://localhost:8081/fishesdiagnosis/js/commons/editPatologicState.js"></script>
 
   <style>
     html, body{
@@ -222,7 +224,7 @@ $conclusionsTableSchema =
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
-          <h1>Scheda n. <?php echo $idScheda;?></h1> <!--questa sarà settata dalla sessione-->
+          <h1>Stato patologico n. <?php echo $idStatoPat;?></h1> <!--questa sarà settata dalla sessione-->
         </div>
       </div> <!--1° row-->
 
@@ -250,17 +252,17 @@ $conclusionsTableSchema =
               </div><!--tab pane-->
               <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
 
-                <?php echo $measurementsTableSchema;?>
+                <?php /*echo $measurementsTableSchema;*/?>
 
               </div>
               <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
 
-                <?php echo $eventsTableSchema;?>
+                <?php /*echo $eventsTableSchema;*/?>
 
               </div>
               <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
 
-                <?php echo $conclusionsTableSchema;?>
+                <?php/* echo $conclusionsTableSchema;*/?>
 
               </div>
             </div><!--tab content-->
@@ -269,7 +271,7 @@ $conclusionsTableSchema =
       <div class="row">
         <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
           <button id="confirm-editing-list" class="btn btn-secondary my-1 my-md-0">Conferma inserimento</button>
-          <button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>
+          <!--<button class="btn btn-secondary my-1 my-md-0">Modifica informazioni</button>-->
         </div>
       </div> <!--2° row-->
     </div><!--container-fluid-->

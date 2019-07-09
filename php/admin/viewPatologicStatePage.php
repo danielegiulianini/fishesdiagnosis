@@ -37,11 +37,11 @@ $patStateGeneralInfoTable='<table id="pat_state-info-1" class="table table-hover
                               </tr>
                               <tr>
                                 <th scope="row">Nome</th>
-                                <td id="g-nome">'.$row["nome"].'</td>
+                                <td id="g-nomeStatoPat">'.$row["nome"].'</td>
                               </tr>
                               <tr>
                                 <th scope="row">Tipologia</th>
-                                <td id="g-nome-tipologia">'.$row["tipologia"].'</td>
+                                <td id="g-tipologiaStatoPat">'.$row["tipologia"].'</td>
                               </tr>
                             </tbody>
                           </table>';
