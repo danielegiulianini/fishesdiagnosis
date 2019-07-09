@@ -4,6 +4,9 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLog
 $idStatoPat = $_GET["idStatoPat"];
 $specie = $_GET["specie"];
 
+var_dump($idStatoPat);
+var_dump($specie);
+
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 /*basic table library, unlike datatable, needs that the data are already inside
@@ -12,7 +15,9 @@ data by js instead. If i'll want to change technology, I 'll just replace this c
 $precompiledSignsListTable='<form id="signs-list-form">';
 $precompiledSignsListTable.='<input type="hidden" name="request" value="edit"/>
                             <input type="hidden" name="subject" value="signs"/>
-                            <input type="hidden" name="idScheda" value="'.$idStatoPat.'"/>';
+                            <input type="hidden" name="idStatoPat" value="'.$idStatoPat.'"/>
+                            <input type="hidden" name="specie" value="'.$specie.'"/>';
+
 $precompiledSignsListTable.='<div class="card d-md-block p-2">
                               <table id="table" class="table table-sm table-striped header-fixed p-2">
                                 <thead>
@@ -23,36 +28,30 @@ $precompiledSignsListTable.='<div class="card d-md-block p-2">
                                   </tr>
                                 </thead>
                                 <tbody>';
-$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno) order by segni.idSegno");/*to add: where idScheda =". $idScheda, mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
+
+//per marcare i radio giusti si poteva operare in maniera + procedurale:
+//prima interrogare per i segni e, iterando su di loro, verificando con un ciclo innestato su presentazioni se il segno corrente era presente al suo interno.
+$stmt=$conn->prepare("SELECT segni.idSegno, presentazioni.gradoFrequenza FROM segni left outer join presentazioni on (segni.idSegno = presentazioni.idSegno) where (presentazioni.specie is null or presentazioni.specie = ?) order by segni.idSegno");
+$stmt->bind_param("i", $specie);
 $stmt->execute();
 $result=$stmt->get_result();
 for($i=0; $row=$result->fetch_assoc(); $i++){
-  /*devo discriminare se si tratta di segno assente / presente o nessuno dei 2 per disabilitare i radio giusti.
-  anziché un for innestato, forse posso inferirlo giostrando con i null lasciati dagli outer join*/
+  /*devo discriminare se si tratta di segno associato alla coppia stato-specie o no per disabilitare i radio giusti.
+  anziché un for innestato, forse posso inferirlo valutando i null lasciati dagli outer join*/
   $yesRadio='';
   $noRadio='';
-  $dontKnowRadio='';
-  $percentageField='';
+  $frequencyField='';
 
 /*Since it is a particular form, that contains many items of the same type, I must use array notation in name
 of input fields, so that the server can recognize every single item.*/
-  if ($row["segnipresenti_idSegno"]){  /*se segnipresenti_idSegno è != null allora la tupla era in segnipresenti */
+  if ($row["idSegno"]){  /*se gradoFrequenza è != null allora la tupla era in presentazioni */
     $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes" checked>';
     $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no">';
-    $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="dontKnow">';
-    $percentageField.='<td headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']" value="'.$row["percentuale"].'"></td>';
+    $frequencyField.='<td headers="percentage"><input class="percentage" type="number" min="0" max="1" step=".1" name="percentages['.$i.']" value="'.$row["gradoFrequenza"].'"></td>';
   } else {
-    if ($row["segniassenti_idSegno"]){  /*se segniassenti_idSegno è != null allora la tupla era in segniassenti */
-      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes">';
-      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no" checked>';
-      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="dontKnow">';
-      $percentageField.='<td  headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
-    } else {                             /*se entrambi sono null allora la tupla non era in nessuno dei 2 */
-      $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes">';
-      $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no">';
-      $dontKnowRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences3['.$i.']" value="dontKnow" checked>';
-      $percentageField.='<td headers="percentage"><input class="percentage" type="number" min="1" max="100" name="percentages['.$i.']" disabled></td>';
-    }
+    $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes">';
+    $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no" checked>';
+    $percentageField.='<td  headers="percentage"><input class="percentage" type="number" min="0" max="1" step=".1" name="percentages['.$i.']" disabled></td>';
   }
 
 /*I must include a input type hidden field(segno) for the server to know which record to update in the db*/
@@ -67,12 +66,8 @@ of input fields, so that the server can recognize every single item.*/
                                     '.$noRadio.'
                                     <label class="form-check-label" for="presences2['.$i.']">No</label>
                                   </div>
-                                  <div class="form-check form-check-inline">
-                                    '.$dontKnowRadio.
-                                    '<label class="form-check-label" for="presences3['.$i.']">Non so</label>
-                                  </div>
                                 </td>
-                                '.$percentageField.'
+                                '.$frequencyField.'
                               </tr>';
 }
 
