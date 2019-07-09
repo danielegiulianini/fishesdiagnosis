@@ -196,7 +196,7 @@ $eventsTableSchema =
     <div class="row">
       <div class="col-md-12 col-md-offset-4 text-center mt-2 mb-4">
         <!--<button class="btn btn-secondary my-1 my-md-0">Visualizza probabilità</button>-->
-        <a class="btn btn-secondary my-1 my-md-0" href="./editPatologicStatePage.php">Modifica informazioni</a>
+        <a href="#choose-species-modal" class="btn btn-secondary my-1 my-md-0" data-toggle="modal" data-target="#choose-species-modal">Modifica informazioni</a>
         <!--questo deve aprire un modal che mi chiede quale specie scegliere-->
       </div>
     </div> <!--2° row-->
@@ -206,6 +206,9 @@ $eventsTableSchema =
 
   <!--Modal for updating existing report general info-->
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/editPatologicStateModal.php");?>
+
+  <!--Modal for choosing species-->
+  <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/choosePatologicStateSpecies.php");?>
 
 
   <?php include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/layout/footer.php");?>

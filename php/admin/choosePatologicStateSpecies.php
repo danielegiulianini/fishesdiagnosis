@@ -14,9 +14,9 @@ $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
   $specie_assoc[]=$row;
 }
-$specie=array(); //devo trasformare l'array associativo in array di valori
+$specie2=array(); //devo trasformare l'array associativo in array di valori
 foreach($specie_assoc as $item){
-  $specie[]=$item["specie"];
+  $specie2[]=$item["specie"];
 }
 
 ?>
@@ -37,11 +37,11 @@ foreach($specie_assoc as $item){
               <input type="hidden" name="idStatoPat" id="idStatoPat" value="<?php echo $idStatoPat;?>"/>
 
 
-              <label for="e-specie">specie</label>
-              <select class="form-control specie" name="specie" id="e-specie" style="display: inline-block" required>
+              <label for="e-p-specie">specie</label>
+              <select class="form-control e-specie" name="specie" id="e-p-specie" style="display: inline-block" required>
                 <?php
-                  for ($i=0; $i<count($specie); $i++){
-                      echo '<option>'.$specie[$i].'</option>';
+                  for ($i=0; $i<count($specie2); $i++){
+                      echo '<option>'.$specie2[$i].'</option>';
                   }
                 ?>
               </select>

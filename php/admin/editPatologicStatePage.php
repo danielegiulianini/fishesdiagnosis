@@ -1,7 +1,8 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
 
-$idScheda = $_GET["idScheda"];
+$idStatoPat = $_GET["idScheda"];
+$specie = $_GET["specie"];
 
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
