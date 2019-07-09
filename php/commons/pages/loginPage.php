@@ -42,7 +42,7 @@ if(isset($_POST["request"])and !is_null($_POST["request"]) and $_POST["request"]
 
          switch($userType){
             case "admin":
-              header("Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/admin/adminStartPage.php");  /*to update to dashboard*/
+              header("Location: /fishesdiagnosis/php/admin/adminStartPage.php");  /*to update to dashboard*/
               break;
             case "utente":
               header("Location: /fishesdiagnosis/php/user/userStartPage.php");  /*to update to dashboard*/
