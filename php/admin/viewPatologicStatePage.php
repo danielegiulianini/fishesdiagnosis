@@ -2,6 +2,10 @@
 /*fetching species is needed for editReportModal*/
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
+$idStatoPat = $_GET["idStatoPat"];
+echo "l'id stato pat e'".$idStatoPat;
+exit;
+
 $stmt=$conn->prepare("SELECT specie FROM specie");
 $stmt->execute();
 $result=$stmt->get_result();
@@ -13,6 +17,37 @@ foreach($specie_assoc as $item){
   $specie[]=$item["specie"];
 }
 
+/*pat state general info (unlike the other info inside tabs) don't require datatable to be responsive
+so their data are fetched already here with php. Datatble needs js to fetch them instead.*/
+/*the query below doesn't ask for stato and siglaProvincia cause thery are not stored inside db.*/
+$stmt=$conn->prepare("SELECT idStatoPat,
+                              nome,
+                              tipologia
+                      FROM statipatologici
+                      where statipatologici.idStatoPat = ?");
+$stmt->bind_param("i", $idStatoPat);
+$stmt->execute();
+$result=$stmt->get_result();
+$row=$result->fetch_assoc();
+
+/*this process could be automatized too (even ids, names etc.)*/
+$patStateGeneralInfoTable='<table id="pat_state-info-1" class="table table-hover table-striped table-sm">
+                            <tbody>
+                              <tr>
+                                <th scope="row">Stao patologico n.</th>
+                                <td id="g-idStatoPat">'.$idStatoPat.'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Nome</th>
+                                <td id="g-nome">'.$row["nome"].'</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Tipologia</th>
+                                <td id="g-nome-tipologia">'.$row["tipologia"].'</td>
+                              </tr>
+                            </tbody>
+                          </table>';
+
 
 /*table schemas for datatable (datatables - jquery library - needs table schemas
 already inside DOM before fetching data to it through js )*/
@@ -20,34 +55,21 @@ $presentSignsTableSchema =
 '<table id="presents-signs-table" class="display" style="width:100%">
    <thead>
      <tr>
-      <th>Segno presente</th>
-      <th>Percentuale di presenza</th>
+      <th>Segno presentato</th>
+      <th>Specie</th>
+      <th>grado di frequenza</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
-       <th>Segno presente</th>
-       <th>Percentuale di presenza</th>
-    </tr>
+     <th>Segno presentato</th>
+     <th>Specie</th>
+     <th>grado di frequenza</th>
+   </tr>
   </tfoot>
 </table>';
 
-$absentSignsTableSchema =
-'<table id="absents-signs-table" class="display" style="width:100%">
-   <thead>
-     <tr>
-      <th>Segno presente</th>
-      <th>Percentuale di presenza</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-       <th>Segno presente</th>
-       <th>Percentuale di presenza</th>
-    </tr>
-  </tfoot>
-</table>';
-
+/*
 $measurementsTableSchema =
 '<table id="absents-signs-table" class="display" style="width:100%">
    <thead>
@@ -84,7 +106,7 @@ $eventsTableSchema =
      <th>Sigla provincia</th>
    </tr>
   </tfoot>
-</table>';
+</table>';*/
 
 ?>
 
@@ -122,22 +144,8 @@ $eventsTableSchema =
         <div class="card">
           <div class="card-body">
             <div class="card-title font-weight-bolder text-center lead">Informazioni generali stato patologico</div>
-              <table id="pat-st-info-1" class="table table-hover table-striped table-sm">
-                <tbody>
-                  <tr>
-                    <th scope="row">Stato patologico n.</th>
-                    <td id="g-idStato">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">nome</th>
-                    <td id="g-nomeStato">test</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">tipologia</th>
-                    <td id="g-tipoStato">test</td>
-                  </tr>
-                </tbody>
-              </table>
+
+              <?php echo $patStateGeneralInfoTable; ?>
 
               <button class="btn btn-secondary ml-auto" data-toggle="modal" data-target="#edit-pat-st-modal">Modifica</button>
           </div><!--end card-body-->
@@ -147,10 +155,7 @@ $eventsTableSchema =
       <div class="col-md-8">
         <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active font-weight-bolder lead" id="present-signs-tab" data-toggle="tab" href="#present-signs" role="tab" aria-controls="present-signs-tab" aria-selected="true">Resoconto segni riscontrati</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link font-weight-bolder lead" id="absent-signs-tab" data-toggle="tab" href="#absent-signs" role="tab" aria-controls="absent-signs" aria-selected="true">Resoconto segni assenti</a>
+            <a class="nav-link active font-weight-bolder lead" id="present-signs-tab" data-toggle="tab" href="#present-signs" role="tab" aria-controls="present-signs-tab" aria-selected="true">Resoconto segni presentati</a>
           </li>
           <li class="nav-item">
             <a class="nav-link font-weight-bolder lead" id="measurements-tab" data-toggle="tab" href="#measurements" role="tab" aria-controls="measurements" aria-selected="false">Misurazioni effettuate</a>
@@ -165,22 +170,19 @@ $eventsTableSchema =
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="present-signs" role="tabpanel" aria-labelledby="present-signs-tab">
 
-            <?php echo $presentSignsTableSchema?>
-
-          </div>
-          <div class="tab-pane fade" id="absent-signs" role="tabpanel" aria-labelledby="absent-signs-tab">
-
-            <?php echo $absentSignsTableSchema?>
+            <?php echo $presentSignsTableSchema;?>
 
           </div>
           <div class="tab-pane fade" id="measurements" role="tabpanel" aria-labelledby="measurements-tab">
 
-            <?php echo $measurementsTableSchema?>
+            ...
+            <?/*php echo $measurementsTableSchema*/?>
 
           </div>
           <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
 
-            <?php echo $eventsTableSchema?>
+            ...
+            <?php /*echo $eventsTableSchema*/?>
 
           </div>
           <div class="tab-pane fade" id="conclusion" role="tabpanel" aria-labelledby="conclusion-tab">
