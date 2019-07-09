@@ -14,6 +14,8 @@ var_dump($_POST); //in post c'è la form serializzata
 
 var_dump($_GET);*/
 
+
+
 $sql="";
 
 switch($request){
