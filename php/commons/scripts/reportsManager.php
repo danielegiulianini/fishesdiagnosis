@@ -149,6 +149,7 @@ switch($subject){
               case "no":
                 $stmt=$conn->prepare("INSERT into segniassenti(idSegno, idScheda) values(?, ?)");
                 $stmt->bind_param("ii",$arrayIdSegni[$i], $idScheda);
+                $stmt->execute();
                 break;
               default:/*dont'know : do nothing*/
             }
@@ -232,6 +233,7 @@ switch($subject){
     }
     break;
 }
+
 
 if (!is_null ($stmt)){ //if fields required are not set, this prevents from executing
   $stmt->execute();

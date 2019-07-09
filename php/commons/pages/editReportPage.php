@@ -22,7 +22,9 @@ $precompiledSignsListTable.='<div class="card d-md-block p-2">
                                   </tr>
                                 </thead>
                                 <tbody>';
-$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno) order by segni.idSegno");/*to add: where idScheda =". $idScheda, mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
+$stmt=$conn->prepare("SELECT segni.idSegno as segno_idSegno, segni.nome, segnipresenti.idSegno as segnipresenti_idSegno, segnipresenti.percentuale, segniassenti.idSegno as segniassenti_idSegno FROM segni left outer join segniassenti on (segni.idSegno = segniassenti.idSegno) left outer join segnipresenti on (segni.idSegno = segnipresenti.idSegno) where segnipresenti.idScheda = ? or segniassenti.idScheda = ? or (segnipresenti.idScheda is null and segniassenti.idScheda is null) order by segni.idSegno");
+/*to add: where idScheda =". $idScheda, mi sa che mi tocca usare un 'innestata prima di fareil join scon segni devo filtrare le 2 tabelle'*/
+$stmt->bind_param("ii", $idScheda, $idScheda);
 $stmt->execute();
 $result=$stmt->get_result();
 for($i=0; $row=$result->fetch_assoc(); $i++){

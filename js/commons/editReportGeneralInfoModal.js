@@ -113,7 +113,6 @@ $(document).ready(function(){
   };
 
   $('#edit-general-info-report-modal').on('shown.bs.modal', function (e) {
-    alert("ciaoo000");
     fetchReportGeneralInfoModal(e);
   });
 });
