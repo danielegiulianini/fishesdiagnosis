@@ -48,7 +48,7 @@ for($i=0; $row=$result->fetch_assoc(); $i++){
 
 /*Since it is a particular form, that contains many items of the same type, I must use array notation in name
 of input fields, so that the server can recognize every single item.*/
-  if ($row["idSegno"]){  /*se gradoFrequenza è != null allora la tupla era in presentazioni */
+  if ($row["gradoFrequenza"]){  /*se gradoFrequenza è != null allora la tupla era in presentazioni */
     $yesRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences1['.$i.']" value="yes" checked>';
     $noRadio.='<input class="form-check-input" type="radio" name="presences['.$i.']" id="presences2['.$i.']" value="no">';
     $frequencyField.='<td headers="percentage"><input class="percentage" type="number" min="0" max="1" step=".1" name="percentages['.$i.']" value="'.$row["gradoFrequenza"].'"></td>';

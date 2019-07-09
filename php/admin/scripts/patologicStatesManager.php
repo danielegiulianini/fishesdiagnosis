@@ -102,7 +102,7 @@ switch($subject){
           $arrayIdSegni = $_POST["idSegno"];
           $arrayPresences = $_POST["presences"];
 
-        /*  $arrayPercentuali = !isset($_POST["percentages"]) ? null : $_POST["percentages"];//in 'percentuale' della tabella presentazione si può inserire null, ma non empty string
+          $arrayPercentuali = !isset($_POST["percentages"]) ? null : $_POST["percentages"];//in 'percentuale' della tabella presentazione si può inserire null, ma non empty string
 
           //validation
 
@@ -127,7 +127,7 @@ switch($subject){
               default:
                 //do nothing
             }
-          }*/
+          }
 
         }
         break;
