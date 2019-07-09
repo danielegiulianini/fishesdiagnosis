@@ -207,7 +207,7 @@ $conclusionsTableSchema =
 
 
 
-<!--<script src="http://localhost:8081/fishesdiagnosis/js/admin/editPatologicStatePage.js"></script>-->
+<script src="http://localhost:8081/fishesdiagnosis/js/admin/editPatologicStatePage.js"></script>
 
   <style>
     html, body{
