@@ -10,7 +10,7 @@ $(document).ready(function(){
     form=$("#edit-pat-st-form").get(0);
     if (isValid(form)){
       var data = $(form).serialize();
-      var url = `${location.origin}/fishesdiagnosis/php/scripts/addPatologicState.php`;//$(form).attr("action");
+      var url = `${location.origin}/fishesdiagnosis/php/scripts/patologicStatesManager.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(){
             //updatePatologicStateGeneralInfoTable();//devo aggiornare la tabella in background DA USARE SOLO QUANDO DATI OK
@@ -43,7 +43,6 @@ $(document).ready(function(){
     idStato = $("#g-idStatoPat").text();
     nome = $("#g-nomeStatoPat").text();
     tipoStato = $("#g-tipologiaStatoPat").text();
-    alert("ids"+idStato+", "+"nome"+nome+", "+tipoStato);
 
     //assign modal input tags
     $("#e-idStato").val(idStato);

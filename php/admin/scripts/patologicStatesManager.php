@@ -63,48 +63,22 @@ switch($subject){
           }
         break;
       case "edit":
-      if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"]) and isset($_POST["idScheda"])) { /*mandatory fields*/
-        /*$dataOraRegistrazione = $_POST["dataOraRegistrazione"];*/
+      if (isset($_POST["idStatoPat"]) and isset($_POST["nome"]) and isset($_POST["tipologia"])) { /*mandatory fields*/
 
-        $idScheda = $_POST["idScheda"];
-        $nomeVeterinario=$_POST["nomeVeterinario"];
-        $nomeRichiedente=$_POST["nomeRichiedente"];
-        $telefonoRichiedente=$_POST["telefonoRichiedente"];
-        $emailRichiedente=$_POST["emailRichiedente"];
-        $sospetto=$_POST["sospetto"];
-        $percentualeAffetti=$_POST["percentualeAffetti"];
-        $numeroEsaminati=$_POST["numeroEsaminati"];
-        $taglia=$_POST["taglia"];
-        $eta=$_POST["eta"];
-        $sesso=$_POST["sesso"];
-        $specie=$_POST["specie"];
-        $vasca=$_POST["vasca"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-        $origine=$_POST["origine"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-        $note=$_POST["note"];
+        $idStatoPat = $_POST["idStatoPat"];
+        $nome=$_POST["nome"];
+        $tipologia=$_POST["tipologia"];
 
         /*validation*/
 
         /*dml*/
-        $stmt=$conn->prepare("UPDATE schedechiamate SET nomeVeterinario=?,nomeRichiedente=?,telefonoRichiedente=?,
-          emailRichiedente=?,sospetto=?,percentualeAffetti=?,numeroEsaminati=?,taglia=?,eta=?,sesso=?,specie=?,vasca=?,origine=?,note=? WHERE idScheda=?");
+        $stmt=$conn->prepare("UPDATE statipatologici SET nome=?,tipologia=? WHERE idStatoPat=?");
 
-        $stmt->bind_param("sssssiiiisssisi",
-          $nomeVeterinario,
-          $nomeRichiedente,
-          $telefonoRichiedente,
-          $emailRichiedente,
-          $sospetto,
-          $percentualeAffetti,
-          $numeroEsaminati,
-          $taglia,
-          $eta,
-          $sesso,
-          $specie,
-          $vasca,   /*vasca key is string*/
-          $origine, /*origin key is integer*/
-          $note,
-          $idScheda
-          );
+        $stmt->bind_param("ssi",
+          $nome,
+          $tipologia,
+          $idStatoPat
+        );
           $stmt->execute();
         }
 

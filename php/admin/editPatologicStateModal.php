@@ -12,13 +12,16 @@
         </div>
       <div class="modal-body">
         <form id="edit-pat-st-form">
+            <input type="hidden" name="request" value="edit"/>
+            <input type="hidden" name="subject" value="generalInfo"/>
+
+
             <fieldset class="form-group">
               <label for="idStato">Id</label>
               <input type="text" class="form-control nome" name="idStato" id="e-idStato" readonly>
 
               <label for="nomeStato">Nome</label>
               <input type="text" class="form-control nome" name="nomeStato" id="e-nomeStato" required>
-
 
                 <label for="tipoStato">Tipologia</label>
                 <select class="form-control" name="tipoStato" id="e-tipoStato" style="display: inline-block"><!--i could have used 2 radios-->
