@@ -63,12 +63,12 @@ switch($subject){
           }
         break;
       case "edit":
-      if (isset($_POST["idStatoPat"]) and isset($_POST["nome"]) and isset($_POST["tipologia"])) { /*mandatory fields*/
+      if (isset($_POST["idStato"]) and isset($_POST["nomeStato"]) and isset($_POST["tipoStato"])) { /*mandatory fields*/
 
-        $idStatoPat = $_POST["idStatoPat"];
-        $nome=$_POST["nome"];
-        $tipologia=$_POST["tipologia"];
-
+        $idStatoPat = $_POST["idStato"];
+        $nome=$_POST["nomeStato"];
+        $tipologia=$_POST["tipoStato"];
+        
         /*validation*/
 
         /*dml*/
@@ -79,9 +79,10 @@ switch($subject){
           $tipologia,
           $idStatoPat
         );
-          $stmt->execute();
-        }
 
+        $stmt->execute();
+      }
+      break;
     }
     break;
 
