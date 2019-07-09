@@ -45,7 +45,7 @@ $idStatoPat = $_POST["idStatoPat"];
 switch($subject){
   case "present_signs":
 
-    fillOutputWithQueryResults("select * from statipatologici inner join presentazioni on statipatologici.idStatoPat=presentazioni.idStatoPat where statipatologici.idStatoPat = ".$idStatoPat, $conn, $output);//yes need of join
+    fillOutputWithQueryResults("select segni.nome, presentazioni.specie, presentazioni.gradoFrequenza from segni join presentazioni on segni.idSegno = presentazioni.idSegno inner join statipatologici on statipatologici.idStatoPat=presentazioni.idStatoPat where statipatologici.idStatoPat = ".$idStatoPat, $conn, $output);//yes need of join
 
     break;
   case "measurements":
