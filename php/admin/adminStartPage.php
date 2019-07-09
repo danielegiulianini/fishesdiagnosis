@@ -24,7 +24,11 @@ foreach($specie_assoc as $item){
 
 <style>
 html, body {
-   height: 100% !important;
+   height: 94%;
+}
+
+main{
+  height:92%;
 }
 
 .album a {
@@ -55,7 +59,7 @@ html, body {
               <p class="card-title my-2 hint">Inserisci</p>
               <a class="btn btn-secondary ml-2 mr-2 mb-2" data-toggle="modal" data-target="#add-general-info-report-modal">Inserisci scheda chiamata</a>
               <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#add-pat-st-modal">Inserisci stato patologico</a>
-              <a class="btn btn-secondary m-2">test</a>
+              <!--<a class="btn btn-secondary m-2">test</a>-->
             </div>
           </div>
 
@@ -64,15 +68,15 @@ html, body {
                 <p class="card-title my-2 hint">Visualizza - modifica</p>
                 <a data-toggle="modal" data-target="#choose-report-modal" class="btn btn-secondary m-2">Visualizza scheda chiamata</a>
                 <a data-toggle="modal" data-target="#choose-pat-st-modal" class="btn btn-secondary m-2">Visualizza stato patologico</a>
-                <a class="btn btn-secondary m-2">test</a>
+                <!--<a class="btn btn-secondary m-2">test</a>-->
               </div>
           </div>
           <div class="col-md-3 mx-auto">
             <div class="card box-shadow text-center">
               <p class="card-title my-2 hint">Modifica</p>
               <a data-toggle="modal" data-target="#edit-probability-weights-modal" class="btn btn-secondary m-2">Modifica pesi</a>
-              <a class="btn btn-secondary m-2">test</a>
-              <a class="btn btn-secondary m-2">test</a>
+              <!--<a class="btn btn-secondary m-2">test</a>-->
+              <!--<a class="btn btn-secondary m-2">test</a>-->
             </div>
           </div>
         </div>

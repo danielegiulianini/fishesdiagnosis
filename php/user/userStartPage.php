@@ -24,7 +24,11 @@ foreach($specie_assoc as $item){
   <!--<script src="/progettoweb/js/administrator/clients.js"></script>-->
   <style>
     html, body {
-       height: 100% !important;
+       height: 94%;
+    }
+
+    main{
+      height:92%;
     }
 
     .album a {
@@ -34,6 +38,8 @@ foreach($specie_assoc as $item){
     .hint{
       font-size:120%;
     }
+
+
   </style>
 
 </head>
@@ -55,7 +61,7 @@ foreach($specie_assoc as $item){
                 <p class="card-title my-2 hint">Visualizza - modifica - inserisci</p>
                 <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#add-general-info-report-modal">Inserisci scheda chiamata</a>
                 <a class="btn btn-secondary m-2" data-toggle="modal" data-target="#choose-report-modal">Visualizza scheda chiamata</a>
-                <a class="btn btn-secondary m-2">test</a>
+                <!--<a class="btn btn-secondary m-2">test</a>-->
               </div>
           </div>
 
