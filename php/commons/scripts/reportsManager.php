@@ -59,6 +59,7 @@ switch($subject){
             $note,
             $idUtente
             );
+            $stmt->execute();
           }
         break;
       case "edit":
@@ -104,7 +105,9 @@ switch($subject){
           $note,
           $idScheda
           );
+          $stmt->execute();
         }
+
     }
     break;
 
@@ -145,6 +148,7 @@ switch($subject){
               case "yes":
                 $stmt=$conn->prepare("INSERT into segnipresenti(idSegno, idScheda, percentuale) values(?, ?, ?)");
                 $stmt->bind_param("iii",$arrayIdSegni[$i], $idScheda, $arrayPercentuali[$i]);
+                $stmt->execute();
                 break;
               case "no":
                 $stmt=$conn->prepare("INSERT into segniassenti(idSegno, idScheda) values(?, ?)");
@@ -175,6 +179,7 @@ switch($subject){
           /*dml*/
           $stmt=$conn->prepare("INSERT into misurazioni(idScheda, caratteristicaAcqua, valore) values(?, ?, ?)");
           $stmt->bind_param("isi", $idScheda, $caratteristicaAcqua, $valore);
+          $stmt->execute();
         }
         break;
       case "edit":
@@ -202,6 +207,7 @@ switch($subject){
           /*dml*/
           $stmt=$conn->prepare("INSERT into eventi(dataEvento,dataComparsaSegniClinici, tipologia, idScheda, provenienza, note) values(?, ?, ?, ?, ?, ?)");
           $stmt->bind_param("sssiis", $dataEvento, $dataComparsaSegni, $tipologia,$idScheda, $provenienza, $note);/*dates want string format*/
+          $stmt->execute();
         }
         break;
       case "edit":
@@ -226,6 +232,7 @@ switch($subject){
           /*dml*/
           $stmt=$conn->prepare("INSERT into conclusioni(idScheda, risposta, evoluzione) values(?, ?, ?)");
           $stmt->bind_param("iss", $idScheda, $risposta, $evoluzione);
+          $stmt->execute();
         }
         break;
       case "edit":
@@ -236,7 +243,7 @@ switch($subject){
 
 
 if (!is_null ($stmt)){ //if fields required are not set, this prevents from executing
-  $stmt->execute();
+  //$stmt->execute();
 }
 
 $conn->close();

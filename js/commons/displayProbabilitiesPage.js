@@ -27,18 +27,18 @@ forse posso fare ogni tab con una sola chiamta ajax!!
 il backend php  esattamente lostesso per i diversi quadranti di uno stesso tab, perché ciò che cambia è solo la
 rappresentazione, non i dati*/
   idScheda = $("#p-idScheda").text();
-  console.log("l'id scheda e'"+idScheda)
+  console.log("l'id scheda e'"+idScheda);
 
   $.ajax({
-    url: `${location.origin}/fishesdiagnosis/php/scripts/probabilitiesComputer.php?request=signs&idScheda=${idScheda}`,
+    url: `${location.origin}/fishesdiagnosis/php/commons/scripts/probabilityComputer.php?request=signs_line&idScheda=${idScheda}`,
     method: "GET",
     success: function(data) {
-      /*console.log(data);
+      console.log(data);
       var nomi = [];
       var probabilitas = [];
 
       for(var i in data) {
-        nomi.push("Player " + data[i].nome);  //same attribute name as in db
+        nomi.push("stato patologico " + data[i].nome);  //same attribute name as in db
         probabilitas.push(data[i].probabilita); //same attribute name as in db
       }
 
@@ -46,7 +46,7 @@ rappresentazione, non i dati*/
         labels: nomi,
         datasets : [
           {
-            label: 'Player Score',
+            label: 'probabilities',
             backgroundColor: 'rgba(200, 200, 200, 0.75)',
             borderColor: 'rgba(200, 200, 200, 0.75)',
             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
@@ -61,7 +61,7 @@ rappresentazione, non i dati*/
       var barGraph = new Chart(ctx, {
         type: 'bar',
         data: chartdata
-      });*/
+      });
     },
     error: function(data) {
       console.log(data);

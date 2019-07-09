@@ -8,16 +8,20 @@ include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLog
 $output = array();
 $stmt = null;
 
-$request=$_POST["request"];
-
+$request=$_GET["request"];
+/*
 var_dump($_POST); //in post c'è la form serializzata
+
+var_dump($_GET);*/
+
 $sql="";
 
 switch($request){
   case "signs_line":
 
-  if(isset($_POST["idScheda"])){/*field required*/
-    $sql = "SELECT `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.idStatoPat2, statipatologici.nome, `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.specie, Avg(1-Abs(`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.grado_freq-`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.prob)) AS Probabilità
+  if(isset($_GET["idScheda"])){/*field required*/
+
+    $sql = "SELECT `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.idStatoPat2, statipatologici.nome, `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.specie, Avg(1-Abs(`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.grado_freq-`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.prob)) AS probabilita
 FROM (
 
 select * from (
@@ -54,7 +58,7 @@ GROUP BY `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.idStatoPat
 ORDER BY Avg(1-Abs(`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.grado_freq-`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.prob)) DESC";
 
 
-    /*$stmt=$conn->prepare($sql);
+    $stmt=$conn->prepare($sql);
     $stmt->bind_param("ii", $idScheda, $idScheda);
 
     $stmt->execute();
@@ -62,14 +66,14 @@ ORDER BY Avg(1-Abs(`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.
     $result=$stmt->get_result();
     while($row=$result->fetch_assoc()){
       $output[]=$row; //contiene: idStatoPat2, nome, specie, probabilita
-    }*/
+    }
 
   }
     break;
 }
 
 if (!is_null ($stmt)){ //if fields required are not set, this prevents from executing
-  $stmt->execute();
+  //$stmt->execute();
 }
 
 $conn->close();
