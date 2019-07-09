@@ -1,4 +1,6 @@
 <?php
+/*before running this script i have imported ms access in a temp db (pat), not directly
+into patologiepesci because I have renamed some fields and would't work otherwise*/
 $servername="localhost";
 $username="root";
 $password="";
@@ -9,36 +11,28 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-//mysqli_report(MYSQLI_REPORT_ALL); //importante sia per degun ma anche per trycatch, va mantenuto anche dopo il deploy
 mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX); //uso qusto per liberarmi da warning troppo aggressivi come quello che si lamentavoa perché non c'era un index sulla query!!
-
 $conn = new mysqli($servername, $username, $password, $db);
-
 if ($conn->connect_error){
   echo '<div class="alert alert-warning">'.$conn->connect_error.'</div>';
   exit;
 }
-
 $conn->set_charset("utf8"); //fondamentale per encoding caratteri
 
-//include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
-
-
+//pat is temp db where i have exported into the ms access data (for not damaging patologiepesci:))
 $conn2 = new mysqli("localhost", "root", "", "pat");
-
 if ($conn2->connect_error){
   echo '<div class="alert alert-warning">'.$conn2->connect_error.'</div>';
   exit;
 }
-
 $conn2->set_charset("utf8"); //fondamentale per encoding caratteri
 
 
 
 
 /*
-  presentazioni:
+  //presentazioni:
   $sql="select * from presentazioni";
   $result = $conn2->query($sql);
   while($row = $result->fetch_assoc()) {

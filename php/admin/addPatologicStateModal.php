@@ -19,8 +19,8 @@
 
                 <label for="tipoStato">Tipologia</label>
                 <select class="form-control" name="tipoStato" id="tipoStato" style="display: inline-block"><!--i could have used 2 radios-->
-                  <option value="critico" selected>critico</option>
-                  <option value="patologico">patologico</option>
+                  <option value="critico" selected>infezione</option>
+                  <option value="patologico">virus</option>
                 </select>
 
             </fieldset>
