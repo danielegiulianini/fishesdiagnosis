@@ -34,7 +34,7 @@ $precompiledSignsListTable.='<div class="card d-md-block p-2">
 //prima interrogare per i segni e, iterando su di loro, verificando con un ciclo innestato su presentazioni se il segno corrente era presente al suo interno.
 //$stmt=$conn->prepare("SELECT segni.idSegno, segni.nome, presentazioni.gradoFrequenza FROM segni left outer join presentazioni on (segni.idSegno = presentazioni.idSegno) where (presentazioni.specie is null or presentazioni.specie = ?) and (presentazioni.idStatoPat is null or presentazioni.idStatoPat=?) order by segni.idSegno");
 
-$stmt=$conn->prepare("SELECT * FROM segni left outer join (select presentazioni.idStatoPat, presentazioni.specie, presentazioni.idSegno, presentazioni.gradoFrequenza from presentazioni where idStatoPat = ? and specie =?)
+$stmt=$conn->prepare("SELECT segni.idSegno, segni.nome, temp.specie, temp.idStatoPat, temp.gradoFrequenza FROM segni left outer join (select presentazioni.idStatoPat, presentazioni.specie, presentazioni.idSegno, presentazioni.gradoFrequenza from presentazioni where idStatoPat = ? and specie =?)
 as temp  on (segni.idSegno = temp.idSegno) order by segni.idSegno");
 $stmt->bind_param("is", $idStatoPat, $specie);
 $stmt->execute();
