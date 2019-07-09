@@ -31,7 +31,7 @@ $precompiledSignsListTable.='<div class="card d-md-block p-2">
 
 //per marcare i radio giusti si poteva operare in maniera + procedurale:
 //prima interrogare per i segni e, iterando su di loro, verificando con un ciclo innestato su presentazioni se il segno corrente era presente al suo interno.
-$stmt=$conn->prepare("SELECT segni.idSegno, presentazioni.gradoFrequenza FROM segni left outer join presentazioni on (segni.idSegno = presentazioni.idSegno) where (presentazioni.specie is null or presentazioni.specie = ?) order by segni.idSegno");
+$stmt=$conn->prepare("SELECT segni.idSegno, segni.nome, presentazioni.gradoFrequenza FROM segni left outer join presentazioni on (segni.idSegno = presentazioni.idSegno) where (presentazioni.specie is null or presentazioni.specie = ?) order by segni.idSegno");
 $stmt->bind_param("i", $specie);
 $stmt->execute();
 $result=$stmt->get_result();
@@ -56,7 +56,7 @@ of input fields, so that the server can recognize every single item.*/
 
 /*I must include a input type hidden field(segno) for the server to know which record to update in the db*/
   $precompiledSignsListTable.='<tr>
-                                <td headers="sign"><input type="hidden" name="idSegno['.$i.']" value="'.$row["segno_idSegno"].'"\>'.$row["nome"].'</td>
+                                <td headers="sign"><input type="hidden" name="idSegno['.$i.']" value="'.$row["idSegno"].'"\>'.$row["nome"].'</td>
                                 <td headers="yes-no-dontknow">
                                   <div class="form-check form-check-inline">
                                     '.$yesRadio.'
@@ -203,7 +203,7 @@ $conclusionsTableSchema =
 
 
 
-<script src="http://localhost:8081/fishesdiagnosis/js/commons/editPatologicState.js"></script>
+<script src="http://localhost:8081/fishesdiagnosis/js/admin/editPatologicStatePage.js"></script>
 
   <style>
     html, body{

@@ -64,14 +64,17 @@ switch($subject){
         break;
       case "edit":
       if (isset($_POST["idStato"]) and isset($_POST["nomeStato"]) and isset($_POST["tipoStato"])) { /*mandatory fields*/
-
-        $idStatoPat = $_POST["idStato"];
+echo "UPDATE statipatologici SET nome=?,tipologia=? WHERE idStatoPat=?";
+echo $idStatoPat;
+echo $nome;
+ echo $tipologia;
+        /*$idStatoPat = $_POST["idStato"];
         $nome=$_POST["nomeStato"];
         $tipologia=$_POST["tipoStato"];
-        
-        /*validation*/
 
-        /*dml*/
+        //validation
+
+        //dml
         $stmt=$conn->prepare("UPDATE statipatologici SET nome=?,tipologia=? WHERE idStatoPat=?");
 
         $stmt->bind_param("ssi",
@@ -80,7 +83,7 @@ switch($subject){
           $idStatoPat
         );
 
-        $stmt->execute();
+        $stmt->execute();*/
       }
       break;
     }
@@ -93,12 +96,12 @@ switch($subject){
         break;
       case "edit":
         /*Avrei potuto fare il demux in js, lasciando lì tutta la complessità per la scelta di inserire in una
-        o nell'altra tabella a seconda del valore dei radios. Così facendo avrei avuto la parte server banale.*/
+        o nell'altra tabella a seconda del valore dei radios. Così facendo avrei avuto la parte server più semplice.*/
 
-        if (isset($_POST["idScheda"]) and isset($_POST["idSegno"]) and isset($_POST["presences"])) { /*mandatory fields*/
+        if (isset($_POST["idStatoPat"]) and isset($_POST["specie"]) and isset($_POST["idSegno"]) and isset($_POST["presences"])) { /*mandatory fields*/
 
-          $idScheda = $_POST["idScheda"];
-
+          $idStatoPat = $_POST["idStatoPat"];
+          $specie = $_POST["specie"];
           $arrayIdSegni = $_POST["idSegno"];
           $arrayPresences = $_POST["presences"];
 
@@ -108,29 +111,24 @@ switch($subject){
 
 
           /*dml*/
-          /*1.cleaning segnipresenti e segniassenti tables*/
-          $stmt=$conn->prepare("DELETE from segnipresenti where idScheda=?");
-          $stmt->bind_param("i", $idScheda);
+          /*1.cleaning presentazioni table*/
+          $stmt=$conn->prepare("DELETE from presentazioni where idStatoPat=? and specie=?");
+          $stmt->bind_param("is", $idStatoPat, $specie);
           $stmt->execute();
 
-          $stmt=$conn->prepare("DELETE from segniassenti where idScheda=?");
-          $stmt->bind_param("i", $idScheda);
-          $stmt->execute();
-
-          /*2.inserting into segnipresenti e segniassenti tables according to values of radios*/
+          /*2.inserting into presentazioni table according to values of radios savd in presences*/
           for ($i=0; $i<count($arrayIdSegni); $i++){
             switch($arrayPresences[$i]){
               case "yes":
-                $stmt=$conn->prepare("INSERT into segnipresenti(idSegno, idScheda, percentuale) values(?, ?, ?)");
-                $stmt->bind_param("iii",$arrayIdSegni[$i], $idScheda, $arrayPercentuali[$i]);
+                $stmt=$conn->prepare("INSERT into presentazioni(idStatoPat, idSegno, specie, gradoFrequenza) values(?, ?, ?)");
+                $stmt->bind_param("iisd",$idStatoPat, $arrayIdSegni[$i], $specie, $arrayPercentuali[$i]);
                 $stmt->execute();
                 break;
               case "no":
-                $stmt=$conn->prepare("INSERT into segniassenti(idSegno, idScheda) values(?, ?)");
-                $stmt->bind_param("ii",$arrayIdSegni[$i], $idScheda);
-                $stmt->execute();
+                /*do nothing*/
                 break;
-              default:/*dont'know : do nothing*/
+              default:
+                /*do nothing*/
             }
           }
 
@@ -139,7 +137,7 @@ switch($subject){
     }
     break;
 
-  case "measurement":
+  /*case "measurement":
     switch ($request){
       case "add":
         if (isset($_POST["caratteristicaAcqua"]) and isset($_POST["valore"]) and isset($_POST["idScheda"])) {
@@ -148,10 +146,10 @@ switch($subject){
           $caratteristicaAcqua = $_POST["caratteristicaAcqua"];
           $valore = $_POST["valore"];
 
-          /*validation*/
+          //validation
 
 
-          /*dml*/
+          //dml
           $stmt=$conn->prepare("INSERT into misurazioni(idScheda, caratteristicaAcqua, valore) values(?, ?, ?)");
           $stmt->bind_param("isi", $idScheda, $caratteristicaAcqua, $valore);
           $stmt->execute();
@@ -165,7 +163,7 @@ switch($subject){
   case "event":
     switch ($request){
       case "add":
-        if (isset($_POST["dataEvento"]) and isset($_POST["dataComparsaSegni"]) /*and isset($_POST["tipologia"])*/ and isset($_POST["idScheda"])) {/*mandatory fields (tipologia temp removed as db is empty and it is a foreign key)*/
+        if (isset($_POST["dataEvento"]) and isset($_POST["dataComparsaSegni"]) and isset($_POST["idScheda"])) {//mandatory fields (tipologia temp removed as db is empty and it is a foreign key)
 
           $idScheda = $_POST["idScheda"];//mandatory fields
           $dataEvento = $_POST["dataEvento"];
@@ -174,14 +172,14 @@ switch($subject){
 
           //optional fields
           $tipologia = !isset($_POST["tipologia"])?null:$_POST["tipologia"];
-          $provenienza = !isset($_POST["provenienza"])? null :$_POST["provenienza"]; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-          $note =!isset($_POST["note"])?null : $_POST["note"];/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
+          $provenienza = !isset($_POST["provenienza"])? null :$_POST["provenienza"]; //No.B: nullable foreign key accepts null but not empty strings (returned by html input)
+          $note =!isset($_POST["note"])?null : $_POST["note"];//No.B: nullable foreign key accepts null but not empty strings (returned by html input)
 
-          /*validation*/
+          //validation
 
-          /*dml*/
+          //dml
           $stmt=$conn->prepare("INSERT into eventi(dataEvento,dataComparsaSegniClinici, tipologia, idScheda, provenienza, note) values(?, ?, ?, ?, ?, ?)");
-          $stmt->bind_param("sssiis", $dataEvento, $dataComparsaSegni, $tipologia,$idScheda, $provenienza, $note);/*dates want string format*/
+          $stmt->bind_param("sssiis", $dataEvento, $dataComparsaSegni, $tipologia,$idScheda, $provenienza, $note);//dates want string format
           $stmt->execute();
         }
         break;
@@ -193,7 +191,7 @@ switch($subject){
   case "conclusion":
     switch ($request){
       case "add":
-        if (isset($_POST["idScheda"]) and isset($_POST["risposta"])) {/*mandatory fields*/
+        if (isset($_POST["idScheda"]) and isset($_POST["risposta"])) {//mandatory fields
 
           //mandatory fields
           $idScheda = $_POST["idScheda"];
@@ -202,9 +200,9 @@ switch($subject){
           //optional fields
           $evoluzione = !isset($_POST["evoluzione"])?null:$_POST["evoluzione"];
 
-          /*validation*/
+          //validation
 
-          /*dml*/
+          //dml
           $stmt=$conn->prepare("INSERT into conclusioni(idScheda, risposta, evoluzione) values(?, ?, ?)");
           $stmt->bind_param("iss", $idScheda, $risposta, $evoluzione);
           $stmt->execute();
@@ -213,7 +211,7 @@ switch($subject){
       case "edit":
         break;
     }
-    break;
+    break;*/
 }
 
 
