@@ -58,8 +58,27 @@ rappresentazione, non i dati*/
 
       var ctx = $("#signs_prob-line_chart");
 
+      var ctx2 = $("#signs_prob-bar_chart");
+      var ctx4 = $("#signs_prob-radar_chart");
+      var ctx3 = $("#signs_prob-pie_chart");
+
       var barGraph = new Chart(ctx, {
         type: 'bar',
+        data: chartdata
+      });
+
+      var lineGraph = new Chart(ctx2, {
+        type: 'line',
+        data: chartdata
+      });
+
+      var pieGraph = new Chart(ctx3, {
+        type: 'pie',
+        data: chartdata
+      });
+
+      var radarGraph = new Chart(ctx4, {
+        type: 'radar',
         data: chartdata
       });
     },
