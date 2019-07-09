@@ -3,8 +3,6 @@
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
 $idStatoPat = $_GET["idStatoPat"];
-echo "l'id stato pat e'".$idStatoPat;
-exit;
 
 $stmt=$conn->prepare("SELECT specie FROM specie");
 $stmt->execute();
@@ -52,7 +50,7 @@ $patStateGeneralInfoTable='<table id="pat_state-info-1" class="table table-hover
 /*table schemas for datatable (datatables - jquery library - needs table schemas
 already inside DOM before fetching data to it through js )*/
 $presentSignsTableSchema =
-'<table id="presents-signs-table" class="display" style="width:100%">
+'<table id="present-signs-table" class="display" style="width:100%">
    <thead>
      <tr>
       <th>Segno presentato</th>

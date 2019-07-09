@@ -1,7 +1,8 @@
 $(document).ready(function() {
   idStatoPat = $("#g-idStatoPat").text();  // take idStatoPat from table
   //specie = $("#g-specie").text();
-  alert(idStatoPat);
+  //alert(idStatoPat);
+
   //interrogo una volta il server con ajax per reperire gli attributi della tabella (questa cosa la potevo fare anche con php nella pagina)
   table1 = $('#present-signs-table').DataTable({
     "responsive" : true,

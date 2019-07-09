@@ -38,7 +38,7 @@ $output = array();
 $stmt = null;
 
 $subject=$_POST["subject"];
-$idScheda = $_POST["idStatoPat"];
+$idStatoPat = $_POST["idStatoPat"];
 
 //var_dump($_POST);
 

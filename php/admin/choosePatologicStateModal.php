@@ -51,7 +51,7 @@ $nomiStatiPatologiciJson = json_encode($nomiStatiPatologici);
       <div class="modal-body">
         <form id="choose-pat-st-form" method="get" action="/fishesdiagnosis/php/admin/viewPatologicStatePage.php">
             <fieldset class="form-group">
-              <input type="hidden" name="idStatoPat" id="idStatoPat"/>
+              <input type="hidden" name="idStatoPat" id="idStatoPat" value="1"/><!--default is the first, otherwise onchange event isn't triggered and can't set it.-->
               <label for="nomeStatoPat">Stato patologico:</label>
               <select class="form-control" name="nomeStatoPat" id="nomeStatoPat" style="display: inline-block" required onchange="setPatologicStateIdCorrespondingToName()">
                 <?php
