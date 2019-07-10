@@ -6,7 +6,7 @@ session_start();
 
 $output = array();
 
-var_dump($_POST); //in post c'è la form serializzata
+//var_dump($_POST); //in post c'è la form serializzata
 
 if (isset($_POST["pesi"])) { /*mandatory fields*/
 

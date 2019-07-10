@@ -242,9 +242,9 @@ switch($subject){
 }
 
 
-if (!is_null ($stmt)){ //if fields required are not set, this prevents from executing
+// (!is_null ($stmt)){ //if fields required are not set, this prevents from executing
   //$stmt->execute();
-}
+//}
 
 $conn->close();
 

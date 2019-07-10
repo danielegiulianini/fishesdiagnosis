@@ -10,7 +10,7 @@ $stmt = null;
 $request=$_POST["request"];
 $subject=$_POST["subject"];
 
-var_dump($_POST); //in post c'è la form serializzata
+//var_dump($_POST); //in post c'è la form serializzata
 
 switch($subject){
   case "generalInfo":
