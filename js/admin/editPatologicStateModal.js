@@ -13,7 +13,7 @@ $(document).ready(function(){
       var url = `${location.origin}/fishesdiagnosis/php/admin/scripts/patologicStatesManager.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(){
-            //updatePatologicStateGeneralInfoTable();//devo aggiornare la tabella in background DA USARE SOLO QUANDO DATI OK
+            updatePatologicStateGeneralInfoTable();//devo aggiornare la tabella in background DA USARE SOLO QUANDO DATI OK
             window.alert("data correctly updated.");//for debugging, to replace with a auto closing box
             $(".modal").modal("hide");  //chiudere i modali (serve perché non faccio redirect)
         })

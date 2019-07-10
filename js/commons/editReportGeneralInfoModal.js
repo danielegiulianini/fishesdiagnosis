@@ -13,7 +13,7 @@ $(document).ready(function(){
       var url = `${location.origin}/fishesdiagnosis/php/commons/scripts/reportsManager.php`;//$(form).attr("action");
       $.post(url, data)
         .done(function(){
-            //updateReportGeneralInfoTable();//devo aggiornare la tabella in background DA USARE SOLO QUANDO DATI OK
+            updateReportGeneralInfoTable();//devo aggiornare la tabella in background DA USARE SOLO QUANDO DATI OK
             window.alert("data correctly updated.");//for debugging, to replace with a auto closing box
             $(".modal").modal("hide");  //chiudere i modali (non serve perché faccio redirect)
         })
