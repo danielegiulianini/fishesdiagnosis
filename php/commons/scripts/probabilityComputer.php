@@ -10,9 +10,8 @@ $stmt = null;
 
 $request=$_GET["request"];
 /*
-var_dump($_POST); //in post c'è la form serializzata
-
-var_dump($_GET);*/
+var_dump($_GET);
+*/
 
 
 
