@@ -1,6 +1,8 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/connect.php");
 
+include($_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/commons/scripts/checkLoggedInAndRedirect.php");
+
 $stmt=$conn->prepare("SELECT specie FROM specie");
 $stmt->execute();
 $result=$stmt->get_result();

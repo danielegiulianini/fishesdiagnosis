@@ -46,11 +46,8 @@ if(isset($_POST["request"])and !is_null($_POST["request"]) and $_POST["request"]
               break;
             case "utente":
               header("Location: /fishesdiagnosis/php/user/userStartPage.php");  /*to update to dashboard*/
-//echo "Location:".$_SERVER['DOCUMENT_ROOT']."/fishesdiagnosis/php/user/pages/userStartPage.php";
-//exit;
               break;
           }
-
 
        } else {
          $errors.="Password errata.";

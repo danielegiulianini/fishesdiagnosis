@@ -47,7 +47,7 @@ rappresentazione, non i dati*/
         datasets : [
           {
             label: 'probabilities',
-            backgroundColor: 'rgba(200, 200, 200, 0.75)',
+            backgroundColor: 'rgba(200, 200, 200, 0.75)', //replacing this single background color with an array of colors, each bar looks differently (useful for pie chart)
             borderColor: 'rgba(200, 200, 200, 0.75)',
             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
             hoverBorderColor: 'rgba(200, 200, 200, 1)',

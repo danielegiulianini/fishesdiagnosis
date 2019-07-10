@@ -4,11 +4,14 @@
 -->
 
 <?php
+$stmt = null;
+if ($_SESSION["tipoUtente"]=="admin"){  //admin can see and edit all the reports
+  $stmt=$conn->prepare("SELECT idScheda FROM schedechiamate");
+} else {
+  $stmt=$conn->prepare("SELECT idScheda FROM schedechiamate where schedechiamate.idUtente = ?");
+  $stmt->bind_param("i", $_SESSION["idUtente"]);
+}
 
-
-
-$stmt=$conn->prepare("SELECT idScheda FROM schedechiamate where schedechiamate.idUtente = ?");
-$stmt->bind_param("i", $_SESSION["idUtente"]);
 $stmt->execute();
 $result=$stmt->get_result();
 while($row=$result->fetch_assoc()){
