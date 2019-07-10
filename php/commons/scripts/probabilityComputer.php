@@ -23,6 +23,8 @@ switch($request){
 
   if(isset($_GET["idScheda"])){/*field required*/
 
+    $idScheda = $_GET["idScheda"];
+
     $sql = "SELECT `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.idStatoPat2, statipatologici.nome, `Sottoquery Patologia Segni riscontrati unito Segni Teorici`.specie, Avg(1-Abs(`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.grado_freq-`Sottoquery Patologia Segni riscontrati unito Segni Teorici`.prob)) AS probabilita
 FROM (
 
