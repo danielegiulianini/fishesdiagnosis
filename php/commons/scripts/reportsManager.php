@@ -24,10 +24,10 @@ switch($subject){
           $telefonoRichiedente=$_POST["telefonoRichiedente"];
           $emailRichiedente=$_POST["emailRichiedente"];
           $sospetto=$_POST["sospetto"];
-          $percentualeAffetti=$_POST["percentualeAffetti"];
-          $numeroEsaminati=$_POST["numeroEsaminati"];
+          $percentualeAffetti=$_POST["percentualeAffetti"]? "" :null;
+          $numeroEsaminati=$_POST["numeroEsaminati"]? "" :null;
           $taglia=$_POST["taglia"];
-          $eta=$_POST["eta"];
+          $eta=$_POST["eta"]? "" :null;
           $sesso=$_POST["sesso"];
           $specie=$_POST["specie"];
           $vasca=$_POST["vasca"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
