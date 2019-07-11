@@ -3,12 +3,6 @@ Modal for inserting new reports.
 dependencies:
 1. it needs that the importing pages has already pre-fetched species
   in array $specie
-
-2. l'id scheda come lo passo al modal? O tramite $_SESSION o $_GET,
-quindi qui lo posso reperire senza dipendenze da variabili settate in altre pagine
-
-this modal is the same of insertReportGeneralInfoModal (only js links change)
- if sth changes on relation schemas in the db must update both.
 -->
 
 <script src="/fishesdiagnosis/js/commons/insertReportGeneralInfoModal.js"></script>
