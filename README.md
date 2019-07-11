@@ -1,4 +1,4 @@
-# diagnosticFishesDiseaseWebApp
+# FishesDiagnosis
 
 A web app for supporting the diagnosis of marine fauna diseases.
 
