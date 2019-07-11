@@ -60,6 +60,9 @@ switch($subject){
             $idUtente
             );
             $stmt->execute();
+
+            $last_id = $conn->insert_id;
+            $output["idScheda"] = $last_id;
           }
         break;
       case "edit":
