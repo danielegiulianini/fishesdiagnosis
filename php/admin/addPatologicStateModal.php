@@ -12,6 +12,10 @@
         </div>
       <div class="modal-body">
         <form id="add-pat-st-form">
+          <input type="hidden" name="request" value="add"/>
+          <input type="hidden" name="subject" value="generalInfo"/>
+
+
             <fieldset class="form-group">
               <label for="nomeStato">Nome</label>
               <input type="text" class="form-control nome" name="nomeStato" id="nomeStato" required>
@@ -19,8 +23,8 @@
 
                 <label for="tipoStato">Tipologia</label>
                 <select class="form-control" name="tipoStato" id="tipoStato" style="display: inline-block"><!--i could have used 2 radios-->
-                  <option value="critico" selected>infezione</option>
-                  <option value="patologico">virus</option>
+                  <option value="infezione" selected>infezione</option>
+                  <option value="virus">virus</option>
                 </select>
 
             </fieldset>

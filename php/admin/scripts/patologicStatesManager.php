@@ -16,51 +16,25 @@ switch($subject){
   case "generalInfo":
     switch ($request){
       case "add":
-        if (isset($_POST["specie"]) and isset($_POST["nomeRichiedente"])) { /*mandatory fields*/
-          /*$dataOraRegistrazione = $_POST["dataOraRegistrazione"];*/
+        if (isset($_POST["nomeStato"]) and isset($_POST["tipoStato"])) { /*mandatory fields*/
+          $nomeStato=$_POST["nomeStato"];
+          $tipoStato=$_POST["tipoStato"];
 
-          $nomeVeterinario=$_POST["nomeVeterinario"];
-          $nomeRichiedente=$_POST["nomeRichiedente"];
-          $telefonoRichiedente=$_POST["telefonoRichiedente"];
-          $emailRichiedente=$_POST["emailRichiedente"];
-          $sospetto=$_POST["sospetto"];
-          $percentualeAffetti=$_POST["percentualeAffetti"];
-          $numeroEsaminati=$_POST["numeroEsaminati"];
-          $taglia=$_POST["taglia"];
-          $eta=$_POST["eta"];
-          $sesso=$_POST["sesso"];
-          $specie=$_POST["specie"];
-          $vasca=$_POST["vasca"]? "" :null; /*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-          $origine=$_POST["origine"]? "":null;/*No.B: nullable foreign key accepts null but not empty strings (returned by html input)*/
-          $note=$_POST["note"];
-
-          $idUtente = $_SESSION["idUtente"];
           /*validation*/
 
           /*ddl*/
-          $stmt=$conn->prepare("INSERT INTO schedechiamate(nomeVeterinario,nomeRichiedente,telefonoRichiedente,
-            emailRichiedente,sospetto,percentualeAffetti,numeroEsaminati,taglia,eta,sesso,specie,vasca,origine,note, idUtente)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+          $stmt=$conn->prepare("INSERT INTO statipatologici(nome,tipologia)
+            VALUES (?,?)");
 
-          $stmt->bind_param("sssssiiiisssisi",
-            $nomeVeterinario,
-            $nomeRichiedente,
-            $telefonoRichiedente,
-            $emailRichiedente,
-            $sospetto,
-            $percentualeAffetti,
-            $numeroEsaminati,
-            $taglia,
-            $eta,
-            $sesso,
-            $specie,
-            $vasca,   /*vasca key is string*/
-            $origine, /*origin key is integer*/
-            $note,
-            $idUtente
-            );
-            $stmt->execute();
-          }
+          $stmt->bind_param("ss",
+            $nomeStato,
+            $tipoStato
+          );
+          $stmt->execute();
+
+          $last_id = $conn->insert_id;
+          $output["idStatoPat"] = $last_id;
+        }
         break;
       case "edit":
       if (isset($_POST["idStato"]) and isset($_POST["nomeStato"]) and isset($_POST["tipoStato"])) { /*mandatory fields*/
