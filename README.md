@@ -7,7 +7,7 @@ Taking the code as it is, the repository must be downloaded inside the root dire
 References in code must be updated otherwise.  
 A textual dump of some example data is inside the root folder of the repository (file named patologiepesci.sql).
 The database contains patologic states basic info and 2 users already registered: 1 admin user and 1 normal user.
-Their credentials follows:
+Their credentials follows:  
 Admin  
 username: admin  
 password: admin  
@@ -16,4 +16,4 @@ Normal user
 username: test2  
 password: test  
 
-The database contains also 2 example of reports with some test data on it.
+The database contains also 2 example of reports with some test data inside them.
