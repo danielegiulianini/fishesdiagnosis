@@ -22,6 +22,14 @@ The database contains also 2 examples of reports with some test data inside them
 
 ###Indicazioni per l’installazione tramite piattaforma xampp
 
+####Preparazione piattaforma xampp
+
 Scaricare xampp. All’interno della cartella xampp, cercare la cartella htdocs. Una volta entrati in htdocs (che è la root folder del server apache), digitare da terminale: git clone https://bitbucket.org/danielegiulianini/fishesdiagnosis per scaricare il repository.
 Dopo aver avviato xampp, dal pannello di controllo avviare Apache server e MySql. 
+
+####Importazione database di test
+
+Digitare nella barra di ricerca: https://localhost e cliccare su phpmyadmin in alto a destra. 
+Dopo aver creato un nuovo database di nome "patologiepesci", selezionarlo dalla sidebar a sinistra, cliccare sul tab Import in alto e poi su Browse all'interno della sezione "File to Import", quindi selezionare il file patologiepesci.sql dentro alla cartella fishesdiagnosis.
+
 Ora, utilizzando il browser e digitando nella barra di ricerca la stringa: localhost/fishesdiagnosis/php/commons/pages/loginPage.php, si accede alla login page e si può navigare.
