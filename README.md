@@ -13,8 +13,8 @@ username: admin
 password: admin  
 
 Normal user  
-username: test2  
-password: test  
+username: test
+password: test1  
 
 The database contains also 2 examples of reports with some test data inside them.
 
